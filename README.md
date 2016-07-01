@@ -13,5 +13,17 @@ JavaScript实例展示300例
 
 持续完善中...
 
+JavaScript Use Cases of 300
+
+source
+-the book -《JavaScript网页特效经典300例》Author:杨磊 张志美 Publisher:电子工业出版社
+
+Usage
+-made for personal use as a quick checking tool
+
+note
+-inspect element for notes of code and knowledge for beginners, in chinese only for now
+
+continuous perfection ongoing...
 
 
