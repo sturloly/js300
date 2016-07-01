@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021遍历文档树</title>
+	<script type="text/javascript">
+		//遍历文档树
+		function getDomTree() {
+			alert(text(document.body));  //用提示框显示树内容
+		}
+		function text(elem) {
+			var t="";     //定义文字字符串
+			//获取该节点的所有子节点
+			var elemAll = elem.childNodes;
+			//遍历所有子节点
+			for (var i = 0; i < elemAll.length; i++) {
+				//当前节点
+				var e = elemAll[i];
+				//文本、注释节点不被遍历，并判断其是否为直接父节点
+				if(e.parentNode == elem && e.nodeType == 1) {
+					t += e.tagName + '+'; //把标签名添加到文本内容里
+					// 循环子节点
+					if(e.childNodes.length > 0) {
+						//如果子节点只有一个文本子节点，则跳过
+						if(e.childNodes.length ==1) {
+							var fe = e.childNodes[0];
+							if(fe.nodeType == 3)  //是否为文本子节点
+							continue;  //跳过
+						}
+						t += '$$'; //子节点分隔符  ('\n\t',原演示分隔符-方块)
+						t += text(e);  //递归还有子元素的子节点
+					}
+				}
+			}
+			console.log(t);
+			return t;   //返回得到的文本
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义链接和按钮 -->
+		<a href="#" id="myLink">链接</a>
+		<br>
+		<input type="button" value="遍历文档树" onClick="getDomTree();">
+	</p>
+</body>
+</html>
+
+<!-- 
+实力描述
+HTML文档内容可以看成是一颗高寒了若干分支的树。通过javascript可以访问到这棵树的任何一个节点。本例将演示如何把这棵树的所有节点遍历一遍。
+
+难点剖析
+通过节点的childNodes属性，可以得到该节点的所有子节点数组。本例正是通过该属性来遍历从body开始的所有节点并拼接节点的标签名的。另外，节点还包含了一个parentNode属性，它用于得到目前节点的的直接父节点。
+
+ -->

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用Prototype实现继承机制</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="prototype.js"></script>
+		<script type="text/javascript">
+			var Dog = Class.create();
+			Dog.prototype = {
+			  initialize: function(myname) {
+				this.myname = myname;
+			  },
+			  cry: function(msg) {
+				alert(this.myname + ': ' + msg);
+			  }
+			};
+			
+			var SmallDog = Class.create();
+			SmallDog.prototype = Object.extend(new Dog(),{
+				cry: function(msg) {
+				alert(this.myname + ' 小声的说 ： ' + msg);
+			  }
+			});
+				
+			var duoduo = new SmallDog('多多');
+			duoduo.cry('hi');
+		</script>	
+	</head>
+	<body style="text-align:center">
+	</body>
+</html>

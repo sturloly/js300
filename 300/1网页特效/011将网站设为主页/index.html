@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011将网站设为主页</title>
+	<script type="text/javascript">
+		//设为首页
+		function setHomePage() {
+			//判断是否为IE浏览器
+			if (document.all) {
+				//设置body的style.behavior
+				document.body.style.behavior='url(#default#homePage)';
+				//设置首页地址
+				document.body.setHomePage('http://www.myhomepage.com');
+			}else if (window.sidebar){
+				//通过FireFox特有的组件设置首页地址
+				var thePrefs = Components.classes['@mozilla.org/preferences-service;1'].getService(
+					Components.interfaces.nsIPrefBranch);
+				thePrefs.setCharPref('brower.startup.homepage', 'http://www.myhomepage.com');
+			}
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 设为首页的链接 -->
+	<p><a href="#" onClick="setMyHomePage()">设为首页</a></p>
+	<div onClick=""></div>
+</body>
+</html>
+<!-- 
+实例描述
+作为一种常见的营销手段，当用户访问网站以后，可以提示用户是否把网站设为首页。设为首页的功能在不同浏览器中代码是不一样的，也是就是说，不用的浏览器需要采用不同的实现方式。
+
+
+难点剖析
+用户访问网页的问候语往往发生在网页加载好了以后，因此这类问候的代码需要放在代码的最后。本例代码是放在body标签里的，其实放在</html>后边也是可以的。
+
+
+
+style.behavior的用法
+< DOCTYPE html PUBLIC -WCDTD XHTML StrictEN httpwwwworgTRxhtmlDTDxhtml-strictdtd>
+语法：
+
+behavior : url (url) | url (#objID ) | url (#default#behaviorName)
+
+参数：
+
+url (url) : 使用绝对或相对地址指定DHTML行为组件（.htc）
+url (#objID ) : 用二进制实现DHTML行为，#objID为object对象指定的id特性
+url (#default#behaviorName) : IE的默认行为。由behaviorName指定
+
+说明：
+
+设置或检索对象的DHTML行为。
+多个行为之间用空格隔开。
+
+例：
+
+div { behavior: url(fly.htc) url(shy.htc);
+
+在脚本程序中可以用 ID.style.behavior="url()" 来设定改变behavor.
+
+ -->

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用Dojo动态指定按钮的click事件</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.0/dojo/dojo.js"></script>
+		<script type="text/javascript">
+			//利用dojo的网页加载完成回调函数
+			dojo.addOnLoad(function () {
+				//获取按钮的DOM
+				var btn = dojo.byId('btn');
+				//使用connect函数处理事件，参数分别为DOM，事件和回调
+				dojo.connect(btn, 'onclick', function(){
+					//回调函数的具体实现
+					alert('按钮被click了');
+				});
+			});
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<input value="按钮" id="btn" type="button"/>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>150同时改变多个DOM的样式</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!-- 定义一个外部样式，和引入外部css文件效果一样 -->
+		<style>
+			.content{
+				font-size : 14px;
+			}
+		</style>
+		<script type="text/javascript">
+			//按钮的click事件监听函数
+			function changeFont(p){
+				var fontSize = p + 'px';
+				var contents = document.getElementsByClassName('content');
+				for(var i=0;i<contents.length;i++){
+					contents[i].style.fontSize = fontSize;
+				}
+			}
+		</script>
+	</head>
+	<body style="text-align:center">	
+		<p class="content">
+			这里是第一段...
+		</p>
+		<p class="content">
+			这里是第二段...
+		</p>
+		<p class="content">
+			这里是第三段...
+		</p>
+		<br/>
+		<input type="button" onclick="changeFont(16);" value="大字体"/>
+		<input type="button" onclick="changeFont(12);" value="小字体"/>
+	</body>
+</html>
+
+<!-- 
+实例描述
+读者在浏览网页新闻时,应该看到过这样的功能:通过单击字体变化按钮,让浏览的文字变大或变小.本例将演示如何实现这样的效果.
+
+难点剖析
+在编程时,同一网页中有相同的元素,一般会为她们指定同一个class属性值,之所以这样做,一是让它们拥有相同的样式,二是方便对它们的控制.
+
+其他说明
+在CSS代码里,字体的属性名是"font-size".但javaSctript对应的属性名称是"fontSize".这是因为"-"在javaScript中是关键字,不可用,所以在修改这些带"-"的属性值时,应该特别注意.
+
+ -->

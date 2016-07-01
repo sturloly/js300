@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033通过控件名访问特定的控件</title>
+	<script type="text/javascript">
+		//通过控件名访问特定的控件
+		function getFormDom() {
+			var f = document.forms[0];  //获取表单DOM
+			var myText = f.myText;   //通过名字获取控件DOM
+			//提示控件的name和value
+			alert(myText.name + " : " + myText.value);
+  		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form>
+		文本框：<input type="text" name="myText" id="">
+		<br>
+		<input type="button" value="获取控件" onclick="getFormDom()">
+	</form>
+</body>
+</html>
+
+<!-- 
+实例描述
+在表单下的卡控件往往都有一个属性：name,它的作用是在表单提交时，作为http参数来进行传递。因此，这个name也可以作为控件的key来使用。
+
+难点剖析
+对于一般的DOM元素来说，通过点操作符"."或者"[]"只能访问到DOM自身的属性的值，而表单form则还可以访问到它包含的控件，这里的参数也即控件的name属性值。
+ -->

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>包含特定内容的层</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function selDiv(){
+				alert($('div:contains("abc")').html());
+			}
+		</script>
+		<style>
+			div{
+				width: 200px;
+				margin:5px auto;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<form>
+			<div>123343355</div>
+			<div>123abc123</div>
+			<div>addfdfdf</div>
+			<br>
+			<input type="button" value="选择包含abc的层" onclick="selDiv()">
+		</form>		
+	</body>
+</html>

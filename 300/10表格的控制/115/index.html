@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>115动态的为表格中的单元格文字添加样式</title>
+	<script type="text/javascript">		
+			//为表格改变样式的函数
+			function chCell(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				var rows = tbl.rows;			//得到当前的表格的row数组
+				var len = tbl.rows.length;		//当前的行数
+				for(var i=1;i<len;i++){			//遍历所有行
+					var cells = rows[i].cells;	//得到这一行的所有单元格
+					//遍历单元格
+					for(var j=0;j<cells.length;j++){
+						cells[j].onclick = function(){//定义单元格的click事件
+							//如果字体的颜色是默认的或者黑色
+							if(this.style.color == '' || this.style.color == 'black')
+								//把单元格的字体变成红色
+							this.style.color = 'red';
+							else
+								//把单元格的字体变成黑色
+							this.style.color = 'black';
+						};
+					}
+				}
+			}
+		</script>	
+	</head>
+	<body style="text-align:center" onload="chCell();">
+		<table id="tbl" align="center" border="1">
+			<tr>
+				<th>名字</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td>A</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td>15</td>
+			</tr>
+		</table>
+	</body>
+	</html>
+
+<!-- 
+第 10 章 表格的控制
+网页的表格有着非常广泛的用途,它可以用来展示数据,也可以用来布局和排版.在IE通知时期,它是非常流行的一种排版工具,但这确实非常不合理的一种做法.随着web2.0时代的到来,表格已经回归到它本来的用途了,那就是展示数据.本章所讲解的关于表格的实例,都是讲其作为数据展示工具来使用的.
+
+
+难点剖析
+本例通过table的rows属性,遍历了表格的所有行,然后再通过cells属性,把每个单元格都遍历了.在每次遍历的过程中,需要动态地为单元格也就是每一个id变浅定义click事件,把单元格的字体颜色编程红色.
+
+ -->

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>106可以拖动的层</title>
+	<script type="text/javascript">
+		var isOver = false;   //是否正在移动的标志变量
+		var lefty = 0;  //left变量
+		var topy = 0; //top变量
+		//监听网页加载完成的事件
+		function init() {
+			//获取层的box的DOM
+			var boxTitle = document.getElementById('boxTitle');
+			boxTitle.onmousedown = mouseDown; //设置mousedown事件
+			boxTitle.onmousemove = mouseMove;  //设置mousemove事件
+			boxTitle.onmouseup = mouseUp;   //设置mouseup事件
+		}
+		//定义box的鼠标按下事件
+		function mouseDown(event) {
+			var e = event;   //定义事件e变量
+			x = e.clientX;   //得到事件发生的x坐标
+			y = e.clientY;  //得到事件发生的y坐标
+			//得到box的左上角的坐标
+			lefty = parseInt(document.getElementById('box').style.left);
+			topy = parseInt(document.getElementById('box').style.top);
+			/* test1 = x - lefty;  
+			   test2 = y - topty; */
+			isOver = true;  //把正在移动变量设置为true 
+		}
+		function mouseMove(event) {
+			if(isOver) {          //当正在移动的时候
+				var e = event;   //得到事件变量e
+				var box = document.getElementById('box');
+				var newleft = lefty + e.clientX - x; // 计算新的left的值
+				var newtop = topy + e.clientY - y; //计算新的top的值
+
+/*				var newleft = e.clientX - test1; //其它方案一
+				var newTop = e.clientY - test2;*/
+
+/*				var newleft = (lefty - x) + e.clientX;  //其它方案二
+				var newTop = (topy - y) + e.clientY ;*/
+
+				box.style.left=newleft + "px";  //设置新的left值,带上单位
+				box.style.top=newtop + "px";  //设置新的top值,带上单位
+			}
+		}
+
+		function mouseUp(event) {   //鼠标按下释放事件
+			if(isOver) {
+				isOver = false;  //设置变量为false
+			}
+		}
+
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div id="box" style="border: 1px solid black; position: absolute;left: 200px;top: 100px;width: 300px;height: 200px;z-index: 99;">
+		<h4 align="right" id="boxTitle" style="margin: 0px; padding: 3px;background-color: blue ;opacity: 0.75;border: 1px solid black;height: 18px;cursor: pointer;">
+			<span style="float: left;color: white">这里是标题栏</span>
+		</h4>
+		<div id="boxMsg">这是一个可拖动的层</div>
+		
+	</div>
+</body>
+</html>
+
+<!-- 
+实例描述
+层的拖动是一种比较常见的网页特效,它可以让用户更直观的完成一些动作,从而带来更佳的用户体验感.本例提供了一个非常清晰的拖动层的思路,读者可以根据此思路扩展出更复杂的层拖动效果.
+
+难点剖析
+拖动的实现,看似复杂,实则简单.气拖动效果主要涉及两种鼠标事件:一个是鼠标按下,另一个就是鼠标的移动.首先是监听鼠标在层之上被按下的事件,然后就开始监听鼠标移动事件,根据鼠标事件发生时的坐标,可以计算出层呗移动到的坐标是多少.其中有一点需要注意,既需通过变量"isOver"来判别鼠标是否已经被按下.
+
+ -->

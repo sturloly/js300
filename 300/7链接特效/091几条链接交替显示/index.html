@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>091几条链接交替显示</title>
+	<script type="text/javascript">
+		var arr = []; //数据数组变量
+		//初始化数据
+		arr[arr.length] = ['链接-百度','http://www.baidu.com'];
+		arr[arr.length] = ['链接-极客','http://www.jikexueyuan.com'];
+		arr[arr.length] = ['链接-v2ex','http://www.v2ex.com'];
+
+		/*
+			arr[arr.length] = ['链接1','http://www.baidu.com'];
+			console.log(arr.length +"第0个有值,长度为1")
+
+
+			arr[arr.length] = ['链接2','http://www.baidu.com'];
+			console.log(arr.length+ "第1个有值,长度为2")
+
+
+			arr[arr.length] = ['链接3','http://www.baidu.com'];
+			console.log(arr.length +"第2个有值,长度为3")*/
+
+		/*	console.log(arr.length+"数组为空时length为0,值为空")
+			arr[arr.length] = ['链接1','http://www.baidu.com'];
+			console.log(arr.length +"用length=0做下标,给第[0]个赋完了值.length变为1准备用length=1为第[1]赋值.")
+			arr[arr.length] = ['链接2','http://www.baidu.com'];
+			console.log(arr.length+ "用length=1做下标,给第[1]个赋完了值.length变为2准备用length=2为第[2]赋值.")
+			arr[arr.length] = ['链接3','http://www.baidu.com'];
+			console.log(arr.length +"用length=2做下标,给第[2]个赋完了值.length变为3准备用length=1为第[3]赋值.")*/
+
+
+		var index = 0;  //当前下标
+		function init() {  //初始化函数
+			setInterval(function(){ //开始定时器
+				if(index >= arr.length) //如果超过边界
+					index = 0; //恢复到0
+				//拼接链接的html字符
+				var str = '<a href="' + arr[index][1] +'">' +arr[index][0]+'</a>';
+				//获取链接放置在的DOM
+					var demo = document.getElementById('demo');	
+					demo.innerHTML = str;//填充内容
+					index++;	//索引加1
+				},1000);
+			}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<a href="" id="demo">链接空</a>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+在一些内容较多的网站首页里,因为内容位置的稀缺,一些链接不得不交替显示在同一个位置.本例讲学习如何实现该特效.
+
+难点剖析
+首先,使用数组定义链接的名称和地址信息:然后,使用定时器来控制当前显示的链接的下标:最后,把未知所在的HTML内容进行相应的替换.
+ -->

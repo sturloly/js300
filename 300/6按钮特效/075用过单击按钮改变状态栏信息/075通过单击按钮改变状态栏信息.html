@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>075通过单击按钮改变状态栏信息</title>
+	<script type="text/javascript">
+		function modifyStatus() {		//通过单击按钮改变状态栏信息
+			window.status = "hello world";   //为status设置新的值
+			alert(window.status);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义按钮 -->
+	<input type="button" value="修改状态栏" id="myBtn" onclick="modifyStatus()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+状态栏，指的是浏览器窗口底部的横条。这里可以展示一些与当前系统有关的信息，比如，XXX系统，当前什么时间或者"欢迎你"之类的信息。
+
+
+难点剖析
+不是所有浏览器都支持这种修改状态栏的方式，其中IE是支持得比较好的，因此该用法在IE中使用的比较多。
+ -->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>可移动的图片</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script>
+			var timer = null;	//定时器变量
+			var x = 0;			//当前的x
+			var y = 0			
+			function goRoate(r){//改变角度的函数
+				clearInterval(timer);//清除之前的定时器
+				//获取DOM
+				var d = document.getElementById('demo');
+				timer = setInterval(function(){//开始定时器
+					if(r>0){	//向右
+						x++;	//x坐标自加1			
+					}else{		//向左
+						x--;	//x坐标自减1
+					}
+					//改变现状的移动位置
+					d.style.transform = 'translate('+x+'px,'+y+'px)';
+				},200);
+			}
+		</script>
+		<style>
+			#demo{
+				margin: 50px;
+				transform: translate(0,0);
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<img src="1.jpg" id="demo"/>
+		<input type="button" value="向左移动" onclick="goRoate(-1)"/>
+		<input type="button" value="向右移动" onclick="goRoate(1)"/>
+	</body>
+</html>

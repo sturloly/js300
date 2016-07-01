@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>072按钮在单击以后就失效</title>
+	<script type="text/javascript">
+		//提交表单
+		function submitForm() {
+			//让按钮失效
+			document.getElementById("myBtn").disabled = true;
+			alert('按钮已被禁止')
+
+			/*document.forms[0].submit();*/   //用了这个都跳转了海有卵用？然后这是样例。页面跳转后 disable就没了。
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单，按钮 -->
+	<form action="" method="post" style="display: block;width: 250px;height: 100px;border: 1px solid black">
+		<br>	
+		用户名: <input type="text" name="username"/><br>
+		密码：<input type="password" name="pssword"><br>
+		<input type="button" value="提交" onclick="submitForm();" id="myBtn"/><br>
+	</form>
+</body>
+</html>
+
+<!-- 
+实例描述
+有时，为了避免表单的重复提交，可以采用这样一个小技巧，就是当用户单击按钮以后就让按钮失效。这样的话，就能避免用户以为单击没反应而重复单击，造成表单的多次提交。本例讲演示该效果。
+
+难点剖析
+设置按钮是否可用，需要用到 disabled属性，本例正事在submitForm()中把这个属性的值设置为true，就让按钮失效了。
+ -->

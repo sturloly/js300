@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>让图片立体的旋转起来</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script>
+			var timer = null;	//定时器
+			var x = 0;			//当前的x
+			var y = 0			//当前的y
+			function goRoate(xy){//改变尺寸的函数
+				clearInterval(timer);//清除之前的定时器
+				//获取DOM
+				var d = document.getElementById('demo');
+				timer = setInterval(function(){//开始定时器
+					if(xy=='x'){//x轴
+						x++;	//x坐标自加1			
+					}else if(xy=='y'){//y轴
+						y++;	//y坐标自加1
+					}
+					//改变现状的移动位置
+					d.style.transform = 'skew('+x+'deg,'+y+'deg)';
+				},200);
+			}
+		</script>
+		<style>
+			#demo{
+				margin: 50px;
+				transform: skew(0deg,0deg);
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<img src="1.jpg" id="demo"/><br>
+		<input type="button" value="横向旋转" onclick="goRoate('x')"/>
+		<input type="button" value="纵向旋转" onclick="goRoate('y')"/>
+	</body>
+</html>

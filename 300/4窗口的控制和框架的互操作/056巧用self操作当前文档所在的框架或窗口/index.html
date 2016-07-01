@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>056巧用self操作当前文档所在的框架或窗口</title>
+	<script type="text/javascript">
+
+	</script>
+</head>
+	<!-- 定义框架 -->
+	<frameset rows="*" cols="200,*" framespacing="0" frameborder="1" border="1" id="left_right">
+		<frame src="left.html" name="leftFrame" noresize="noresize" scrolling="no" border="1">
+		<frame src="巧用self操作当前文档所在的框架或窗口_right.html">
+	</frameset>
+	<noframes>
+		<body>
+			<!-- 当浏览器不支持frames时显示这里的内容 -->
+		</body>
+	</noframes>
+<body>
+</body>
+</html>
+
+<!-- 
+对于单网页来说，self和window是同一个含义。但是，如果把我网页放入框架里，调用window里的函数可能得到的并不是自己想要的结果，此时就需要使用self来进行本网页内容的引用。
+
+难点剖析
+本例代码使用self对象中location的reload()函数重新加载右边的网页，这样的效果就是仅仅刷新右边的网页，而不是整个窗口。如果把这里的slef()替换成 window，则整个窗口都将刷新。
+
+ -->

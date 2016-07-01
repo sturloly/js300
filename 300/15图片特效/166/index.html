@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>166图片新闻效果</title>
+	<script>
+		var CurScreen = 1;	//当前显示的是第几屏
+		var MaxScreen = 2;	//最大多少屏
+		var timer = null;	//定时器的变量
+		function switchPic(screen) {	//切换新闻图片的函数
+			if(screen > MaxScreen)
+				screen = 1;
+			for (i=1;i<=MaxScreen;i++)
+				document.getElementById("Switch_"+i).style.display = "none";
+			document.getElementById("Switch_" + screen).style.display = "block";
+			CurScreen = screen ;
+		}
+		function reSwitchPic() {
+			timer = null;
+			switchPic(CurScreen+1);
+			timer = setTimeout('reSwitchPic()',1000);
+		}
+		function pauseSwitch(){
+			clearTimeout(timer);
+		}
+		function goonSwitch(){
+			clearTimeout(timer);
+			timer = setTimeout('reSwitchPic()',1000);
+		}
+		function goManSwitch(index) {
+			clearTimeout(timer);
+			CurScreen = index -1;
+			reSwitchPic();
+		}
+		function init(){	//初始化函数
+			var timer = null;	//开始执行图片新闻效果
+			switchPic(CurScreen);
+			timer = setTimeout('reSwitchPic();',1000);
+		}
+		/*第二版本*/
+/*		function init (){
+			goonSwitch();
+		}*/
+
+	</script>
+	<style>
+		.flashNews {position: relative;float: left;width: 305px;height: 214px;margin-bottom: 12px;overflow: hidden;border: 1px solid #B6CAE3;}
+	</style>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div class="flashNews">
+		<div id="Switch_1">
+			<a href="#"><img src="1.jpg"  onmouseover="pauseSwitch()" onmouseout="goonSwitch()" alt=""></a>
+		</div>
+		<div id="Switch_2">
+			<a href="#"><img src="2.gif" onmouseover="pauseSwitch()" onmouseout="goonSwitch()" alt=""></a>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+图文并茂是一个新闻网站所必须的展示效果，尤其实惠新闻图片让人可以最直观地了解新闻主题，一些重大新闻往往会以图片你连接的形式放在新闻网站首页。但是，网站首页的空间有限，就不得不采用一种图片链接切换的效果来展示多个新闻。本例介绍了如何实现常见的图片新闻效果。
+
+难点剖析
+图片的切换主要是为了节省空间，把多个图片的显示放在一块区域来进行。这种特效经常出现在一些图片新闻网站里。该特效的主要原理是定时器的切换和控制，当切换动作开始以后，需要判断是否已经切换到了最后一个，如果是，则要重新开始。另外，还要监听鼠标移入图片的事件，当发生该事件时，需要停止切换；同样，当鼠标移出时，则恢复切换的动作。
+ -->

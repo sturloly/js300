@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>102鼠标划过文本框改变其背景色</title>
+	<script type="text/javascript">
+		//初始化函数
+		function init() {
+			//获取所有的文本DOM
+			var texts = document.getElementsByTagName('input');
+			//遍历所有的文本框
+			for(var i=0; i<texts.length;i++) {
+				var t = texts[i]; //当前文本框
+				t.onmouseover = function() {  //定义鼠标移入事件
+					//修改背景色为红色
+					this.style.backgroundColor = 'blue';
+				} 
+				t.onmouseout= function() { //定义鼠标移出事件
+					this.style.backgroundColor =''; //回复背景色
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init();">
+	<!-- 定义文本框 -->
+	<input type="text"/>
+	<input type="text"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+当鼠标滑过文本框时,如果其背景色改变了,也会引起用户的注意,告诉用户这是一个需要输入文字的入口.
+
+难点剖析
+本例的实现需要依赖于两个事件:鼠标移入和鼠标移出.因为是应用于所有的文本输入框,因此首先需要找到所有的文本框,然后 用过遍历的方式来为它们指定鼠标移入和移出的事件回调函数.
+
+ -->

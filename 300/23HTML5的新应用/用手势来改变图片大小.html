@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用手势来改变图片大小</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//初始化函数，绑定触屏事件
+            function init() {
+				var div = document.getElementById("div");
+				div.ongesturechange = function(e){
+					//scale代表手势的缩放比例，小于1是缩小，大于1是放大，原始为1
+					var scale = e.scale;
+					//获取图片的dom
+					var img = document.getElementsByTagName('img')[0];
+					var w = img.width;	//图片的当前的宽度
+					var h = img.height;	//图片的当前的高度
+					if(scale > 1){		//如果是放大
+						w += 10;		//宽度加大10
+						h += 10;		//高度加大10
+					}else if(scale < 1){//如果是缩小
+						w -= 10;		//宽度减小10
+						h -= 10;		//高度减小10
+					}
+					img.width = w;		//新的宽度
+					img.height = h;		//新的高度
+				};
+			}
+		</script>
+		<style>
+			div{
+				border:2px solid red; 
+				color:red;
+				margin: 10px auto;
+				padding: 20px;
+				text-align: center;
+			}
+		</style>
+    </head>
+    <body onload="init();">
+        <div id="div">
+			<img src="1.jpg" width="500" height="500"/>
+		</div>
+    </body>
+</html>

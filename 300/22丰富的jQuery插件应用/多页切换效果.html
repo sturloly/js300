@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>多页切换效果</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>
+		<script src="ui/jquery.ui.tabs.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成的回调
+			$(function() {
+				$( "#my_tabs" ).tabs();//直接把写好的HTML多页化
+			});
+		</script>
+    </head>
+    <body>
+		<div id="my_tabs">
+			<ul>
+				<li><a href="#tabs-1">第一个tab</a></li>
+				<li><a href="#tabs-2">第二个tab</a></li>
+				<li><a href="#tabs-3">第三个tab</a></li>
+			</ul>
+			<div id="tabs-1">
+				<p>这是第一个tab的内容</p>
+			</div>
+			<div id="tabs-2">
+				<p>这是第二个tab的内容</p>
+			</div>
+			<div id="tabs-3">
+				<p>这是第三个tab的内容</p>
+				<p>这是第三个tab的内容</p>
+			</div>
+		</div>
+    </body>
+</html>

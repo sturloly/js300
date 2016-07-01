@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>144不同浏览器加载不同css文件</title>
+	<link type="text/css" rel="stylesheet" href="../css1.css" />
+	<link type="text/css" rel="stylesheet" href="../css2.css" />
+	<script type="text/javascript">
+			//body加载事件监听函数
+			function chooseCss(){
+				//这里我们假设ie使用css1，而其他浏览器使用css2
+				//如果浏览器为IE浏览器
+				if (window.navigator.userAgent.indexOf("MSIE")>=1){
+					//把的样式css2禁用掉
+					document.styleSheets[1].disabled = true;		
+					alert(1)
+				}else if (window.navigator.userAgent.indexOf("Firefox")>=1){
+				//如果浏览器为firefox
+					//把的样式css1禁用掉
+					document.styleSheets[0].disabled = true;	
+					alert(2)
+				}else{
+				//如果浏览器为其他，比如chrome
+					//把的样式css1禁用掉
+					document.styleSheets[0].disabled = true;	
+					alert(3)
+				}				
+			}
+		</script>
+	</head>
+	<body style="text-align:center" onload="chooseCss();">
+		<span id="mytxt" class="myclass">测试文本 <br> ie是红色,其它是蓝色</span>
+	</body>
+	</html>
+
+<!-- 
+第 13 章 样式的操作
+
+层叠样式表(Cascading Style Sheets, CSS) 是网页样式的控制机制,它是当前网页不可缺少的组成部分.CSS可以比标签属性更好的控制网页原色的显示样式,并且它还有意个非常大的优势,就是可以把网页的内容与样式独立开来,避免了代码的混合.javaScript毫无疑问地提供了对样式的支持,本章将介绍积累比较常见的CSS操作实例.
+
+
+实例描述
+浏览器的差异可能会导致网页的显示效果区别很大,这是因为不同的浏览器支持CSS的属性不用,其实现的方式也可能有区别,但采用不同的浏览器使用不同的CSS文件的方法即可解决该问题.本例介绍了如何实现该方法.
+
+难点剖析
+实例代码通过navigotor的userAgent属性,判断出浏览器是IE还是Firefox ,或是其他的浏览器,然后把对应的CSS文件禁用,这样就可以保证IE浏览器使用 "css1.css" 文件,而其他浏览器使用"css2.css"文件.
+
+ -->

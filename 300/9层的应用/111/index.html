@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>111由左向右的滚动广告</title>
+	<script type="text/javascript">		
+			var timer = null;				//定时器
+			//页面加载完成的事件回调
+			function init(){
+				var time = 1;				//定义滚动的时间间隔，毫秒
+				//获取容器的DOM
+				var con_ul = document.getElementById('con_ul');				
+				function MyMarquee(){	
+					//滚动条的位置往左边移动一个像素
+					var left = con_ul.style.left;//得到当前的坐标坐标
+					left = parseInt(left);		//得到数字的值
+					con_ul.style.left = (left-1)+'px';//把左坐标向左移动
+					//如果移动到了头
+					if((left * -2)  + 50 == parseInt(con_ul.style.width)){
+						con_ul.style.left = 0 + 'px';
+						/*
+						con_ul.innerHTML += con_ul.innerHTML;//自我内容拷贝一份*/
+					} else if (- left  == parseInt(con_ul.style.width)) {
+						alert(2)
+						
+						con_ul.style.left = 0 + 'px';
+					}
+				}
+				timer = setInterval(MyMarquee,time);//开始一个定时执行
+				con_ul.onmouseover=function() {	//定义鼠标放上事件
+					clearInterval(timer);			//结束滚动
+				}
+				con_ul.onmouseout=function() {	//定义鼠标移出事件
+					timer=setInterval(MyMarquee,time);//再次开始
+				}
+			}			
+		</script>	
+		<style>
+			#container li{
+				overflow: hidden; 
+				float: left; 
+				margin: 0 5px;
+			}
+		</style>
+</head>
+<body style="text-align: center;" onload="init()" >
+	<div id="container" style="width:800px;visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px;">
+		<ul id="con_ul" style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 3886px; left: 0px;">
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+			<li><a target="_blank" href="#"><img src="1.jpg"><br>123123</a></li>
+		</ul>
+	</div>
+</body>
+</html>
+
+<!-- 
+实例描述
+层由左向右的滚动,常常用于一些图片网站的展示,这样的特效人一种期待的感觉.本例将演示该实例效果.
+
+难点剖析
+想要实现本例的特效,需要注意以下两点:一是left的负值表示层里的内容不是从最左侧开始浏览的:而是当外层的宽度大于内层时,内层的内容就会被隐藏.本例正事利用了这两点,让层的left坐标随着定时器越来越小,这样就可以实现层里的内容往左滚动的效果了.
+ -->

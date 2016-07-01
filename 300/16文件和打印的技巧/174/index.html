@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>174限制多文件上传的文件类型</title>
+	<script>
+		function chkform(){
+			var mypic = document.forms[0].mypic;
+			for(var i = 0; i<mypic.files.length;i++) {
+				//取出其中以个文件
+				var file = mypic.files[i];
+				var name = file.name; //文件的名字，进行大写处理
+				name = name.substring(name.lastIndexOf(".")+1).toUpperCase();
+				//判断文件名的后缀是否符号要求
+				if(name!="JPG"&&name!="GIF"&&name!="PNG"&&name!="BMP") {
+					alert("格式不正确啦啦");  //提示不正确
+					return false;	//直接返回错误，不在提交表单
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<form action="" method="post" enctype="multipart/form-data" name="myform" onsubmit="chkform();return false;">
+		<label>
+			<input type="file" name="mypic" multiple>
+		</label>
+		<label>
+			<input type="submit" name="submit" value="提交">
+		</label>
+	</form>
+</body>
+</html>
+<!-- 
+实例描述
+早期的浏览器并不支持多文件上传功能，但从HTML5开始，文件上传控件提供了多文件上传的功能，而且得到了大多数浏览器的支持。本例将演示如何限制多文件的文件类型。
+
+难点剖析
+相比单文件上传，获取多文件的扩展名需要一个遍历的过程。而且，文件列表是通过控件的files数组变量获取，而不是单文件上传的value值。
+
+
+
+ -->

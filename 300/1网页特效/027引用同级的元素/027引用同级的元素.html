@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027引用同级的元素</title>
+	<script type="text/javascript">
+		//获取同级按钮的value
+		function getSiblingVal(btn) {
+			var p =btn.parentNode; //通过单击按钮获取它的父节点
+			var children = p.childNodes;  //得到父节点的所有子节点
+			//遍历子节点
+			for(var i = 0; i<children.length; i++) {
+				//判断不是当前节点，但是同类节点的节点
+				if(children[i] != btn && children[i].nodeType==btn.nodeType) {
+					alert(children[i].value); //提示对方的 value值
+				}
+			}
+
+		}
+
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义按钮 -->
+		<input type="button" value="获取同级按钮的value" onClick="getSiblingVal(this)">
+		<input type="button" value="获取同级按钮的value2" onClick="getSiblingVal(this)">
+		<input type="button" value="获取同级按钮的value3" onClick="getSiblingVal(this)">
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+同级元素，指的是拥有相同的直接父元素，并且往往是同类的元素。同类元素在实际开发中遇到的比较多，如列表(li)、并列的按钮等。当一些情况发生时，可以对其他同级的元素进行一些操作，以满足网页特效的要求，比如为同级元素加上一些差别性的颜色。
+
+难点剖析
+既然同级元素拥有相同的父元素，那么久可以以此为契机来得到除自身以外的同级元素，比如本例的做法。如果还需要排除同一类别的话，就可以使用noteType属性来加以甄别。
+
+ -->

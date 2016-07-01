@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>177创建自定义对象</title>
+	<script>
+		//最简单的创建对象的办法，由一对大括号起来
+		var obj001 = {};  //使用大括号创建一个内容是空的对象
+		obj001.prop1 = 100;  //为对象添加一个属性prop1,赋值为100
+		obj001.prop2 = function() {  //为对象添加一个方法prop2，并提供实现
+			alert('我是方法001 ' + this.prop1);  //提供一个alert语句
+		};
+		obj001.prop2();  //调用对象的方法
+		//使用function创建一个对象
+		function createObj002(){  //声明一个创建对象的function,类似于class
+			this.prop1 = 200;	//声明一个属性prop1
+			this.prop2 = function(){  //声明一个方法prop2
+				alert('我是方法002 ' + this.prop1);  //提供一个alert语句
+			};
+		}
+		var obj002 = new createObj002();/*创建一个obj002的对象*/
+		obj002.prop2();  //调用0bj002对象的prop2方法
+
+		var obj003 = new Object();
+		obj003.prop1 = 300;  //设置属性prop1
+		obj003.prop2 = function(){	//为对象添加一个方法prop3,并提供实现
+			alert('我是方法003 ' + this.prop1);  //提供一个alert语句
+		}
+		obj003.prop2();  //调用方法
+	</script>
+</head>
+<body style="text-align: center;">
+	
+</body>
+</html>
+
+<!-- 
+第17章 对象和数组
+对象和数组是javaScript比较高级一点的数据类型，相对于基本的数据类型，它们的结构更复杂，当然所起的作用也更大。在数据比较多时，一般用对象数组来存储。本章将为读者介绍JavaScript对象和数组的基本概念及使用方法，以及对象和数组常见的应用技巧和使用场景。
+
+实例描述
+JavaScript的对象与普通的面向对象语言（如java\c#)不同。本质上来说，javaScript的对象指的是一系列互相嵌套的键值对。在web客户端编程时，大多数控件都以对象或数组的形式提供给开发人员使用。本例将介绍如何自定义对象并使用它。
+
+难点剖析
+javaScript是一门基于对象的编程语言，不是面向对象的语言，因此它的对象是一种键值对形式。本例介绍了3种创建对象的形式，但在javaScript看来，这些对象都是同样的一种数据形式。
+上述代码中，比较特别的一种创建对象的形式就是使用大括号，这种形式可以看作javaScript对象的文本表示，也就是说，可以通过输出字符串的形式来了解对象有哪些键值对。另外，该形式也是JSON形式，它广泛应用于JavaScript数据的存储和传输。
+ -->

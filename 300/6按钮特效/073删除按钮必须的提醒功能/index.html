@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>073删除按钮必须的提醒功能</title>
+	<script type="text/javascript">
+		//删除按钮必须的提醒功能
+		function deleteInfo() {
+			var myH1 = document.getElementsByTagName('h1')[0];
+			var confirmDe1 = false;  //初始为false
+			//使用弹出框来接受用户是否确定删除
+			confirmDel = window.confirm("确定删除吗？");
+			if(confirmDel) {   //如果用户确定删除
+				document.body.removeChild(myH1);
+				alert('删除成功11');  //这里给出提示
+			}else {
+				return false; //否则返回false,什么都不做
+			}	
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义按钮 -->
+	<h1>第[0]个h1,我会被删除</h1>
+	<h1>第[1]个h1,我不会删除</h1>
+	<h2>删除上一条信息</h2>
+	<input type="button" value="删除" id="myBtn" onclick="deleteInfo()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+删除按钮有一个不成文的规定，就是在删除操作以前意识用户是否确认删除，以防止用户误操作导致数据丢失。本例讲演示如何实现该效果。
+
+难点剖析
+本例的关键点在于，使用window的confirm()函数，弹出一个让用户确认是否删除的提示框。只有用户确认了以后，才进行删除，否则什么都不做。
+
+ -->

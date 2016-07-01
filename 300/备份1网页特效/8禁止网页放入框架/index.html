@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>8禁止网页放入框架</title>
+	<script type="text/javascript">
+		//判断当前网页是否为最顶层框架的网页
+		if(self != top) {
+			//如果不是顶层的框架或独立窗口打开的本网页，则进行跳转  
+			top.location.href = self.location.href;
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
+
+<!-- 
+实例描述
+在网络上，为了防止网页被随意的引入到别人的框架里，可以用过判断网页是否为最顶层网页来禁止网页被放入框架。
+
+难点剖析
+在窗口框架体系中，top变量是javascript引用最顶层框架的最直接办法。如果网页直接在窗口中打开，而非一个框架，那么此时的top变量等同于window对象，也等同于self对象。所以，top和self是否等同，可以作为网页是否在意个框架中打开的判断标准。
+
+ -->

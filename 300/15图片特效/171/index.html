@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>171延迟加载图片</title>
+	<script>
+		function init() {
+			setTimeout('checkHeight()',100);
+		}
+		function checkHeight(){
+			var pic = document.getElementById('pic');
+			var sTop = document.body.scrollTop;
+			var cHeight = document.documentElement.clientHeight;
+			var top = pic.offsetTop;
+			if(sTop + cHeight < top ){
+				setTimeout('checkHeight()',100);
+			}else{
+				pic.src= pic.attributes['lazy_src'].value;
+			}
+		}
+	</script>
+
+</head>
+<body style="text-align: center;" onload="init()">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<img lazy_src="1.jpg" id="pic" src="" width="150" height="100" alt="">
+</body>
+</html>
+
+<!-- 
+示例描述
+对于一些比较长的网页，用户可能只看了顶部内容就已经把网页关掉了。显然，网页中位置靠下一点的图片根本没有必要显示。因此，可以判断用户是否浏览到这个图片了？如果还没有到这个区域，就不加载图片，这就是图片的延迟加载功能
+
+笔记
+chrome中documentElement.scrollTop不支持，body代替documentElement
+
+难点剖析
+本例的难度主要集中在如何判断滚动条是否已经滚动到了图片可以被看见的未知。首先要明确3个位置变量：
+(1)滚动条的未知scrollTop
+(2)可见区域的高度clientHeight
+(3)图片距离网页左上角的top偏移像素值。
+有了这3个判断以后，就可以如本例代码所示，判断图片是否正在被浏览，如果正在被浏览，则动态加载图片的地址。
+
+
+ -->

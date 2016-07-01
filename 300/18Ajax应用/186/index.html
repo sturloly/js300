@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>186自定义Ajax回调函数</title>
+	<script>
+		var client;  //定义XMLHttpRequest对象，也可以叫ajax客户端
+		//button的click事件回调函数
+		function sendAjax()	{
+			//判断是否支持ActiveX控件，老版本的IE浏览器就需要使用ActiveXObject来创建
+			if(window.ActiveObject){
+				//用过实例化ActiveXObject的一个新实例来创建XMLHTTPRequest对象
+				client = new ActiveXObject("Microsoft.HMLHTTP");
+			}
+			//其他的大多数浏览器都支持本地javaScirpt对象
+			else if(window.XMLHttpRequest) {
+				//创建XMLHTTPRequest的一个实例 （本地javascript对象）
+				client = new XMLHttpRequest();
+			}else{
+				alert('创建ajax客户端失败，您的浏览器不支持该服务')
+			}
+			if(client) {  //如果创建client成功以后
+				//设置ajax打开以后，建立连接的方式和目标文件，以及是否为异步模式
+				client.open("GET","test001.txt",true);
+				client.send();  //调通send函数，发出ajax请求，
+				alert('ajax请求，已经发出');
+				client.onreadystatechange = myCallBack;
+			}
+		}
+		//自定义回到函数
+		function myCallBack(){
+			alert(client.readyState + " " +client.status);
+			//如果请求的reponse正常返回，并且http状态为200正常的
+			if(client.readyState==4 && client.status==200){
+				alert("ajax请求的结果是啦啦：" + client.responseText);
+			}
+		}
+		</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="Send" onclick="sendAjax()">	
+</body>
+</html>
+
+<!-- 
+实例描述
+通过实例185，读者了解了如何创建一个XMLHttpRequest对象，以及如何发出Ajax请求。既然与服务器端交互，就会有服务器端的返回信息，获取这些信息通过Ajax的回调接口提供的自定义回调函数来实现。
+
+难点剖析
+处理服务器端的返回值，是程序必不可少的步骤。因为请求发出以后，需要知道服务器端做出了什么相应，才可以根据响应结果的不同做出不同的逻辑处理。在本例代码中，myCallBack()是一个自定义的函数，它的逻辑是：检查XMLHttpRequest对象的状态值，这个readyState值会随着请求的进展而发生变化，其状态值包含如下几个。
+0：请求未初始化。
+1：服务器连接已建立。
+2：请求已接受。
+3: 请求处理中。
+4：请求已完成，且响应已就绪。
+至此，相信读者已经知道为什么代码会判断readtState的值是否为4，因为只有它的值等于4，才表示这个请求已经完成，正在等待响应。
+另外，还有一个重要的状态值，status，它表示服务器端响应HTTP包的状态，只有status等于200时，才表示服务器端已经成功返回信息：如果status等于404则表示服务器端的资源未找到：如果等于500则表示服务器端内部发生了错误。
+
+其他说明
+为了方便起见，本例服务器端的资源来自一个txt文件。大多数情况，这个请求的资源都是后台的数据库，而不是一个静态的txt文件或HTML页面。
+ -->

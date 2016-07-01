@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用Prototype来包装JavaScript事件</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="prototype.js"></script>
+		<script type="text/javascript">
+			//初始化函数
+			function init(){
+				//为按钮指定click事件的回调
+				$("demo").on("click", function(event) {
+					//alert语句
+					alert('按钮被点击了');
+				});
+			}
+		</script>	
+	</head>
+	<body style="text-align:center" onload="init();">
+		<input id="demo" type="button" value="按钮"/>
+	</body>
+</html>

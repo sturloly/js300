@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029隐藏或显示元素</title>
+	<script type="text/javascript">
+		//隐藏或显示元素
+		function showOrHide() {
+			//得到图片的DOM
+			var myImg = document.getElementById("myImg");
+			var display = myImg.style.display; // 当前的显示样式
+			if(display != 'none') { //是否正在隐藏  
+				myImg.style.display= 'none';  //设为隐藏
+			} else {
+				myImg.style.display= '';  //取消隐藏
+			}
+		}
+
+
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<p id="myContent">
+		<input type="button" value="隐藏或显示" onclick="showOrHide()">
+		<br>
+		<!-- 定义图片元素 -->
+		<img src="./1.jpg"  width="200" height="100" alt="" id="myImg">
+	</p>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+本例将演示如何通过单击一个按钮，来达到图片隐藏或显示的切换效果。
+
+
+难点剖析
+这类切换式的隐藏和显示的形式，在javascript编程里使用得比较多，它主要是利用样式的display属性来操作。读者吐过感兴趣的话，可以吧这个实例的showOrHide()函数改进一下，做成一种通用的函数，用到自己的开发时间中。其实，一些开发框架，譬如jQuery就直接提供了这样的切换函数，具体内容会在后面的章节进行介绍。
+
+
+
+ -->

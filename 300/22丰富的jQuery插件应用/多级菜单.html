@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>多级菜单</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.position.js"></script>
+		<script src="ui/jquery.ui.menu.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				$("#my_menu").menu();//一句代码实现菜单效果
+			});
+		</script>
+		<style>
+			#my_menu { width: 150px; }
+		</style>
+    </head>
+    <body>
+		<ul id="my_menu">
+			<li class="ui-state-disabled"><a href="#">全部</a></li>
+			<li><a href="#">北京</a></li>
+			<li><a href="#">上海</a></li>
+			<li>
+				<a href="#">四川</a>
+				<ul>
+					<li class="ui-state-disabled"><a href="#">全部</a></li>
+					<li><a href="#">成都</a></li>
+					<li><a href="#">绵阳</a></li>
+				</ul>
+			</li>
+			<li><a href="#">重庆</a></li>			
+		</ul>
+    </body>
+</html>

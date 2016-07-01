@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>050确保网页只能被框架载入</title>
+		<script type="text/javascript">
+			function init() {  //初始化函数
+				if(top == self) {  //判断当前区域是否为顶层窗口
+					alert("本网页只能在框架内载入");  //提示值能再框架内载入的
+					//覆盖原有的网页内容，改为提示内容
+					document.body.innerHTML = '<h2>本网页只能在框架内载入</h2>';
+					window.close();  //关闭窗口
+				}
+			}
+		</script>
+	</head>
+	<body style="text-align: center;" onload="init()">
+		网页内容。。。
+	</body>
+</html>
+
+<!-- 
+实例描述
+对于框架结构的网站，网页必须在框架里被载入才会达到预期效果。为了防止用户直接通过网页地址来访问网页，可以采取一些手段来确保网页不被一个独立的窗口打开。本实例将演示如何实现该特效。
+
+难点剖析
+本例的关键点在于，判断网页当前被载入的框架或窗口是否为顶层窗口，如果"self"变量与 "top"变量相等，就说明网页时被顶层窗口载入的，那么久需要给用户提示，并关闭此窗口。
+
+笔记
+本例打开后自动关闭为正常，因为不是top，非top事例见049练习。
+ -->

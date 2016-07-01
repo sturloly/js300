@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>133不同时段显示不同的标题欢迎词</title>
+	<script type="text/javascript">
+		//修改标题的函数
+		function start() {
+			var date = new Date();
+			var str = '';
+			var hour = date.getHours();
+			if(hour < 12)
+				str = '早上好';
+			if(hour >= 12 && hour <18)
+				str = '下午好';
+			if(hour >= 18)
+				str = '晚上好';
+			document.title = str;
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="start()">
+	<p>
+		请注意看网页标题
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+不同时段显示不同的欢迎词,会给用户一种比较友好的感觉.要实现该效果,难点就是判断时段,来看看本例的代码.
+
+难点剖析
+通过Date对象的getHours()函数,可以知道当前24小时制的小时数,当小时数在0与12之间时,默认为造成:在12-18之间,则为下午:在18-24之间就是晚上.
+
+ -->

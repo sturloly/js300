@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030倒排序子元素</title>
+	<script type="text/javascript">
+		//倒排序子元素的函数
+		function deleteChilds() {
+			//获取父DOM
+			var ul = document.getElementsByTagName('ul')[0];
+			if(ul.hasChildNodes()) {  //判断是否包含子元素
+				//子元素的个数
+				var len = ul.childNodes.length;
+				var arr = []; //新数组变量用于存储节点
+				for(var i=0; i<len;i++) { //遍历
+					//把节点存入数组
+					arr[i] = ul.childNodes[0];
+					//从第一个元素开始删除
+					ul.removeChild(ul.childNodes[0]);
+				}
+				//到过来遍历所有节点
+				for(var i = len-1;i>=0;i--) {
+					ul.appendChild(arr[i]); //添加到ul为子元素
+				}
+
+			}
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<Ul>
+		<li>item1</li>
+		<li>item2</li>
+		<li>item3</li>
+		<li>item4</li>
+	</Ul>
+	<br>
+	<input type="button" value="倒排序子元素" onclick="deleteChilds()">
+</body>
+</html>
+
+<!-- 
+实例描述
+对于网页的列表元素来说，排序是一项基本的功能，我们常常在客户端直接提供数据的升序或降序排列的功能。本例讲演示该特效。
+
+难点剖析
+本例的排序功能依赖于对数据的单独存储。首先，把列表的数据先存放在一个数组里，其次，把容器的HTML内容清空，最后，把数组的数据以倒排序的方式遍历并填充到之前的容器里。
+
+
+ -->

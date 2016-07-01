@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039初始化表单里的所有控件的值到最初状态</title>
+	<script type="text/javascript">
+		//初始化表单里的所有控件的值到最初状态
+		function init() {
+			var f = document.forms[0];   //获取表单DOM
+			f.reset();  //使用reset() 函数
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form>
+		文本框：<input type="text" name="myText" id="">
+		<br>
+		单选框：<input type="radio" name="myRadio" value="1" id="">
+		<input type="radio" name="myRadio" value="2" id="">
+		<br>
+		下拉列表：
+		<select name="mySelect" id="">
+			<option value="">==请选择==</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<br>
+		<input type="button" value="初始化" onclick="init()">
+	</form>
+</body>
+</html>
+
+<!-- 
+实例描述
+经常注册网站的用户都知道，有一种叫做 “重置”的按钮，它是通过HTML标签直接定义的，它的作用是把表单中所有控件的值置空。那么能否通过javascript来达到同样的效果呢？答案是肯定的。
+
+难点剖析
+在 form对象里，有一个函数reset(), 其作用与“充值”按钮的作用完全一样，只是这种做法比“重置”按钮要灵活得多，很多逻辑可以通过程序动态的控制。
+
+ -->

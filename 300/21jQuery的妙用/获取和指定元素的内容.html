@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>获取和指定元素的内容</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function chOrder(){
+				var str = $('span').text();
+				var arr = [];
+				for(var i=0;i<str.length;i++){
+					arr[i] = str.charAt(i);
+				}
+				str = '';
+				for(var i=0;i<arr.length;i++){
+					str += arr[arr.length - i - 1];
+				}
+				$('span').text(str);
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<span>我是一个span</span>
+		<br>
+		<input type="button" value="把文字倒序" onclick="chOrder();"/>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>110悬浮的广告层</title>
+	<script type="text/javascript">		
+		//保证层悬浮的函数
+			function goScroll(o){
+				//得到层距离顶部的距离
+				var space=document.getElementById(o).offsetTop;
+				//笔记:下面这行可以注释掉,只要行间style.的top存在,否则为空
+				document.getElementById(o).style.top=space+'px'; //设置top属性
+				var goTo = 0;  //定义需要移动距离的变量
+				window.setInterval(function(){  //开始定时器
+					//笔记:document.Element.scrollTop在这里一直是0,未知. body.scorllTop就是上滚距离
+					var height  //计算高度
+					=document.documentElement.scrollTop+document.body.scrollTop+space;
+					//计算层的top值
+					var top = parseInt(document.getElementById(o).style.top);
+					if(height!= top){  //如果两者不一致,则需要移动
+						//需要移动的距离是高度减去top
+						goTo = height-parseInt((height - top)*0.9);
+						//把层定位
+						document.getElementById(o).style.top=goTo+'px';
+					}
+				},50);
+			}
+			function init(){
+				goScroll('con1');   //网页加载完成就调用定位的函数
+			}
+		</script>	
+
+</head>
+<body>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<div id="con1">
+		这是一个广告
+	</div>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+</html>
+
+<!-- 
+实例描述
+悬浮广告,是一种常见的广告形式,它常常出现在网站内容两侧的留白处.那马如何让这个广告层悬浮起来,并始终保持在屏幕的居中位置呢?本例代码将给出具体说明
+
+难点剖析
+首先,这个层始终保持绝对定位:其次,设计一个定时器,监视网页是否在华东,如果出现了滑动,则重新计算层的顶部所处的坐标值:最后,通过修改层的顶部坐标来让其重新定位.
+ -->

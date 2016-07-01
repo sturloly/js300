@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>109新闻切换特效</title>
+	<script type="text/javascript">
+		var currIndex = 1;  //当前显示的新闻的下标
+		function init(){   //网页加载完成函数
+			var length = 5;   //定义一共有多少新闻
+			for(var i = 0; i <length; i++)     //为新闻加上对应的右下角按钮
+				//个人笔记:放进5个div  作为轮到底部的点
+			{
+				document.getElementById('slideshow_footbar').innerHTML += 
+				'<div class="slideshow-bt" index="' + (length -i) + '"></div>';
+			}
+			var btns = document.getElementsByClassName('slideshow-bt');
+			btns[length-1].className += ' bt-on';  //默认情况下,第一个是被选中的
+			for(var i =0; i<btns.length; i++) {   //遍历按钮,定义click事件
+				btns[i].onclick=function() {
+					//当按钮被按下,就出发滑动新闻的事件
+					slideTo(this.attributes['index'].value);
+				};
+			}
+			setInterval(function(){   //开始定时器
+				if(currIndex +1 >5)  //如果下一张超过最大的张数
+					currIndex =0;  //又回到第一张
+				slideTo(currIndex + 1);   //滑动显示新闻
+			},1000);
+		}
+
+
+		function slideTo(index) {    //显示指定下标的新闻
+			index = parseInt(index);    //解析得到坐标的数字
+			var picArr = document.getElementById('slideshow_photo').childNodes;
+			for(var i =0; i<picArr.length; i++) {   //遍历这些元素
+				if(picArr[i].attributes  //判断是否为图片元素,以及是否与index一致
+					&& picArr[i].attributes['index'] && parseInt(picArr[i].attributes['index'].value) == index) {
+						//把它的z-index值设置得比其他值大,它就显示了
+						picArr[i].style.zIndex = 2;
+						currIndex = index;      //设定当前的下标
+				} else if (picArr[i].attributes    //如果不是显示的新闻,则放在下层
+					&& picArr[i].attributes['index']) {
+					picArr[i].style.zIndex=1;   //设置较小的z-index值
+				}	
+			}
+			//修改小按钮的样式
+			var btns = document.getElementsByClassName('slideshow-bt');
+			for(var i=0; i<btns.length; i++) {    //遍历小按钮的DOM
+				//发现对应index的小按钮
+				if(parseInt(btns[i].attributes['index'].value) ==index ) {
+					//设置当前的样式
+					btns[i].className = 'slideshow-bt bt-on';
+				} else {
+					btns[i].className = 'slideshow-bt';  //其他小按钮则是默认样式
+				}
+
+			}
+		}
+
+	</script>
+	<style>
+		#slideshow_wrapper {
+			position: relative;
+			padding-bottom: 0px;
+			background-color: #121212;
+			padding-left: 0px;
+			width: 650px;
+			padding-right: 0px;
+			height: 400px;
+			overflow:hidden;
+			padding-top: 0px;
+		}
+		#slideshow_photo {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+		}
+		#slideshow_photo a {
+			z-index:1;
+			border-bottom: 0px;
+			position: absolute;
+			border-left: 0px;
+			margin:0px;
+			display: block;
+			border-top: 0px;
+			top:0px;
+			border-right: 0px;
+			left: 0px;
+		}
+		
+		#slideshow_footbar {
+			z-index: 5;
+			position: absolute;
+			filter: alpha(opacity=50);
+			width: 100%;
+			bottom:0px;
+			height: 30px;
+			background-color: black;
+			opacity: 0.5;
+		}
+
+		#slideshow_footbar .slideshow-bt {
+			background-color: #d2d3d4;
+			margin: 10px 10px 0px 0px;
+			width: 10px;
+			display: inline;
+			float: right;
+			height: 10px;
+			font-size: 0px;
+		}
+		#slideshow_footbar .bt-on {
+			background-color: red;
+		}
+
+	</style>
+
+</head>
+<body style="text-align: center;" onload="init();">
+<div>123</div>
+	<div id="slideshow_wrapper">
+		<div id="slideshow_photo">
+			<a href="#" taget="_blank" style="z-index:2" index='1'>
+				<img src="2.jpg" alt="">
+			</a>
+			<a href="#" taget="_blank" style="z-index:1"index='2' >
+				<img src="3.jpg" alt=""></a>	
+			<a href="#" taget="_blank" style="z-index:1"index='3'>
+				<img src="4.jpg" alt=""></a>
+			<a href="#" taget="_blank" style="z-index:1"index='4'>
+				<img src="5.jpg" alt=""></a>
+			<a href="#" taget="_blank" style="z-index:1"index='5'>
+				<img src="6.jpg" alt=""></a>
+		</div>
+		<div id="slideshow_footbar"></div>
+	</div>
+</body> 
+</html>
+
+<!--
+实例描述
+本例的特效是一种非常常见的网页特效,尤其是在网站的主页,由于主页是访问频率最高的页面,因此这个地方是寸土必争.新闻切换特效,既可以在一个区域显示多条信息或图片新闻
+
+难点剖析
+本特效的实现,有如下几个难点需要突破.
+(1)整个区域的CSS代码会比较复杂.
+(2)使用定时器把图片的切换动作连贯起来,并且要保证鼠标移动到图片上时,这个定时器可以暂停一下.
+(3)用户想看哪条新闻时,可以通过单击下角的小按钮来滑动得到该条新闻.
+首先,可以通过浮动布局,把整个特效需要的元素组合起来,如本例代码所示.其次,在网页加载完以后,就开始一个定时器,让新闻图片切换起来,然后监听图片的鼠标移入事件,如果发生该事件,则把定时器清楚.最后,通过监听每个小按钮的鼠标移入事件,如果发生该事件,则主动切换到指定下标的新闻图片.
+
+
+  -->

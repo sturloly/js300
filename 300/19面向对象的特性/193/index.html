@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定义一个类</title>
+	<script type="text/javascript">
+		//用function模拟一个类出来，同时也作为构造函数
+		function MyClass(){
+			this.name;  //类的成员变量name
+			this.fun = function() { //类的成员函数fun
+				//在成员函数里调用成员变量
+				alert('my function name: ' + this.name);
+			};
+		}
+		var obj = new MyClass(); //使用new实例化一个类
+		obj.name = 'abc';  //为成员变量赋值
+		obj.fun();   //调用成员函数
+
+
+
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+
+<!-- 
+第19章 面向对象的特性
+Javascript是基于对象的编程语言，他没有面向对象的特性。但有时可以通过其他方法来实现javaScript的面向而对象。本章将介绍几类比较常见的Javascipt面向对象的实例，读者可以研究一下Javascript对象与其他语言中对象的区别。
+
+实例描述
+累是面向对象编程语言最基础，最核心的概念。正是因为有了类，才可以延伸出具有相同属性核函数的对象来。二JavaScript 并不提供对类的支持，但开发人员可以通过本例介绍的函数来实现类的定义。
+
+难点剖析
+javaScript尽管没有提供类的定义，但确移动了"new"关键字，它的含义是返回一个对象，并执行相应函数的调用。本例代码首先定义了一个函数MyClass，它类似于Java语言的构造函数。当使用new语句时，JavaScript创建了一个对象，并执行该函数，该函数内部的this就指向刚刚创建的对象。所以，就实现了类似于面向对象于洋中类的定义和使用效果。
+
+ -->

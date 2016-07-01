@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>119让表格的数据根据某一列排序</title>
+	<script type="text/javascript">		
+			var sortType = "";//asc为升序，desc为降序
+			//为表格排序的函数
+			function sortTbl(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				var arr = [];					//定义数组变量保存数据
+				var rows = tbl.rows;			//得到当前的表格的row数组
+				var len = tbl.rows.length;		//当前的行数
+				for(var i=1;i<len;i++){			//遍历所有行
+					//得到数据的name
+					var name = rows[i].cells[0].innerHTML;
+					//得到数据的age
+					var age = rows[i].cells[1].innerHTML;
+					//把数据保存到数组变量里
+					arr[arr.length] = {'name':name,'age':age};
+				}
+				for(var i=0;i<len-1;i++){		//把之前的行先删除，注意第一行是表头
+					tbl.deleteRow(1);			//始终删除第一行
+				}
+				if(sortType == '')				//如果初始的排序是空，则升序
+					sortType = 'asc';			
+				else if(sortType == 'asc')		//如果之前是升序，则这次用降序
+					sortType = 'desc';
+				else
+					sortType = 'asc';			//默认为升序
+				//为数组的sort函数指定排序规则函数
+				arr = arr.sort(function(obj1,obj2){
+					if(sortType == 'desc'){		//升序
+						return obj2['age'] - obj1['age'];						
+					}else{						//降序
+						return obj1['age'] - obj2['age'];
+					}
+				});
+				//遍历数据数组
+				for(var i=0;i<arr.length;i++){
+					var r = tbl.insertRow();	//插入一行
+					var t1 = r.insertCell(0);	//插入一个单元格
+					var t2 = r.insertCell(1);	//插入一个单元格
+					t1.innerHTML = arr[i]['name'];//为单元格赋值
+					t2.innerHTML = arr[i]['age'];//为单元格赋值
+				}
+			}
+		</script>	
+	</head>
+</head>
+<body style="text-align:center">
+	<table id="tbl" align="center" border="1">
+		<tr>
+			<th>名字</th>
+			<!-- 年龄列可以进行排序操作 -->
+			<th onclick="sortTbl();">年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+<!-- 
+实例描述
+子啊动态网页里,表格用来展示的数据一般都是来自服务器,同时这些数据是根据某一列的升序或降序有序地排列的.如果要在客户端实现这一排序展示功能的话,就需要借助javaScript对表格的控制API,本例就来介绍这个API.
+
+难点剖析
+在javScript里,排序功能的实现很多时候依赖于数组的sort()函数.因此,在本例中,首先,把表格的数据按行取出来,放在一个数组变量中:其次,使用数组的排序功能来对数组排序;最后,把这个表格的内容重新填充.
+-->
+

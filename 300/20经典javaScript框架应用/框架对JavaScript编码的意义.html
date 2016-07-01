@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>框架对JavaScript编码的意义</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function showHide(){
+				$('#myspan').toggle();
+			}
+			function showHide_old(){
+				var myspan = document.getElementById("myspan");
+				if(myspan.style.display != 'none')
+					myspan.style.display = 'none';
+				else
+					myspan.style.display = '';
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<input type="button" value="隐藏/显示" onclick="showHide();"/>
+		<br><br>
+		<span id="myspan">这里是文字</span>
+	</body>
+</html>

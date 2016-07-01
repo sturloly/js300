@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>24主动触发按钮单击的事件</title>
+	<script type="text/javascript">
+		//出发按钮单击的事件
+		function fireBtnClick (){
+			//获取到按钮DOM
+			var myBtn = document.getElementById("myBtn");
+			//使用click()函数
+			myBtn.click();
+			alert(1);
+		}
+	</script>
+
+</head>
+<body style="text-align: center;">
+	<P>
+		<!-- 定义按钮 -->
+		<input type="button" value="触发按钮的事件" onClick="fireBtnClick();"/>
+		<br/>
+		<!-- 定义按钮，单机事件是一个提示信息 -->
+		<input id="myBtn" type="button" value="提示按钮" onClick="alert('我被提示了')"/>
+	</P>
+	
+
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+在有有些场景下，需要动态地模拟一些网页事件，如按钮被点击。javascript可以用过一些函数来实现这样的效果。
+
+
+个人总结
+fireBtnClick函数里的click事件出发时将被 'myBtn'元素中的事件覆盖（或直接指向那个行间事件的信息而已？有待考证。），执行完毕后再执行alert. 然而'myBtn'中的行间事件出发时就直接触发事件绑定的提示信息。
+
+
+难点剖析
+动态激活事件需要一个前提，就是这个DOM必须支持这样的事件，然后才能用过相应的函数来激活该事件。函数的名字往往和事件的名称一致，如单击事件"click"的激活函数就是click().
+
+
+个人二次总结
+fireBtnClick函数里的click()为函数不同于 'myBtn'元素行间的'准事件'，当click()被触发时，函数会获得对应ID元素内的 “准事件”内的 js内容来执行，此时元素行间的事件“作废”只使用里面的内容做提示效果。
+
+
+
+
+ -->

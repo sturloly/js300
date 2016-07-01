@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>063当鼠标左键按下弹出广告窗口</title>
+	<script type="text/javascript">
+		//监听双击事件
+		function defineClick() {
+			//定义弹出窗口函数
+			document.onclick = function() {
+				//以全屏的方式打开广告窗口
+				window.open('当鼠标左键按下弹出广告窗口_ad.html',
+				'这是我的广告窗口','fullscreen=1');
+			}
+		}
+	</script>
+</head>
+<body onload="defineClick();">
+	<!-- 定义标签 -->
+	<p align="center">点击屏幕任意位置</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+有时，打开一个网页就弹出一个广告窗口会让人比较厌烦。如果可以在打开时不弹出，二是在用户单击网页任务一个地方时再弹出则会更加人性化本例将演示如何实现该效果。
+
+难点剖析
+要让用户单击网页的任意地方都打开广告窗口，就需要为document定义onclick事件，它可以监听到网页的任意位置。然后，使用 window.open()函数来打开广告窗口。在实际应用中，广告窗口往往是越大越好，本例通过设置参数"fullscreen=1"的方式来保证始终全屏打开广告窗口。
+
+ -->

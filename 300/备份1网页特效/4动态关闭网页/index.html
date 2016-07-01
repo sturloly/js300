@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>4动态关闭网页</title>
+	<script>
+		//关闭窗口
+		function closeWin() {
+			window.close();/*掉用windows对象的close 方法，关闭窗口*/
+		}
+	</script>
+</head>
+<body>
+	<p>
+		<!-- 定义前进和后退的按钮 -->
+		<input type="button" value="关闭此窗口" onclick="closeWin()"/>
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+网页有时候不需要等待用户的操作而自动关闭。例如，子窗口的作用已经结束，或者本窗口已经过期需要关闭。使用javascript可以很好地实现这个效果。
+
+难点剖析
+什么时候关闭窗口是根据程序的业务需要来决定的，本例只是用过一个简单的单击按钮来动态出发关闭窗口的动作。window对象的close()函数是最直接最简单的关闭窗口的方法。
+
+ -->

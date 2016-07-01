@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随意改变框架的大小组合</title>
+	<script type="text/javascript">
+		function moreWidth() {   //变宽
+			//获取顶部网页的frameset对象
+			var frameSet = top.document.getElementById('left_right');
+			frameSet.cols = "500,*";   //修改关于列之间的宽度配置
+		}
+		//变窄
+		function lessWidth() {
+			//获取顶部网页的frameset对象
+			var frameSet = top.document.getElementById("left_right");
+			frameSet.cols = "50,*"; //修改关于列之间的宽度配置
+		}
+	</script>
+</head>
+<body>
+	<!-- 定义标题 -->
+	<h2>右边frame</h2>
+	<input type="button" value="变宽1231" onclick="moreWidth()">
+	<input type="button" value="变窄12313" onclick="lessWidth()">
+</body>
+</html>

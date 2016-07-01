@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>文字阴影效果</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script type="text/javascript">	
+			//改变阴影的函数
+			function ch(t){
+				//获取层的DOM
+				var d = document.getElementById('demo');
+				if(t)//是否需要添加阴影
+					d.style.textShadow = '10px 10px 2px gray';
+				else
+					d.style.textShadow = '0 0 0';//恢复默认
+			}
+		</script>
+		<style>
+			#demo{
+				margin: 20px auto;
+				text-shadow: 10px 10px 2px gray;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<p id="demo">这是一段文字</p>
+		<br>
+		<input type="button" value="有阴影" onclick="ch(true);"/>
+		<input type="button" value="无阴影" onclick="ch(false);"/>
+	</body>
+<ml>

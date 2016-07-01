@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用YUI实现图片的滚动延迟加载</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
+		<script type="text/javascript">
+			//开始定义一个YUI的沙盒
+			YUI().use("imageloader", function(Y) {
+				//创建一个图片延迟加载的对象
+				var scrollGroup = new Y.ImgLoadGroup();
+				//触发器设置为窗口的滚动条
+				scrollGroup.addTrigger(window, 'scroll');
+				//为延迟加载对象，注册需要加载的图片的id，地址等信息
+				scrollGroup.registerImage({ 
+					domId: 'demo', 		//id
+					srcUrl: '1.jpg', 	//url
+					isPng: false, 		//是否为PNG
+					setVisible: true });//是否可见
+			});
+		</script>	
+	</head>
+	<body>
+		<h2>请往下滚动以看图片</h2>
+		<br><br><br><br><br><br>
+		<img id='demo' style='visibility:hidden;' />
+	</body>
+</html>

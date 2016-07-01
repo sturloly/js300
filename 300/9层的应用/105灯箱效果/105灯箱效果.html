@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>105灯箱效果</title>
+	<script type="text/javascript">
+		//监听显示灯箱层的按钮事件
+		function showLightBox(){
+			//获取层box的DOM
+			var box = document.getElementById('box');
+			box.style.display = 'block';  //显示层
+			h = box.offsetHeight;  //计算得到层的实际高度
+
+			var img = document.getElementById('pic1');  //得到中心图片的DOM
+				imgh = img.offsetHeight;
+			img.style.top = (h/2 - imgh/2)+'px';  //把它的高度居中
+ 		}
+ 		//关闭事件的函数
+ 		function closeLightBox(){
+ 			//获取层box的DOM
+ 			var box = document.getElementById('box')
+ 			box.style.display = 'none';  //隐藏层
+ 		}
+		
+	</script>
+	<style>
+		#box {
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index:99;
+			border:1px solid red;
+			width: 100%;
+			height: 100%;scroll-behavior;
+			background-color:#aaa555 ;
+			margin: 0 auto;
+			display: none;
+		}
+		#box img{
+			position: relative;
+		}
+		#closeBtn{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+		}
+
+	</style>
+</head>
+<body style="text-align: center;">
+	<p>文字文字</p>
+	<p>
+		<input type="button" value="show" onclick="showLightBox()"/>
+	</p>
+	<div id="box">
+		<img src="1.jpg" id="pic1" alt="">
+		<a href="javascript:closeLightBox();" id="closeBtn">关闭</a>
+	</div>
+</body>
+</html>
+
+<!-- 
+实例描述
+在公共场所,灯箱广告随处可见,网页的灯箱效果与之类似,也是只有中间的一部分是明亮可见的,而他部分都是暗的.本例将演示如何实现网页的灯箱效果.
+
+
+难点剖析
+本例有两个难点:一是如何把一个层放在其他元素的上面一层;二是这个层如何保证其居中显示.第1个难点,通过CSS的z-index属性来指定元素的层级关系,在实例代码中,把灯箱中间的层的z-index属性设定的很高,这样就可以保证层是放在最顶上的.对于第2个难点,则是通过计算当前网页的高度和宽度,然后在减去层本身的高度和宽度的一半,这样就得到层可以居中的左上角的坐标位置.
+ -->

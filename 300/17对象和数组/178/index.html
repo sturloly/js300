@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>178创建数组的多种方法</title>
+	<script>
+		//用数组对象的构造函数Array(),Array对象， 是内置对象，也提供一个参数，表示数组的初始长度
+		var arr001 = new Array(); //使用new语句创建一个长度为0的数组
+		arr001[0] = 1;  //第一个元素为1
+		arr001[1] = 2;  //第二个元素为2
+		arr001[3] = 3;  //第三个元素为3
+		alert('第二个元素的值22是: ' + arr001[1]);  //下标从0开始
+		//使用中括号创建数组
+		var arr002 = [];   //使用宏大括号创建，也可以初始化一些数据
+		arr002[0] = 'a';  //第一个元素为a
+		arr002[1] = 'b';  //第二个元素为b
+		arr002[2] = 'c';  //第三个元素为c
+		arr002[3] = 'd';	//第三个元素为d
+		alert('数组的长22度：' + arr002.length); //数组的长度是可以动态增加的
+	</script>
+</head>
+<body style="text-align: center;">
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+javascript的数组是一种比较特殊的数据形式，它有着许多与其他语言数组不同的地方，而这些不同的地方也正是javascript数组的优势所在。
+
+难点剖析
+javascript有几个内置对象，其中Array既数组对象。最常见的创建数组的方法，正是使用new语句来创建Array对象。
+ -->

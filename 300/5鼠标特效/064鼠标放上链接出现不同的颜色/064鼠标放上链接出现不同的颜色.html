@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>064鼠标放上链接出现不同的颜色</title>
+	<script type="text/javascript">
+		//定义链接的mouseover事件
+		function defineLinkColor() {
+			//获得网页里所有的链接DOM
+			var linkDOMs = document.getElementsByTagName("a");
+			//遍历所有的链接DOM
+			for(var i=0; i<linkDOMs.length; i++) {
+				//为每一个链接的mouseover定义事件回调
+				linkDOMs[i].onmouseover = function() {
+					this.style.color = 'red';  //为当前的链接改变颜色样式
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="defineLinkColor();">
+	<!-- 定义链接 -->
+	<p align="center">
+		<a href="#">链接一</a>
+		<a href="#">链接二</a>
+	</p>
+</body>
+</html>
+
+<!-- 
+通过CSS样式可以实现链接在鼠标移入和移开时的颜色变化，但这是一种固定的方式。可否通过javaScript来实现动态地指定链接的颜色变化呢？答案是肯定的，而且还可以比CSS更丰富。
+
+难点剖析
+本例只演示了鼠标移入时链接颜色的变化，如果要让它像CSS那样的话，还需要定义onmouseout事件。
+
+ -->

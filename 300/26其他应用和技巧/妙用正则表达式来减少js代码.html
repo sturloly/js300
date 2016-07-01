@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>妙用正则表达式来减少js代码</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//普通的替换字符的函数
+			function replaceTxt(){ 
+				//获取输入框的DOM元素
+				var str = document.getElementById("str").value;
+				var key = document.getElementById("key").value;
+				var rst = document.getElementById("rst");
+				while(true){			//进入替换的循环语句
+					//是否包含自定的key字符
+					if(str.indexOf(key) > -1)
+						//使用replace函数，把包含的特定字符换成空字符
+						str = str.replace(key,'');
+					else
+						break;			//如果没有了，则退出循环
+				}
+				rst.value = str;
+			}
+			//使用正则表达式的替换字符的函数
+			function replaceReg(){ 
+				//获取输入框的DOM元素
+				var str = document.getElementById("str").value;
+				var key = document.getElementById("key").value;
+				var rst = document.getElementById("rst");
+				//使用正则表达式进行替换
+				rst.value = str.replace(new RegExp(key, 'g'),'');
+			}
+		</script>
+	</head>
+	<body style="text-align:center">
+		<h2>请输入字符和替换字符：</h2>
+		<p>
+			<!-- 原始字符串的输入框 -->
+			需要替换的字符：<input type="text" name="str" value="" id="str"/>
+		</p>
+		<p>
+			<!-- 替换的字符串的输入框 -->
+			去掉的字符：<input type="text" name="key" value="" id="key"/>
+		</p>
+		<p>
+			<!-- 执行结果的输入框 -->
+			结果：<input type="text" name="rst" value="" id="rst"/>
+		</p>
+		<p>
+			<!-- 执行代码的按钮 -->
+			<input type="button" value="普通替换" onclick="replaceTxt();"/>
+			<input type="button" value="正则替换" onclick="replaceReg();"/>
+		</p>
+	</body>
+</html>

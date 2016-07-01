@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>可改变大小的层</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.resizable.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				$( "#my_div" ).resizable();//使层可改变尺寸
+			});
+		</script>
+		<style>
+			#my_div { width: 150px; height: 150px; padding: 0.5em; }
+			#my_div h3 { text-align: center; margin: 0; }
+		</style>
+    </head>
+    <body>
+		<label>可改变大小的层：</label><br>
+		<div id="my_div" class="ui-widget-content">
+			<h3 class="ui-widget-header">可变大小的层</h3>
+			<p>这里是内容</p>
+		</div>
+    </body>
+</html>

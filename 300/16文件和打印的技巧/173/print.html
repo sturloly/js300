@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>单独打开一个页面来完成打印功能</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">		
+			function init(){
+				var w = window.opener;
+				var f = w.document.forms[0];
+				var str = '';
+				str += '姓名22：' + f['the_name'].value;
+				str += ',年龄: ' + f['age'].value;
+				str += ',性别: ' + f['gender'].value;
+				document.body.innerHTML = str;
+			}
+		</script>	
+	</head>
+	<body style="text-align:center" onload="init();">
+		
+	</body>
+</html>

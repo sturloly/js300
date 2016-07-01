@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>134不同月份不同的背景效果</title>
+	<script type="text/javascript">
+		//开始判断月份的函数
+		function chColor() {
+			var date = new Date();
+			var m = date.getMonth() +1;
+			if(m%2 == 0) {
+				document.body.style.backgroundColor = 'yellow';
+			} else {
+				document.body.style.backgroundColor = 'blue';
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="chColor();">
+	<p>
+		这里是一段文本
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+如果用户经常访问你的网站,而每个月你都会变化一下网页的背景,使网页变的多姿多彩,则会让用户很期待,也给用户一种不枯燥的感觉.本例将演示如何实现这种不同的背景效果.
+
+难点剖析
+本例代码只是修改了网页的背景色,其实,在一些比较高级的网站里,用户还会看到北京图片,比如根据春夏秋冬四季,每个月提供一幅不同的背景图片,这样会给用户更好的感觉.读者可以把该效果尝试着修改为不同的月份显示不同的背景图片,而不仅仅是颜色的变化.
+ -->

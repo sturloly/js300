@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14窗口打开时定时显示大广告图片及其自动关闭</title>
+</head>
+<script type="text/javascript">
+	//展示广告图片
+	function showAdPic() {
+		//获得广告的DOM
+		var ad = document.getElementById('ad');
+		//直接在DOM中添加HTML源码来添加一个图片DOM
+		ad.innerHTML = '<img src="./ad.jpg" width="300" height="200"/>';
+		//设置定时器， 5秒以后关闭广告图片
+		setTimeout(function() {
+			var ad = document.getElementById('ad');
+			ad.style.display = 'none';
+		},5000);
+ 	}
+ 	//使用window的onload元素进行回调处理
+ 	window.onload = showAdPic;
+</script>
+<body style="text-align: center;">
+	<p>
+		网页内容上部
+	</p>
+	<p id="ad"></p>
+	<p>
+		网页内容下部
+	</p>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+在一些广告比较多的网站里，往往有这样的广告出现，就是一副巨大的图片广告出现在显眼的地方，然后若干秒以后又自动关闭。本例将演示实现该特效的办法。
+
+难点剖析
+要展示一个广告图片还是比较容易的，只需要动态地创建一个图片的DOM对象，然后设置好图片的路径和尺寸即可。本例的难点在于，如何定时地关闭这个图片。本例代码是以通过setTimeout()函数，在图片展示5秒钟以后，隐藏这个图片的办法来实现这样的效果的。如果读者感兴趣，可以尝试用删除图片DOM的方式来彻底关闭广告图片。
+
+
+ -->

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>图形边框</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script type="text/javascript">	
+			//改变边框的函数
+			function chBorder(image){
+				//获取层的DOM
+				var d = document.getElementById('demo');
+				//是否使用图形边框
+				if(image)
+					//修改图形边框的值
+					d.style.borderImage = 'url("dot.gif") 1 stretch';
+				else
+					d.style.borderImage = 'url() 0 stretch';//恢复默认
+			}
+		</script>
+		<style>
+			#demo{
+				border: 9px solid red;
+				width: 200px;
+				margin: 10px auto;
+				border-image: url("dot.gif") 1 stretch;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<div id="demo">我是一个层</div>
+		<br>
+		<input type="button" value="图形边框" onclick="chBorder(true);"/>
+		<input type="button" value="普通边框" onclick="chBorder(false);"/>
+	</body>
+</html>

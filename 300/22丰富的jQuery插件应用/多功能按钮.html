@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>多功能按钮</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.button.js"></script>
+		<script src="ui/jquery.ui.position.js"></script>
+		<script src="ui/jquery.ui.menu.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				$( "#my_ok" ).button();//定义为按钮的DOM
+				$( "#my_ok" ).click(function() {//监听点击事件
+					alert( "被点击了。。。" );//实现内容
+				});
+				$( "#my_select" ).button({//定义可选按钮项
+					text: false,//无文本
+					icons: {	//定义图标
+						primary: "ui-icon-triangle-1-s"
+					}
+				});
+				//监听可选按钮的点击事件
+				$( "#my_select" ).click(function() {
+					//定义菜单的配置
+					var menu = $('#btn_set').show().position({
+						my: "left top",//左上
+						at: "left bottom",//左下
+						of: this	//附属在当前的DOM下
+					});
+					//点击其他地方的时候，关闭菜单
+					$( document ).one( "click", function() {
+						menu.hide();//菜单隐藏
+					});
+					return false;
+				});
+				$( "#my_btn").buttonset();//把按钮组合在一起
+				$( "#btn_set").hide();//默认隐藏可选项
+				$( "#btn_set").menu();//位置为菜单型按钮
+			});
+		</script>
+		<style>
+			#btn_set{
+				width: 200px;
+			}
+		</style>
+    </head>
+    <body>
+		<label>多功能按钮：</label>
+		<div id="my_btn">
+			<button id="my_ok">执行上一次操作</button>
+			<button id="my_select">请选择</button>
+		</div>
+		<ul id="btn_set">
+			<li><a href="#">打开</a></li>
+			<li><a href="#">保存</a></li>
+			<li><a href="#">删除</a></li>
+		</ul>
+    </body>
+</html>

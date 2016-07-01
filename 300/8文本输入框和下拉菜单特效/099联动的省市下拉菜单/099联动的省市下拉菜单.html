@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>099联动的省市下拉菜单</title>
+	<script type="text/javascript">
+		var arr = new Array();   //数据数组
+		//定义数据,结构为:id\名字\父id
+		arr[arr.length] = [1, 'a北京市', null];
+		arr[arr.length] = [2, 'a四川省', null];
+		arr[arr.length] = [3, 'a广东省', null];
+		arr[arr.length] = [4, 'a北京市', 1];
+		arr[arr.length] = [5, 'a成都市', 2];
+		arr[arr.length] = [6, 'a广州市', 3];
+		arr[arr.length] = [7, 'a深圳市', 3];
+		//动态设置下拉项目
+		function fillOptions(type) {
+			if(type == 'province') {
+				//获取省份下拉菜单的DOM
+				var province = document.getElementById("province");
+				province.innerHTML= '';  //内容先置空
+				//填充省的字符
+				var proStr = "<option value=''></option>";
+				//遍历数组
+				for(var i=0; i<arr.length; i++) {
+					var item = arr[i];  //当前项
+					//如果没有父id,则是省份
+					if(item[2] == null)
+						proStr += "<option value=" +item[0] +">"  + item[1] + "</option>";
+				}
+				province.innerHTML = proStr;
+			} else if(type == 'city') {
+				//获取当前的省份id
+				var currProId = document.getElementById("province").value;
+				if(currProId == '') 
+					return false;
+				//获取城市下拉菜单的DOM
+				var city = document.getElementById('city');
+				city.innerHTML = '';  //内容先置空
+				//填充市的字符
+				var cityStr = '<option value=""></option>';
+				//遍历数组
+				for(var i=0; i<arr.length; i++) {
+					var item = arr[i]; //当前项
+					//判断是否为当前省下的城市
+					if(item[2] == currProId)
+						cityStr += '<option value=' +item[0] +'>' +item[1] + '</option>';
+				}
+				city.innerHTML = cityStr; //填充新内容
+			}
+		}
+
+	</script>
+</head>
+<body style="text-align: center;" onload="fillOptions('province');">
+	<!-- 定义下拉菜单 -->
+	省: <select name="" id="province" onchange="fillOptions('city')"></select> <br> <br>
+	市: <select name="" id="city"></select> <br> <br>
+</body>
+</html>
+
+<!-- 
+实例描述
+联动下拉菜单,是常用的一项下拉菜单因公用.它指的是下一个下拉菜单的选项是以上一个下拉菜单的宣威基础的,这样就要求又一个数组记录下两个菜单的数据之间的关联.本例将演示如何实现该功能.
+
+难点剖析
+在实例代码中,数组变量arr记录下的是省和市之间的关系,这样的话娿,在页面加载完成时,首先是把省级菜单固定下来,然后监听用户选择省级菜单的事件,一旦发生该事件,则根据省与市的关系,再把市菜单的选项也填充好.
+ -->

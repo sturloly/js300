@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>161仿iPhone图片查看器效果</title>
+	<script>
+		var arr = ['1.jpg','2.gif'];   //定义图片数组，这里只有2张
+		function next(){		//定义click图片的事件函数
+			var img = document.getElementById('the_img'); //获取DOM
+			var src = img.src;  //获取图片的源
+			var findIt = false;  //定义一个变量
+			for(var i=0;i<arr.length;i++) {  //遍历图片数组
+				if(src.indexOf(arr[i]) > -1) {  
+				//如果实际的源与数组当前的源相同，就认为找到了图片
+					findIt = true;
+				}
+				if(findIt) {  //当找到现在 hi第几张图片以后
+					var j = i + 1;  //把索引加一
+					if( j == arr.length)  //如果是最后一张，则跳转到第一张
+						j = 0;
+					img.src = arr[j];  //定义图片新的源
+					break;  //退出循环
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+		<h2>点击图片翻下一张11</h2>
+		<img src="1.jpg" id="the_img" onclick="next()" width="250" height="200">
+</body>
+</html>
+
+<!-- 
+第15章 图片特效
+正式因为有了图片， 网页才变得如此生动。在网页里，可以通过<IMG>标签来定义图片，也可以用过CSS样式的背景来定义图片。JavaScript 可以非常灵活地动态处理图片，这并不是因为JavaScript提供了丰富的图片API,而是它可以通过处理与图片相关的DOM和样式来让图片“动”起来。本章介绍了几种常见的图片特效。
+
+实例描述
+在iPHone手机上，用户通过华东手指的方向来切换下一张或上一张图片。在网页里，也可以实现类似的效果。
+
+ -->

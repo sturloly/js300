@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>182把数据转换成对象</title>
+	<script type="text/javascript">
+		//根据用户的输入，创建对象的数据
+		function buildObj() {
+			//获取新元素key和val的dom
+			var key = document.getElementById('key').value;
+			var val = document.getElementById('val').value;
+			//去的当前对象文本的内容
+			var str = document.getElementById('obj_txt').innerHTML.trim();  //笔记：trim()去除两边空格
+			//把字符转换成javascript的对象 eval()中加2个字符串括号转换成字符格式，再用eval转换成对象格式（从字符到对象）
+			var obj = str==''?{}:eval('('+str+'11)');
+			if(/\d+\.?\d*/.test(val))
+				obj[key]=val;
+			else
+				obj[key] = '\''+val+'\'';  //对val加上单引号
+			//把最新的对象的文本形式打印出来
+			document.getElementById('obj_txt').innerHTML = convertObj(obj);
+		}
+		//把对象转换成文本形式，这也就是json转换的形式
+		function convertObj(obj) {
+			var str = '{';  //定义字符变量，用于串联
+			for(var prop in obj) {  //遍历对象的属性
+				//如果为对象类型，则遍历连接
+				if(typeof(obj[prop]) == 'object') {
+					str += prop+':'+convertObj(obj[prop])+',';
+				//如果是字符形式，则需要加单引号
+				}else if(typeof(obj[prop]) == 'string') {
+					str += prop+':\''+obj[prop]+'\',';
+				//其他的则直接显示
+				}else{
+					str += prop+':'+obj[obj]+',';
+				}
+			}
+			//把最后一个逗号去掉，否则不是标准的形式
+			if(str.charAt(str.length-1) == ','){
+				str = str.substr(0,str.length-1);
+			}
+			str += '}';  //拼接最后一个大括号
+			return str;  //返回最后的拼接结果字符
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	key: <input type="text" name="key" id="key">
+	value: <input type="text" name="val" id="val">
+	<br>
+	<input type="button" value="添加" onclick="buildObj();">
+	<br>
+	<p id="obj_txt"></p>
+</body>
+</html>
+<!-- 
+实例描述
+在javaScript中，传递数数据最值段、最有效的办法，就是把数据转换成对象，然后再这个对象传递到需要的地方。这样的数据结构性更强，可读性更好，传送效率也更高。
+
+难点剖析
+本例的函数convertObj()非常实用，读者可以将其收藏起来，以备不时之需。convertObj()函数的功能是把数据从字符形式转换成对象形式，其中还用到了递归方法。在该函数中，需要首先考虑数据的类型，基本的数据类型只是数字型和字符型，数字型不必加单引号，而字符型需要加单引号。
+
+
+
+ -->

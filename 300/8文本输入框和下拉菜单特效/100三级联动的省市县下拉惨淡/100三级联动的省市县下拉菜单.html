@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>100三级联动的省市县下拉菜单</title>
+	<script type="text/javascript">
+		var arr = new Array();  //数据数组
+		//定义数据, 结构为: id\名字\父id
+		arr[arr.length] = [1, 'b北京市', null];
+		arr[arr.length] = [2, 'b四川省', null];
+		arr[arr.length] = [3, 'b广东省', null];
+		arr[arr.length] = [4, 'b北京市', 1];
+		arr[arr.length] = [5, 'b成都市', 2];
+		arr[arr.length] = [6, 'b广州市', 3];
+		arr[arr.length] = [7, 'b深圳市', 3];
+		arr[arr.length] = [8, 'b武侯区', 5];
+		arr[arr.length] = [9, 'b青羊区', 5];
+		arr[arr.length] = [10, 'b白云区', 6];
+		arr[arr.length] = [11, 'b增城市', 6];
+		//动态设置下拉项目
+		function fillOptions(type) {
+			if(type == 'province') {
+				//获取身份下拉菜单的DOM
+				var province = document.getElementById("province");
+				province.innerHTML = '';  //内容先置空
+				//填充省的字符
+				var proStr = '<option value=""></option>';
+				for(var i=0; i<arr.length; i++ ){
+					var item = arr[i];  //当前项
+					//如果没有父id,则是省份
+					if(item[2] == null )
+						proStr += '<option value=' +item[0] + '>' +item[1] + '</option>'; 
+				}
+				province.innerHTML = proStr;  //填充新内容
+			} else if (type =='city') {
+				//获取当前的省份的id
+				var currProId = document.getElementById('province').value;
+				if(currProId == '')
+					return false;
+				//获取城市下拉菜单的DOM
+				var city = document.getElementById('city');
+				city.innerHTML = '';     //内容先置空
+				//填充市的字符
+				var cityStr = '<option value=""></option>';
+				for(var i=0; i<arr.length; i++) {   //遍历数组
+					var item = arr[i];  //当前项
+					//判断是否为当前省下的城市
+					if(item[2] == currProId) 
+						cityStr += '<option value=' +item[0] +'>' +item[1]+ '</option>';
+				}
+				city.innerHTML = cityStr;  //填充新内容
+			} else if (type == 'area') {
+				//获取当前城市的id
+				var currCityId = document.getElementById('city').value;
+				if(currCityId == '')
+					return false;
+				//获取区县下拉菜单的DOM
+				var area = document.getElementById("area");
+				area.innerHTML = '';  //内容先置空
+				//填充区县的字符
+				var areaStr = '<option value=""></option>';
+				for(var i=0; i<arr.length;i++) {  //遍历数组
+					var item = arr[i];  //当前项
+					//判断是否为当前城市下的区县
+					if(item[2] ==  currCityId)
+						areaStr += '<option value=' +item[0] +'>' +item[1] +'</option>';
+				}
+				area.innerHTML = areaStr;  //填充新内容
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="fillOptions('province');">
+	<!-- 定义下拉菜单 -->
+	省: <select name="" id="province" onchange="fillOptions('city')"></select> <br> <br>
+	市: <select name="" id="city" onchange="fillOptions('area')"></select> <br> <br>
+	县/区: <select name="" id="area"></select> <br> <br>
+</body>
+</html>
+
+<!-- 
+实例描述
+经典的省市县联动下拉菜单,是常用的一项应用,它的关键在于简历好数据之间的父子关系,以及动态填充下拉菜单的数据.本例将演示如何实现该功能.
+
+难点剖析
+数据数组,是一个二维数组,子数组包含了3项:id \名称 和父地区的id, 这样的设置让数据结构一目了然.在功能实现的过程中,首先初始化省份的下拉菜单:然后监听省份下拉菜单的onchange事件和城市下拉菜单的onchange事件:当它们被重新选择时,则根据父id选出对应的子数据来.根据以上的思路,就轻松地实现了省\市\县三级数据的联动特效.
+
+其它说明
+本例的数据数组是定义在网页文件代码里的,并且还不包含所有的省市数据.在实际开发中,数据数组可以用过一个独立的javaScript脚本文件来定义,这样程序可以独立地区维护这些数据.
+如果数据是存储在服务器端的,那么就需要依赖Ajax技术,把这些数据和关联关系动态地从服务器端取得.
+
+ -->

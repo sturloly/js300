@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>视频尺寸动态修改示例</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//播放器尺寸变大的方法
+			function bigger(){
+				//获取视频DOM元素
+				var myVideo = document.getElementById("myVideo");
+				myVideo.width = 640;	//修改宽度的值
+				myVideo.height = 480;	//修改高度的值
+			}
+			//播放器尺寸变小的方法
+			function smaller(){
+				//获取视频DOM元素
+				var myVideo = document.getElementById("myVideo");
+				myVideo.width = 320;	//修改宽度的值
+				myVideo.height = 240;	//修改高度的值
+			}
+		</script>
+	</head>
+	<body style="text-align:center">
+		<!-- HTML5新增的video标签，用于在网页里嵌入可以播放的视频 -->
+		<video width="320" height="240" controls="controls" id="myVideo">
+			<!-- 提供了两种格式的视频文件，以适应不同浏览器对video的支持 -->
+			<source src="movie.mp4" type="video/mp4" />
+			<source src="movie.ogg" type="video/ogg" />
+			对不起，您的浏览器暂不支持video视频标签!
+		</video>
+		<br/>
+		<!-- 功能按钮 -->
+		<input type="button" value="变大" onclick="bigger();"/>
+		<input type="button" value="变小" onclick="smaller();"/>
+	</body>
+</html>

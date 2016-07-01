@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选择所有已勾选的复选框</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function selText(){
+				var chArr = $(':checkbox:checked');
+				var str = '选择的值包括:';
+				for(var i=0;i<chArr.length;i++){
+					str += chArr[i].value + ',';
+				}
+				alert(str);
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<form>
+			<input name="c1" type="checkbox" value="1"/>1,
+			<input name="c1" type="checkbox" value="2"/>2,
+			<input name="c1" type="checkbox" value="3"/>3
+			<br>
+			<input type="button" value="得到选择的值" onclick="selText();"/>
+		</form>		
+	</body>
+</html>

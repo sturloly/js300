@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用YUI实现被点击按钮样式突出的效果</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
+		<script type="text/javascript">
+			//开始定义一个YUI的沙盒
+			YUI().use('node', function(Y){
+				var btns = Y.all('.box-row li');//引用所有的按钮
+				//监听按钮的点击事件
+				Y.one('.box-row').delegate('click', function(e) {
+					btns.setHTML('按钮');	//为按钮设置文本
+					btns.setStyle('backgroundColor', 'PINK');//默认背景色
+					//为当前被点击的按钮设置样式
+					e.currentTarget.setHTML('我被点击了!');  //文本内容
+					e.currentTarget.setStyle('backgroundColor', 'BLUE');//背景色为蓝色
+				} , 'li');
+			});
+		</script>	
+		<style>
+			.box-row li{
+				display: inline-block;
+				zoom: 1; *display: inline; 
+				width: 100px;
+				line-height: 3em;
+				text-align: center;
+				margin: 0.5em 1em 0.5em 0;
+				border: solid 1px #ccc;
+				background-color: pink;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<ul class="box-row">
+			<li>按钮</li>
+			<li>按钮</li>
+			<li>按钮</li>
+			<li>按钮</li>
+			<li>按钮</li>
+		</ul>
+	</body>
+</html>

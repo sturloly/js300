@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟继承机制</title>
+	<script type="text/javascript">
+		//用function模拟一个类出来，同时也作为构造函数
+		function Animal(name,age){
+			this.name = name;  //变量name
+			this.age = age;  //年龄
+			//定义个空方法，等待继承类去实现
+			this.say = function(){}
+		}
+		//定义一个dog类，继承自animal
+		function Dog(name,age){
+			this.name = name;  //变量name
+			this.age = age;  //年龄
+		}
+		Dog.prototype = new Animal();  //把animal的所有属性和函数都继承
+		Dog.prototype.say = function(){  //重载say函数
+			//实现say函数，访问自定义的属性
+			alert('dog say: my name is ' + this.name + ' ,age=' +this.age);
+		}
+		var dog = new Dog('tom', 8); //新建一个dog对象
+		dog.say();   //调用dog的say函数
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+
+<!-- 
+实例描述
+继承是面向对象的特点之一。JavaScript也可以借助prototype来模拟继承机制。本例将介绍入股实现该机制。
+
+难点剖析
+本例首先定义了一个Animal类，然后又定义了一个Dog类，Dog的prototype完全使用Animal内部的属性和函数，这样DOG就继承了Animal所有的属性和函数。所以，在Dog类的构造函数里，可以访问和修改在Animal中定义的姓名和年龄。
+
+ -->

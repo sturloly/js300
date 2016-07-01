@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>180在数组的末尾处加入和移除元素</title>
+	<script>
+		//创建一个长度为5的数组
+		var arr = new Array(5);
+		//循环为数组的元素赋值
+		for(var i=0; i< arr.length;i++) {
+			arr[i] = i+1;  //元素的值依次为1-5
+		}
+		//天假一个元素的函数
+		function addOne(){
+			//获取新元素的的dom
+			var e = document.getElementById('elm').value;
+			arr.push(e); //向数组的末端添加一个元素
+		}
+		//删除一个元素的函数
+		function deleteOne(){
+			arr.pop();
+		}
+		//打印数组的值的函数
+		function printArr(){
+			var str = '';  //创建变量，并凑打印的字符
+			//遍历数组，凑出打印的字符串
+			for(var i = 0; i<arr.length; i++){
+				str +=arr[i]+ ","
+			}
+			alert('啊啊arr=' + str);//打印数组的值
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	添加的值：<input type="text" name="elm" id="elm">
+	<input type="button" value="添加3" onclick="addOne();">
+	<input type="button" value="删除最后一个元素" onclick="deleteOne();">
+	<input type="button" value="打印arr的值" onclick="printArr();">
+</body>
+</html>
+
+<!-- 
+实例描述
+数组被初始化以后，开发人员还可以往数组的末尾处添加数据，或从数组中移出数据。javaScript提供了线程的函数来实现这些操作。
+
+难点剖析
+pop()和push()函数是javascript中操作数组末尾元素的函数，它们的含义分别是取出末尾元素和添加末尾元素。这两个函数被调用后，数组的长度会发生变化。在实例181中，将介绍在特殊要求下，在数组的任意位置移除或增加元素的方法。
+
+ -->

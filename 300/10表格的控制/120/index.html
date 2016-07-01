@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title>120让表格行的背景颜色间隔开</title>
+	<script type="text/javascript">		
+			//为表格改变样式的函数
+			function chCell(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				var rows = tbl.rows;			//得到当前的表格的row数组
+				var len = tbl.rows.length;		//当前的行数
+				for(var i=1;i<len;i++){			//遍历所有行
+					var r = rows[i];			//当前行
+					r.onmouseover = function(){	//定义鼠标移入事件
+						//把背景色变成粉红色
+						this.style.backgroundColor = 'pink';
+					};
+					r.onmouseout = function(){	//定义鼠标移出事件
+						//把背景色变回白色
+						this.style.backgroundColor = 'white';
+					};
+				}
+			}
+		</script>	
+	</head>
+	<body style="text-align:center" onload="chCell();">
+		<table id="tbl" align="center" border="1">
+			<tr>
+				<th>名字</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td>A</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td>15</td>
+			</tr>
+		</table>
+	</body>
+	</html>
+<!-- 
+实例描述
+表格中的某一行往往代表的是一个实体的数据,或者是数据库中的某一条记录,因此用户在浏览表格数据时,注意力是随着行逐渐网下移动的.如果表格中每一行背景都是一种颜色,则会感觉比较疲劳且不容易分辨,为了让用户把注意力集中在当前浏览的表格行上,可以用程序将该行的背景色调深一点,既将当前浏览的表格行的背景色同其他表格行的背景色间隔开.这样会有更好的用户体验.本例将展示如何实现该效果.
+
+
+难点剖析
+该特效的实现依赖于表格行的onmouseover 和onmouseout事件.当鼠标移入本行时,就把本行的背景色调深一些,同时把其他行的背景色设置为白色:当鼠标移出本行时,就把本行的背景色恢复为白色.
+
+其他说明
+本例的实现,可以看出javaScript在处理DOM时的优越性.因为如果手动为每一个tr标签都加onmouseover和onmouseout事件,那将会是重复劳动.但是,如果利用javaScript的动态特性,动态地为tr指定事件,代码量就少多了,代码也更具可读性.
+ -->

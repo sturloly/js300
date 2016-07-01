@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>快速选择表单元素</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function selText(){
+				alert('文本的值是：' + $(':input[type="text"]').val());
+			}
+		</script>	
+		<style>
+			.link{color:red;}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<form>
+			<input name="mytext" id="mytext"/>
+			<input type="button" value="得到文本的值" onclick="selText();"/>
+		</form>		
+	</body>
+</html>

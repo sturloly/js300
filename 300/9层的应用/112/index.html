@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>112右下角的提示层</title>
+	<script type="text/javascript">		
+		function init(){
+			var con1 = document.getElementById('con1');
+			con1.style.bottom = '10px';
+			con1.style.right = '20px';
+		}
+	</script>	
+	<style>
+		#con1{		
+			background-color: gray;
+			overflow: hidden;
+			position: fixed;
+			width: 100px;
+			height: 100px;
+			z-index: 99;
+		}
+	</style>
+</head>
+<body style="text-align:center" onload="init();">
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<div id="con1">
+		这是一个广告
+	</div>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+</html>
+
+<!-- 
+实例描述
+当会员在网站中登录后,有些网站的右下角会有一个提示层,用来提示会员的一些特权操作,如是否有站内短信\有几个主题等.本例将演示如何实现该提示层特效.
+
+
+难点剖析
+通过代码可以知道,实现这样的效果其实很简单,就是利用css的bottom和right属性.这是因为,bottom决定了层距离底部的像素值,而right决定了层距离右边界的像素值.
+ -->

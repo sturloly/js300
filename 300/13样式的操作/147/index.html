@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>147访问元素中style属性的CSS样式</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//按钮的click事件监听函数
+			function showStyle(){
+				//获取目标DOM
+				var mytxt = document.getElementById('mytxt');
+				alert(mytxt.style.color);//展示目标style的颜色
+			}
+		</script>
+	</head>
+	<body style="text-align:center">	
+		<span id="mytxt" style="color:red;">测试文本</span>
+		<br/>
+		<input type="button" onclick="showStyle();" value="查看文本的颜色"/>
+	</body>
+</html>
+
+<!--
+实例描述 
+CSS样式可以定义在外部,也可以定义在网页的头部,甚至可以出现在网页元素的style属性中.那么与饮用外部的css文件相比,访问元素style属性定义的样式由上面不同呢?本例将针对此进行详细介绍.
+
+难点剖析
+所有的网页原色或网页标签都提供了style属性,它是用代码访问或控制网页元素样式的一个重要通道.本书其他的很多实例代码中,也是通过该属性来控制元素样式的,在下面的学习中,读者要多留意这种控制方法.
+
+ -->

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>052打开一个新的窗口</title>
+	<script type="text/javascript">
+		//打开一个新的窗口 
+		function openNewWin() {
+			//使用window的open()函数打开一个子窗口
+			var win = window.open("1得到是谁打开了子窗口.html");
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="打开一个新的窗口" onclick="openNewWin()">
+	<img src="123.jpg" width="1000" height="700">
+</body>
+</html>
+
+<!-- 
+实例描述
+在开发一些网站或信息系统时，往往有这样的功能:打开一个子窗口，让用户选择或填写一些信息，关闭窗口时保存这些信息。本例将演示如何打开一个新窗口。
+
+难点剖析
+要想打打开一个新的子窗口，就需要借助window的open()函数。在本例代码中，直接打开了已个地址为subWindow.html的新窗口。
+
+其他说明
+open()函数里，除了地址是必填选项以外，还可以指定一些其他的参数，来控制窗口的一些属性，比如宽度、高度、位置等。window.open的完整用法如下。
+window.open(pageURL, name , parameters)
+其中，pageURL为子窗口路径，name 为子窗口句柄，parameters为窗口参数（各参数用逗号分隔）。以下是一个完整的示例。
+window.open（'subWindow.html','my_sub_window','height=200',width=300,top=0,left=0,toolbar=no,status=no')
+ -->

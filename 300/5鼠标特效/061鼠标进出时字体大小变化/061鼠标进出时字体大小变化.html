@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>061鼠标进出时字体大小变化</title>
+	<script type="text/javascript">
+		//鼠标指针移进
+		function myOver(pDOM) {
+			pDOM.style.fontSize = "20px";  //调整字体大小为20个像素
+		}
+		//鼠标指针移出
+		function mOut(pDOM) {
+			pDOM.style.fontSize = ''; //调整字体大小样式为默认
+		}
+	</script>
+</head>
+<body style="text-align: center">
+	<!-- 定义一块区域 -->
+	<p style="margin:5px auto; width: 100px; height: 100px; border: 1px solid black;" onmouseover="myOver(this);" onmouseout="mOut(this);">
+		把鼠标移动到该区域
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+当鼠标指针移动到某一个DOM组件时，有时希望它有些变化，以给用户更加明显的感觉，所以调整字体大小是一种常见的方式。本例将样式如何实现该效果。
+
+难点剖析
+该效果的实现需要依赖两个事件：onmouseover 和 onmouseout 前者监听的是鼠标指针入到该DOM组件时的回调函数，后者则用于鼠标移出时的条用，在大多数时候，它们是成对出现的。最后，用过改变样式里的fontSize属性来改变其字体大小。
+
+
+ -->

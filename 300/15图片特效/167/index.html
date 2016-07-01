@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>167为图片加上边框</title>
+	<script>
+		function addBorder(color) {
+			var pics = document.getElementsByTagName('IMG');
+			for(var i=0; i<pics.length;i++){
+				pics[i].style.border = '1px solid ' + color;
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="蓝色边框" onclick="addBorder('blue')">
+		<input type="button" value="红色边框" onclick="addBorder('red')">
+	</p>
+	<img src="1.jpg" alt="">
+</body>
+</html>
+<!-- 
+实例描述
+在一些图片网站里，为了凸显一些图片比较特别，或推荐某某图集，通常会把这个图片的缩略图加上边框，以引起用户的注意。本例将演示如何实现该特效。
+
+难点剖析
+为图片加上边框，最简单的就是通过CSS来修改图片的样式。因此，在实例代码中可以看到，修改边框的函数接受一个颜色参数，这个颜色就是边框的颜色值。
+ -->

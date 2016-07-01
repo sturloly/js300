@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>165让图片自适应框的大小</title>
+	<script>
+		function init() {
+			var img = document.getElementById('the_img')
+			var width = img.width;
+			var height = img.height;
+			var div = img.parentNode;
+			var w = div.offsetWidth;
+			var h = div.offsetHeight;
+			if(width < w && height < h)
+				return;
+			if(width/height > w/h){
+				img.width = w - 20;
+				img.height = (w-20) * (h-20) /width;  //  (h-20)/width得出原图的高宽比，乘以新宽度得到新高度
+
+				console.log(w + " div width")
+				console.log(h + " div height")
+
+				console.log(width +　' img width')
+				console.log(width +　' img height')
+
+				console.log(w-20 + " img新宽度")
+				console.log(h-20 + " div高-20") 
+
+				console.log(h-20/width + " div高-20 除以 img width")
+
+				console.log(img.height + " img新高度")
+
+			}
+		}
+
+	</script>
+	<style>
+		div {
+			width: 100px;height: 200px;border: 1px solid black;margin: 10px auto;padding: 10px;
+		}
+	</style>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div>
+		<img src="1.jpg" id="the_img" alt="">
+	</div>
+</body>
+</html>
+
+<!-- 
+实例描述
+图片的大小是固定的，但是有时为了布局和排版的需要，要求图片可以自动适应显示区域的尺寸，也就是在保证图片显示不变形的情况下，图片的匡杜和高度都不超过画框的大小。
+
+难点剖析
+如果图片宽度和高度的比例可以随意修改的话，那么本例实现起来就会比较简单，直接将图片拉伸或压缩成画框的比例就可以了。但是，要求图片的宽高比例不能变化，因此，就不得不进行一个等比换算。
+ -->

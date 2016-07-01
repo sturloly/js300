@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>152用Javascript实现链接样式同样的效果</title>
+	<script type="text/javascript">
+		//页面加载完成以后的事件回调
+		function linkAble(p) {
+			//获取目标DOM
+			var link = document.getElementById('link');
+			link.style.cursor = 'pointer'; //修改文本的鼠标样式
+			link.onmouseover = function() { //定义鼠标放上的事件
+				this.style.color = 'red'; //字体变红色
+			};
+			link.onmouseout = function() { //定义鼠标移走的事件
+				this.style.color = 'black'; //字体表黑色
+			};
+			link.onclick = function () {  //定义鼠标点击事件
+				alert('我被点击了');  //一句alert语句
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center" onload="linkAble();">
+	<span id="link">我是一个伪链接哟</span>
+</body>
+</html>
+
+<!-- 
+实例描述
+通过CSS的定义，可以为锚文本定义鼠标样式。也就是说。鼠标移入鼠标移走的字体颜色是有区别的，本例将讲解如何实现该效果。
+
+难点剖析
+示例代码未定义任何连接标签，只是使用一个span元素模拟了一个超级链接效果。其中，它的鼠标移入样式通过onmouseover和onmouseout事件模拟出来的。读者可以看到，颜色的变化通过style属性就可以轻松实现
+
+ -->

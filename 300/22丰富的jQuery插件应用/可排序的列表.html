@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>可排序的列表</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.sortable.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				$( "#sortable" ).sortable();//提供排序功能
+			});
+		</script>
+		<style>
+			#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+			#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+			#sortable li span { position: absolute; margin-left: -1.3em; }
+		</style>
+    </head>
+    <body>
+		<label>请自由排序：</label>
+		<ul id="sortable">
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单1</li>
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单2</li>
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单3</li>
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单4</li>
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单5</li>
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单6</li>
+			<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>菜单7</li>
+		</ul>
+    </body>
+</html>

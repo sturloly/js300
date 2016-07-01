@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>051动态创建框架</title>
+	<script type="text/javascript">
+		//动态创建框架
+		function createFrame() {
+			//创建iframe的DOM
+			var myScript = document.createElement('iframe');
+			myScript.src='./subFrame.html';  //制定框架的src
+			document.body.appendChild(myScript);  //把dom挂在body里
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="动态创建框架" onclick="createFrame()">
+</body>
+</html>
+
+<!-- 
+实例描述
+对于javascript来说，框架本质上也是一种DOM。因此，我们依然可以在程序里动态地创建frame,来满足用户开发的需求。
+
+难点剖析
+这里使用了iframe的DOM对象，它可以挂接到网页里的任何位置。首先，使用createEleent()函数来创建一个新的DOM：其次，将框架的网页属性进行动态制定：最后,把这个DOM挂接到body里。
+
+ -->

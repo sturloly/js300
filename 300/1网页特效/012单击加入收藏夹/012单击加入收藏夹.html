@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012单击加入收藏夹</title>
+	<script type="text/javascript">
+		//加入收藏夹的函数
+		function addFav() {
+			//为了确保代码的兼容性，对IE和Firefox分别处理
+			if (window.external.AddFavorite) {
+				//AddFavorite 函数为IE 特有的加入收藏夹的函数
+				window.external.AddFavorite('./单击加入收藏夹.html', 'javascript300例');
+
+			} else if(window.sidebar != undefined ) {
+				//使用sidebar 的 addPanel 函数加入 收藏夹
+				window.sidebar.addPanel('javascript300例','http://www.baidu.com' , "");
+			} else {
+				alert("error")
+			}
+		}
+
+		/*原始
+		//加入收藏夹的函数
+		function addFav() {
+			//为了确保代码的兼容性，对IE和Firefox分别处理
+			if (window.external.AddFavorite) {
+				//AddFavorite 函数为IE 特有的加入收藏夹的函数
+				window.external.AddFavorite('./单击加入收藏夹.html', 'javascript300例');
+
+			} else () {
+				//使用sidebar 的 addPanel 函数加入 收藏夹
+				window.sidebar.addPanel('javascript300例','http://www.baidu.com' , "");
+			}
+		}	
+		*/
+
+	</script>
+
+
+
+	
+</head>
+<body>
+	<a href="javascript:addFav();">单击加入收藏夹</a>
+</body>
+</html>
+
+<!-- 
+实例描述
+浏览器大多带有收藏地址的功能，javascript 可以把当前的网页添加到收藏夹里去（最新的一些浏览器都不叫收藏夹了，改叫书签，不过其收藏原理是一样的）。
+
+
+因为浏览器之间的差异，放图收藏夹的API接口函数是不同的。所以，此处分别针对IE 和非 IE 浏览器做了不同的判断处理。如果是IE 浏览器，则调用 window.external.addFavorite() 函数，否则调用 window.sidebar.addPanel()函数。
+
+
+ -->
+
+
+
+<!-- 测试 <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7收藏本页</title>
+	<script>
+		//由于chrome,safari,opara 浏览器还未支持自动 “设为首页” & “加入收藏”.  所以我们只能try, catch一下, 给个错误提示!  也算完美了.另外ie中, 很多人也碰到过 它window.external.addFavorite.  时会报错的问题.  所以俺也只好抛出提示信息了.加入收藏:
+		function AddFavorite() {
+			//判断是否ie
+			if (document.all) {
+				try{
+					window.external.addFavorite(window.location.href,document.title);
+				} catch (e) {
+					alert("加入收藏夹失败，请使用Ctrl+D进行添加");
+				}
+			}else if (window.sidebar) {
+				wiindow.sidebar.addPanel(document.title, window.location.href, "");
+			}else {
+				alert("加入收藏失败，请使用Ctrl+D进行添加")；
+			}
+		}
+
+		//收藏本页
+		function setFavorite() {
+			console.log(location.href);
+			//利用external的AddFavorite添加收藏，直接利用地址栏的地址和标题栏的标题
+			AddFavorite();
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	收藏本页的链接
+	<p><a href="#" onClick="setFavorite();"></a></p>
+</body>
+</html> -->
+
+<!-- function setHomepage(){  
+    if (document.all){  
+        document.body.style.behavior='url(#default#homepage)';  
+          document.body.setHomePage(window.location.href);  
+    }else if (window.sidebar){  
+        if(window.netscape){  
+            try{  
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+            }catch (e){  
+                alert( "该操作被浏览器拒绝，如果想启用该功能，  
+请在地址栏内输入 about:config,然后将项 signed.applets.codebase_principal_support 值该为true" );  
+            }  
+        }  
+        var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components. interfaces.nsIPrefBranch);  
+        prefs.setCharPref('browser.startup.homepage',window.location.href);  
+    }else{  
+        alert('您的浏览器不支持自动自动设置首页,  
+ 请使用浏览器菜单手动设置!');  
+    }  
+}   -->

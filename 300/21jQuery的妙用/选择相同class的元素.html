@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选择相同class的元素</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function selAll(){
+				alert('本网页总元素的个数是：' + $('.link').length);
+			}
+		</script>	
+		<style>
+			.link{color:red;}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<span class="link">文字</span>
+		<a href="#">链接1</a>
+		<a href="#" class="link">链接2</a>
+		<a href="#">链接3</a>
+		<br>
+		<input type="button" value="一共有多少链接" onclick="selAll();"/>
+	</body>
+</html>

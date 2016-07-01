@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018根据name获取多个元素</title>
+	<script type="text/javascript">
+		//获取多个DOM
+		function getDomsByName() {
+			//获取的DOMs
+			var doms = document.getElementsByName("myName");
+			var str = '';        //定义拼接字符变量
+			for (var i=0; i<doms.length; i++) {
+				str += doms[i].tagName;  //拼接标签的名字
+				str += ",";     //分隔符
+			}
+			alert("两个DOM的标签是:" + str);  //提示
+		}
+	</script> 
+</head>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义有name属性的元素 -->
+		<a name="myName" href="">链接</a>
+		<span name="myName">文字</span>
+		<br/>
+		<input type="button" value="获取" onClick="getDomsByName();"/>
+	</p>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+与id不同，多个元素可以使用相同的name属性，譬如复选框。因此，如果要获取这一类元素的DOM对象，就需要使用getElementByName()函数。
+
+
+
+难点剖析
+name 属性是网页元素的又一个重要属性，尤其对于表单控件来说，在提交表单时，name就是参数的名称。获取同一个name的多个元素应用得比较广，譬如可以用于校验复选框是否已经勾选。
+
+ -->

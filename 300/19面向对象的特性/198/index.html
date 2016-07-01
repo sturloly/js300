@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>为对象扩展一个方法</title>
+	<script type="text/javascript">
+		var obj = {};  //目标对象
+		//扩展函数
+		function ext() {
+			//得到用户需要指定的函数的名字
+			var funName = document.getElementById('text').value;
+			//得到函数的代码字符
+			var funCon = document.getElementById('text2').value;
+			//动态指定函数及其实现
+			obj[funName] = function(){
+				//使用eval函数来扩展函数的实现代码
+				eval(funCon);
+			};
+		}
+		//执行函数
+		function fun(){
+			//获取函数名
+			var funName = document.getElementById('text').value;
+			obj[funName].call(); //动态调用函数
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	方法名：
+	<input type="text" value="" id="text"><br><br>
+	实现代码：
+	<input type="text2" value="" id="text2"><br><br>
+	<input type="button" value="扩展" onclick="ext()">
+	<input type="button" value="调用" onclick="fun()">
+</body>
+</html>
+
+<!-- 
+实例描述
+动态函数，包括函数的函数名和实现代码。动态就说明一切都是未知的，是用户在程序运行时动态指定的。本例将演示如何实现这种动态函数。
+
+难点剖析
+从运行效果可以看出，函数的名字和实现代码全部通过网页上的输入完成，并且函数还可以运行，这离不开JavaScript强大的动态性能。
+本例首先用"[]"扩展了一个变量，并且把这个变量的类型指定为函数类型，然后再使用eval()函数把代码字符编程实际可运行的代码。这样，就扩展了一个完全动态的对象成员函数。
+ -->

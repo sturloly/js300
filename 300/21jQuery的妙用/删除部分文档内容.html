@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>删除部分文档内容</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function removeText(){
+				$('p').remove(':contains("abc")');
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<form>
+			<p>asdfghjkl</p>
+			<p>abcjkl</p>
+			<p>wefwefwef</p>
+			<br>
+			<input type="button" value="删除包含abc的段落" onclick="removeText();"/>
+		</form>		
+	</body>
+</html>

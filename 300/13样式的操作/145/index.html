@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title>145动态滤镜效果</title>
+	<!-- 定义一个外部样式，和引入外部css文件效果一样 -->
+	<style>
+		.myclass{
+			color:white;
+			background-color:black;
+			padding:5px;
+		}
+	</style>
+	<script type="text/javascript">
+		var timer = null;
+			//按钮的click事件监听函数
+			function timeHide(){				
+				//获取目标DOM
+				var mytxt = document.getElementById('mytxt');
+				if(mytxt.style.opacity == '')	//如果目标的opacity为默认
+					mytxt.style.opacity = 1;	//则设置为1，表示完全显示
+				timer = setInterval(function(){	//开始一个timer定时器
+					if(mytxt.style.opacity>0){	//如果大于0，则一直自减1
+						//每次少0.1的透明度
+						mytxt.style.opacity = mytxt.style.opacity-0.1;
+					}
+					if(mytxt.style.opacity == 0)//当完全隐藏以后，则取消定时器
+						window.clearInterval(timer);//取消定时器
+				},200);							//定时器的间隔为200毫秒
+			}
+		</script>
+	</head>
+	<body style="text-align: center;">
+		<span id="mytxt" class=""></span>
+	</body>
+</html>
+
+<!-- 
+实例描述
+滤镜是光学上的一种常用镜片,它的作用很多,其中比较常见的就是让物体变得若隐若现.网页和javaScript也提供了类似滤镜的特效,本例将演示如何实现动态滤镜效果.
+
+难点剖析
+网页元素的样式属性opcity用来控制原色的透明度,它的值从0到1,表示越来越清晰.因此,在实例代码中,当用户单击"渐隐"按钮时,程序通过逐步减少opacity值的办法,来实现文本文字的可见度越来越低的效果.
+ -->

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>自定义提示框</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.draggable.js"></script>
+		<script src="ui/jquery.ui.position.js"></script>
+		<script src="ui/jquery.ui.resizable.js"></script>
+		<script src="ui/jquery.ui.button.js"></script>
+		<script src="ui/jquery.ui.dialog.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//弹出对话框的函数
+			function openDialog() {
+				$( "#my_dialog" ).dialog();		//打开对话框
+			}
+		</script>
+    </head>
+    <body>
+		<label>请点击：</label>
+		<input type="button" id="btn" value="提示框" onclick="openDialog()"/>
+		<div id="my_dialog" title="我的提示框" style="display:none;">
+			<p>这是我自定义的提示框哟</p>
+		</div>
+    </body>
+</html>

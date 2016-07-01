@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>122隐藏表格数据</title>
+	<script type="text/javascript">		
+			var hasHide = false;				//初始化是没有隐藏的
+			//为表格隐藏的函数
+			function hideTbl(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				var arr = [];					//定义数组变量保存数据
+				var rows = tbl.rows;			//得到当前的表格的row数组
+				var len = tbl.rows.length;		//当前的行数
+				for(var i=1;i<len;i++){			//遍历所有的数据行，下标从1开始
+					if(hasHide){				//如果已经隐藏了，则显示
+						rows[i].style.display = '';
+					}else						//如果还没有隐藏，则隐藏起来
+					rows[i].style.display = 'none';
+				}		
+				//把隐藏变量值反
+				hasHide = hasHide==false?true:false;
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<label>双击表头隐藏表格数据</label>
+		<table id="tbl" align="center" border="1">
+			<tr onclick="hideTbl();">
+				<th>名字</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td>A</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td>15</td>
+			</tr>
+		</table>
+	</body>
+	</html>
+
+<!-- 
+实例描述
+表格数据在网页中显示时,一般会占据比较大的一块区域.有时为了让网页显示得简洁一些,可以将表格数据暂时隐藏.本例将展示如何实现这种隐藏特效.
+
+难点剖析
+只隐藏表格的操作比较简单,但是,在隐藏表格的勇士,表头是不希望隐藏的,因此本例是通过遍历表格行来把每一行数据隐藏,以实现隐藏特效.
+
+ -->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>173单独打开一个页面来完成打印功能</title>
+	<script>
+		function doPrint(){
+			window.open('print.html');
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<form>
+		<label>姓名：</label>
+		<input type="text" name="the_name">
+		<br>
+		<label>年龄：</label>
+		<input type="text" name="age">
+		<br>
+		<label>性别：</label>
+		<input type="text" name="gender">
+		<br>
+		<input type="button" onclick="doPrint();" value="打印">
+	</form>
+</body>
+</html>
+
+<!-- 
+实例描述
+网页上的内容一般都比较多，如果只打印其中一部分的话，开发人员会才去打开一个新页面的形式来打印，这样的打印会比较简洁易控。本例介绍了如何动态填充打印页面。
+
+难点剖析
+本例的难点在于，如何通过子窗口获取父窗口的参数和值。在javaScript中，只要通过open()函数打开的子窗口，就可以通过window.opener变量来获取父窗口的引用。所以，只要获取了父窗口表单的参数和值，问题就可迎刃而解。
+
+
+ -->

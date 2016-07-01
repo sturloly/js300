@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002让页面后退和前进</title>
+</head>
+<script type="text/javascript">
+	//前进
+	function goForward() {
+		window.history.forward();  //到之前网页
+	}
+	//后退
+	function goBack() {
+		window.history.back();     //到之后网页
+	}
+</script>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义前进和后退的按钮 -->
+		<input type="button" value="前进" onClick="goForward()"/>
+		<input type="button" value="后退" onClick="goBack()">
+	</p>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+在浏览一些文档形式的网页时（如html格式的技术说明书、html格式的小说等），往往需要给用户提供这样两个功能：前进和后退。用户通过单击按钮达到访问之前网页和之后网页的功能。
+
+难点剖析
+要搞清楚页面为什么可以前进和后退，就必须要知道浏览器的浏览历史（history)概念，浏览器在访问网页时会把访问的记录按照时间顺序进行排列。而forward() back()函数就负责在浏览历史中找到前一个网页和后一个网页。
+
+其他说明
+在history对象里，还有一个go()函数，其有一个整型参数，当参数为正数时表示前进N页：当为负数时则表示后退N页。例如，go(-1)的效果与back()函数的效果一样。
+
+
+ -->
+

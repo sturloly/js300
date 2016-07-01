@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>092让文本框只带有下划线</title>
+	<script type="text/javascript">
+		function changeTextStyle() {  //让文本框只带有带有下划线
+			//获得文本框的DOM  
+			var myText = document.getElementById("myText");
+			myText.style.borderColor = "black";  //设置边框颜色
+			myText.style.borderStyle = "solid";  //设置边框样式为实践
+			myText.style.borderWidth = '0 0 1px 0'; //设置边框大小, 0代表无
+		}
+	</script>
+
+</head>
+<body style="text-align: center;" onload="changeTextStyle()">
+	<!-- 定义文本框 -->
+	请输入姓名: <input type="text" value="" id="myText"><br><br>
+	<!-- 定义按钮 -->
+	<input type="button" value='按钮' id="myBtn"/>
+</body>
+</html>
+
+<!-- 
+第8章文本输入框和下拉菜单特效
+文本输入框和下拉菜单是常见的用户输入控件,前者允许用户通过键盘录入一些信息,如字母\数字\标点和汉子等;而后者让用户从多个选择项里选择其中以个或多个座位输入javaScript提空了多个函数和属性来控制它们,以为用户提供更多更好的控件特效.本章介绍了几类javascript应用比较多的文本输入框和下拉菜单特效.
+
+
+实例描述
+网页中的文本框默认是一个矩形框,它有4个边,而现实中需要填空的地方却常常仅是一条下划线而已,所以可以借助javascript来实现用文本框模拟现实中的填空下划线.
+
+难点剖析
+设置文本框的样式需要借助于CSS.本例代码中,使用边框的粗细来隐藏左边框\有边框和上边框,这样就实现了只有一条下划线的文本框效果.
+
+ -->

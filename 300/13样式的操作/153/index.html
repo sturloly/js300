@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>153自定义错误样式</title>
+	<!-- 定义一个外部演示，和引入外部css文件效果一样 -->
+	<style>
+		.myerr {
+			border-bottom:2px dotted blue;
+		}
+	</style>
+	<script>
+		//按钮的click事件监听函数
+		function save() {
+			//获取目标DOM, t1和t2
+			var t1 = document.getElementById('t1');
+			var t2 = document.getElementById('t2');
+			if(t1.value == '') { //如果t1的值为空，则修改class
+				t1.className = 'myerr';  //在js里，用className表示标签的class
+			}
+			if(t2.value == '') { //如果t2的值为空，则修改class
+				t2.className = 'myerr';
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<form action="">
+		姓名：<input type="text" name="t1" id="t1" class="" />
+		年龄：<input type="text" name="t2" id="t2" class="" />
+	</form>
+	<br>
+	<input type="button" onclick="save()" value="保存">
+	
+</body>
+</html>
+<!-- 
+实例描述
+在一些网站的会员注册页面填写资料时，如果有什么遗漏或者错误，会看到文本框下边有一个比较醒目的小红线，该效果可以通过动态为原色添加class样式来实现。本例将介绍如何实现该效果。
+
+难点剖析
+在实例代码中，姓名是必须项，因此在单击"保存"按钮事，需要检查该输入框是否为空。本例为这个输入框的class增加了一个myerr值。这个class是预先定义好的，它的目的就是改变输入框下边框的颜色。
+
+其它说明
+网页中可能有很多原色采用相同的样式，笔者建议不要通过手动修改原色的style属性来改变样式，而是把这些相同的样式预先定义好，到时只需动态修改原色的className属性即可达到目的。这么做有一个好处，就是可以单独维护这个样式的内容，从而提高代码的可维护性。
+
+
+ -->

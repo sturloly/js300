@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>175上传图片以后显示缩略图</title>
+</head>
+<body style="text-align: center;">
+	<div id="demo"></div>
+	<form action="./upload.html" target="tgt_frame" method="post" enctype="multipart/form-data" name="myform">
+		<label>
+			<input type="file" name="mypic">
+		</label>
+		<label>
+				<input type="submit" name="submit" value="提交2222">
+		</label>
+	</form>
+	<iframe id="tgt_frame" name="tgt_frame" style="display: none;"></iframe>
+</body>
+</html>
+
+<!-- 
+实例描述
+在一些网站的相册程序中，当上传完一张照片时，这张照片的缩略图会立刻显示在网页上，这样用户会比较直观地看到自己上传了那张照片。本例将实现该效果。
+
+难点剖析
+本例采用非常简单的技术实现了比较复杂的效果。这得益于两点技巧l;
+(1) 把表单提交的目标指向一个框架，而不是当前网页，这样可以避免网页的刷新。
+(2) 这个提交网页的框架不能被用户看见，因此本例使用CSS属性把它音隐藏起来。
+
+其他说明
+实例中的upload.html只是一个静态网页，它并没有接收来自客户端的文件流。在实际开发中，其一定是一个动态网页，或者以.php\.jsp\.aspx等结尾的URL。
+ -->

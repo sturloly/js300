@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3页面加载完毕的判断2</title>
+</head>
+<script>
+	//加载完成以后的回调函数
+	function myOnLoad() {
+		alert('网页加载完毕');  //提示一句话
+	}
+	//使用window的onload元素进行回调处理
+	window.onload = myOnLoad;
+	//文档加载完毕的回调，为onreadystatechange 设置回调
+	document.onreadystatechange = myPageLoad;
+	//定义回调函数
+	function myPageLoad () {
+		//判断文档的readyState属性
+		if(document.readyState == "complete") {
+			alert('文档加载完毕');    //提示一句话
+		}
+	}
+
+	 /*
+	 因为文档的加载完毕肯定在网页加载完毕之前，所以以上代码的运行效果将是先提示“文档加载完毕”，再提示“网页加载完毕”。
+	 */ 
+
+</script>	
+<body>
+
+</body>
+</html>
+
+<!-- 
+实例描述
+在页面完全加载完成以后，再来执行一些需要改动DOM元素的javascript 代码会比较合理一些。因为如果页面没有加载完全就执行javascript 可能出现一些随机性错误，譬如某某DOM元素为空或不存在。因为，在页面加载完毕以后再执行 javascript 是一种 比较合理的做法。
+
+难点剖析
+window的onload 属性是一种事件的回调， 它所监视的事件就是网页元素加载完毕与否。因此，利用该属性，可以非常准确地知道网页是否已经加载完毕。
+
+
+其他说明
+在某些时候，window的onload 回调可能会不太合适。因为，window的onload 回调是在网页里的所有元素（包括文档、图片、脚本、样式等）都被加载完毕以后才被调用，有时只需要网页里的文档本身加载完毕就可以进行脚本的执行，此时就需要为document的 onreadystatechange 设置回调，并判断 readyState 属性了。
+见3页面加载完毕的判断2
+
+ -->

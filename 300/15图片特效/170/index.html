@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>170重新加载验证码图片</title>
+	<script>
+		function loadImg(){
+			var pic = document.getElementById('pic');
+			pic.src = '1.jpg?time='+new Date().getTime();
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="重新加载" onclick="loadImg();">
+	</p>
+	<img src="1.jpg" width="150" height="100" id="pic" alt="">
+</body>
+</html>
+
+<!-- 
+实例描述
+图形验证码广泛应用于网站用户的注册和登录界面。有时因为验证太复杂，用户可能会看不清，此时需要给用户提供一个重新加载的功能。本例将演示如何实现该功能。
+
+难点剖析
+与动态加载图片的功能类似，重新加载图片也是通过修改图片的src属性来实现的。只不过，为了避免读取缓存，可以用过添加一个随机数作为参数的方式保证每次都读取的是最新图片数据。
+
+ -->

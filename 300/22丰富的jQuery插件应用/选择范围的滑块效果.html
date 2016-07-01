@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选择范围的滑块效果</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.slider.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				//创建范围滑块
+				$( "#slider-range" ).slider({
+					range: true,	//是否为范围型的滑块
+					min: 0,			//最小值
+					max: 500,		//最大值
+					values: [ 75, 300 ],//默认值
+					slide: function( event, ui ) {//滑动事件回调
+						//为金额的输入框设置值
+						$( "#amount" ).val( "￥" + ui.values[ 0 ] + " - ￥" + ui.values[ 1 ] );
+					}
+				});
+			});
+		</script>
+    </head>
+    <body>
+		<label>请选择金额范围：</label>
+		<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" /><br>
+		<div id="slider-range"></div>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006修改网页标题</title>
+	<script type="text/javascript">
+
+		//修改标题
+		function changeTitle () {
+			//得到新的title的值
+			var newTitle = document.getElementById('newTitle').value;
+			document.title = newTitle; //修改标题
+		}
+
+	</script>
+</head>
+<body style="text-align:center">
+	<!-- 自定义输入框和按钮-->	
+	<input type="text" name="newTitle" id="newTitle" value="orginal Title"/>
+	<input type="button" value="修改标题" onclick="changeTitle()"/>
+</body>
+<script type="text/javascript">
+		var newTitle = document.getElementById('newTitle').value;
+	document.title = newTitle;
+
+</script>
+</html>
+<!-- 
+实例描述
+网页的标题是可以动态修改的，不仅可以用过服务器实现，在客户端使用JavaScript也可以达到动态 修改网页标题的目的。
+
+
+难点剖析
+首先需要明确的是，网页的标题属性是由document.title决定的。本例代码中，首先得到文本输入框中新标题的值，然后通过这个title属性来修改网页标题。
+ -->

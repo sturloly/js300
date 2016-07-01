@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>149让样式动起来</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!-- 定义一个外部样式，和引入外部css文件效果一样 -->
+		<style>
+			.myclass{
+				color:blue;
+			}
+		</style>
+		<script type="text/javascript">
+			//按钮的click事件监听函数
+			function changeStyle(){
+				//通过js得到文本所使用的样式表，
+				//因为只有一个，所以这里只需要访问第一个样式表
+				var rs = document.styleSheets[0].cssRules;
+				if(!rs)//有的浏览器不支持cssRules，需要用rules来得到
+					document.styleSheets[0].rules;
+				//改变第一条规则的颜色样式
+				rs[0].style.color = 'pink';
+			}
+		</script>
+	</head>
+	<body style="text-align:center">	
+		<span id="mytxt" class="myclass">测试文本</span>
+		<br/>
+		<input type="button" onclick="changeStyle();" value="改变文本的颜色"/>
+	</body>
+</html>
+
+<!-- 
+实例描述
+CSS样式是静态的,但是网页需要动起来才能与用户互动.javaSript几乎可以控制网页中的一切,包括CSS的属性在内,这样就能向办法让CSS动起来.
+
+难点剖析
+在网页里,通过CSS的样式定义了文本的颜色为蓝色,但是单击"改变文本的颜色按钮后,程序把文本style里的属性改成了其他颜色"
+
+其他说明
+本例代码在改变文本颜色时,使用的颜色的英文单词.其实,这里也可以使用以"#"开头的RGB代码值,比如"#FFFFFF"表示白色, "#000000" 表示黑色.
+
+ -->

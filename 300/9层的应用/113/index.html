@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>113带关闭按钮的右下角提示层</title>
+	<script type="text/javascript">
+		function init(){
+			var con1 = document.getElementById('con1');
+			con1.style.bottom = '10px';
+			con1.style.right = '20px';
+		}
+		function close(){
+			document.getElementById('con1').style.display = 'none';
+		}
+	</script>
+</head>
+<style>
+	#con1{		
+		background-color: gray;
+		overflow: hidden;
+		position: fixed;
+		width: 100px;
+		height: 100px;
+		z-index: 99;
+	}
+	.con_title{
+		text-align: right;
+	}
+</style>
+<body style="text-align:center" onload="init();">
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<div id="con1">
+		<p class="con_title"><a href="javascript:close();">X</a></p>
+		<p>这是一个广告</p>
+	</div>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+</html>
+
+<!-- 
+实例描述
+有些用户可能觉得右下角有一个提示层会比较碍眼,或者本身右下角的层所包含的就是关高,那马需要为用户提供一个可以关闭这个层的功能.本例将演示如何实现该网页特效.
+
+难点剖析
+被班里是上一个实例的扩展,多提供了一个关闭按钮.因此只需要为这个"x"的链接提供click事件,事件的回调代码就是把这个层隐藏起来.
+
+ -->

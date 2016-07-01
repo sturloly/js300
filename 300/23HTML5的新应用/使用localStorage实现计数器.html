@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>使用localStorage实现计数器</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//初始化函数
+			function init(){
+				//如果浏览器支持本地存储
+				if(localStorage){
+					//判断是否已经有numCount变量了，如果没则设置为1
+					if(!localStorage.numCount)
+						localStorage.numCount = 1;//存储新的numCount变量
+					else
+						localStorage.numCount++;//计算器自加1
+					//展示结果，显示一个层里
+					document.getElementById('container').innerHTML
+						= '计数器当前为：'+localStorage.numCount;
+				}
+			}
+		</script>
+    </head>
+    <body onload="init()">
+		<div id="container"></div> 
+    </body>
+</html>

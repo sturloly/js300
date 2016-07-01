@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>049用top操作顶部的框架</title>
+		<script type="text/javascript">
+			//子框架的互相引用
+			function alertFrames() {
+				//使用top变量得到顶层的父框架，这里就是window
+				var topFrame = top;
+				//用提示框展示topFrame的html
+				alert(topFrame.document.body.innerHTML);
+			}
+		</script>
+	</head>
+	<body style="text-align: center;">
+		<!-- 定义框架 -->
+		<iframe id="frame1" src="确保网页只能被框架载入.html"></iframe>
+		<iframe id="frame2"></iframe>
+		<br>
+		<input type="button" value="用top操作顶部的框架" onclick="alertFrames()">
+	</body>
+</html>
+<!-- 
+实例描述
+top是一个非常好用的变量，它的含义是顶层的框架，它往往和window指的是同一个窗口或框架。
+
+难点剖析
+本例代码中的javascript代码是在顶层的窗口里运行的，其实如果把这段代码放到任何一个框架里运行，结果都是一样的。top变量的用处比较大，尤其是在框架嵌套比较复杂的情况下。
+
+备注
+iframe1的src跳转为“050确保网页值能被框架载入”的演示。
+ -->

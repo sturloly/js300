@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>一次选择多个不同类的元素</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function replaceDom(){
+				$('<p><a href="#">link</a></p>').replaceAll('p:contains("abc")')
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<form>
+			<p>asdfghjkl</p>
+			<p>abcjkl</p>
+			<p>wefwefwef</p>
+			<br>
+			<input type="button" value="替换包含abc的段落为链接" onclick="replaceDom();"/>
+		</form>		
+	</body>
+</html>

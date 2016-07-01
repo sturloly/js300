@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>058网页打开5秒后弹出广告窗口</title>
+	<script type="text/javascript">
+	var aa = document.getElementsByClassName("isis"); 
+		function init() { 
+		 //初始化的函数
+			setTimeout(function() {  
+				//open 一个新窗口
+				var count = 5;
+				
+				setInterval(function() { 
+					if(count >0) {
+						console.log("lala" + count);
+						aa[0].innerHTML= count + " 秒后关闭";
+					}
+					count--;
+				},1000); 
+
+			},1000);  //5000毫秒
+		}
+	</script>
+</head>
+<body style="text-align: center;height:400px;width:100%;" onload="init()">
+	<h2>广告窗口将5秒后打开</h2>
+	<h3 class="isis">232322</h3>
+</body>
+</html>
+
+<!-- 
+实例描述
+广告是网站永远不可避免的一个话题，没有广告的话，大多数网站是无法生存的。但是如果用户每次一打开网站就弹出广告窗口，这样会很影响网站的友好性。本例将介绍一种广告被延迟加载的方式。
+
+难点剖析
+任何弹出窗口的打开都离不开open() 函数。只是本例的效果要求只能在5秒以后才可以打开弹出窗口，所以，这里就不得不依赖于上述代码所示的定时器功能了。
+ -->

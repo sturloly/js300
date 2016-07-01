@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定义一套自己的Ajax框架</title>
+	<script type="text/javascript">
+		//定义一个function, 作为一个Ajax类
+		//它的构造函数需要提供以下参数列表
+		function Ajax(url,callback,params,method) {
+			this.method = method; //对象的ajax请求方法
+			this.url = url; //对象的ajax请求url
+			this.params = params;  //对象的ajax请求参数
+			this.callback = callback; //对象的ajax请求回调
+			this.send = function() { //请求发送函数
+				if(!this.method)  //当没有提供请求方法的时候，默认为GET
+					this.method = "GET";
+				if(method == "POST") { //如果是POST方法
+					//用POST方法，参数可以通过send方法的参数写道请求的内容流中去
+					window.Ajax.client.open(this.method, this.url, true);
+					window.Ajax.client.send(params);
+				}else if(method == "GET") {  //如果是GET方法
+					//用GET请求方法，参数就只能放在URL的后边，这种方式收到URL长度限制
+					window.Ajax.client.open(this.method, this.url + "?" + params,true);
+					window.Ajax.client.send();
+				}
+				//请求发出以后，就开始监听client的状态变化
+				window.Ajax.client.onreadystatechange = function(){
+					//如果成功返回，则调用预定义的回调函数
+					if(window.Ajax.client.readyState ==4 && window.Ajax.client.status ==200){
+						callback();
+					}
+				};
+			};
+		//这里，把Ajax的client属性作为一种静态变量，类似于单例模式
+		if(!window.Ajax.client){
+			//判断是否支持ActiveX控件，老版本的IE浏览器就需要使用ActiveXObject来创建
+			if(window.ActiveXObject) {
+				//通过实例化ActiveXObject的一个新实例来创建XMLHTTPRequest对象
+				window.Ajax.client = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//其他大多数浏览器都支持本地javascript对象
+			else if(window.XMLHttpRequest) {
+				//创建XMLHTTPRequest的一个实例（本地javascript对象）
+				window.Ajax.client = new XMLHttpRequest();
+			}
+			}
+		}
+
+
+		//button的click事件函数
+		function sendAjax(){
+			//创建一个Ajax对象，然后提供必要的参数
+			var ajax = new Ajax('test001.txt', function(){
+				alert(window.Ajax.client.responseText);
+			},'','GET');
+			//发送请求
+			ajax.send();
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+		<input type="button" value="Send" onclick="sendAjax()">
+</body>
+</html>
+
+<!-- 
+实例描述
+Ajax的使用方法和步骤相比比较固定，如果每次都重复地写这些步骤，会费时费力。此时可以把这些功能包装起来，做成一个库，以供日后使用。
+
+难点剖析
+本例代码提供了一个参考，即把Ajax的核心功能全部整合到一个Ajax对象里。开发人员可以直接使用该对象，简化Ajax的开发工作。当然，代码还有进一步改进和完善的余地，比如增加异常处理、错误处理、异步或同步调用等功能。
+很多javaScript开发框架也集成了Ajax技术，从本质上来说，它们也是采用了与本例类似的一种包装方法。如果读者可以完全掌握本例所涉及的技术规范，那就表示读者可以灵活地使用Ajax技术了。
+ -->

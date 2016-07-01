@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>156无所不能的变量载体</title>
+	<script>
+		//定义变量f,并我它赋值一个函数，函数名则就是f
+		var f = function() {
+			//函数的功能就是进行一个alert操作
+			alert('我是一个函11数哟。')
+		};
+		//定义函数callme，传入的参数就是一个函数
+		function callme(fun) {
+			fun();  //执行函数
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="callme(f);">
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+在实例155中曾提到，变量的类型可以是一个函数。如果变量是函数，那么该函数是否能传递参数呢？时是否能和操作普通函数一样进行各种操作呢？本例将进行详细介绍。
+
+难点剖析
+不难看出，变量f具有一个普通变量所具有的所有特性，为宜的不同之处在于这个变量的值是一个函数，并且可以通过"()"来执行这个函数。在javaScript里，这种类似的应用比较多，而且为javaScript的灵活性起到了不可或缺的作用。
+
+ -->

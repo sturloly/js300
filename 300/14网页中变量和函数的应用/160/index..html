@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>160调用动态函数</title>
+	<script>
+		//测试函数
+		function fun() {
+			//得到文本框的值
+			var val = document.getElementById('text').value;
+			window[val].call(this); //获取到动态的函数变量，然后使用call调用它
+		}
+		function f1() {			//测试函数1
+			alert('我是f1');
+		}
+		function f2() {     	//测试函数2
+			alert('我是f2')
+		}
+		function f3() {     	//测试函数3
+			alert('我是f3333')
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<input value="" type="text" id="text" /><br><br>
+	<input value="调用" type="button" onclick="fun()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+一般来说，函数在调用之前，系统必须要知道函数的名字，然后才能使用括号来调用它。但是一些动态的程序框架会要求动态调用这些函数。在调用之前对函数名一无所知时，这样解决这一问题呢？本例给出了答案。
+
+难点剖析
+本例巧妙地利用了Funcion.prototype的call()函数，它是所有函数类型的变量都自带的函数。因此，用户在网页输入函数的名字后，程序就可以动态获取该函数变量，然后调用它。
+
+
+ -->

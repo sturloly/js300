@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>动态播放或暂停视频</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//播放/暂停，采用同一个方法实现
+			function playPause(){ 
+				//获取视频DOM元素
+				var myVideo = document.getElementById("myVideo"); 
+				if (myVideo.paused)		//判断当前是否处于暂停状态
+				  myVideo.play();		//调用play()方法开发播放
+				else 
+				  myVideo.pause();		//调用pause()方法暂停视频播放
+			}
+		</script>
+	</head>
+	<body style="text-align:center">
+		<!-- HTML5新增的video标签，用于在网页里嵌入可以播放的视频 -->
+		<video width="320" height="240" controls="controls" id="myVideo">
+			<!-- 提供了两种格式的视频文件，以适应不同浏览器对video的支持 -->
+			<source src="movie.mp4" type="video/mp4" />
+			<source src="movie.ogg" type="video/ogg" />
+			对不起，您的浏览器暂不支持video视频标签!
+		</video>
+		<br/>
+		<input type="button" value="播放/暂停" onclick="playPause();"/>
+	</body>
+</html>

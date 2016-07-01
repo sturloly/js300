@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038动态选择聚焦的控件</title>
+	<script type="text/javascript">
+		//第一个单选框为焦点
+		function focusIt() {
+			var f = document.forms[0]; //获取表单DOM
+			var myRadio = f.myRadio; //获取单选框
+			myRadio[0].focus();   //第一个单选框获得焦点
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form>
+		文本框：<input type="text" name="myText" id="">
+		<br>
+		单选框：<input type="radio" name="myRadio" value="1" id="">
+		<input type="radio" name="myRadio" value="2" id="">
+		<br>
+		下拉列表：
+		<select name="mySelect">
+			<option value="">==请选择==</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<br>
+		<input type="button" value="第一个单选框为焦点" onclick="focusIt()">
+
+	</form>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+在网页里，对于可以与用户互动的控件，比如，超级链接、输入框、选择框等，是可以成为焦点的，也就是聚焦。成为焦点的控件，才能在运行时使用键盘操作。用户通过鼠标或者"tab"键来切换焦点，javascript也可而已动态指定聚焦的控件。
+
+难点剖析
+调用focus()函数可以让当前的控件获得焦点。本例中，先单击按钮让第一个单选框获得焦点，此时如果按”空格“键，该单选框就会被勾选；如果是文本框获得了焦点，则即可输入内容。
+
+ -->

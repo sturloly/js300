@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>190根据不同的返回HTTP代码进行不同的响应</title>
+	<script type="text/javascript">
+			var client;				//定义XMLHttpRequest对象，也可以叫ajax客户端
+			//button的click事件回调函数
+			function sendAjax(){
+				// 判断是否支持ActiveX控件,老版本的IE浏览器就需要使用ActiveXObject来创建
+				if(window.ActiveXObject){ 
+					// 通过实例化ActiveXObject的一个新实例来创建XMLHTTPRequest对象
+					client = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				// 其他的大多数浏览器都支持本地javascript对象
+				else if(window.XMLHttpRequest){ 
+					// 创建XMLHTTPRequest的一个实例（本地javascript对象）
+					client = new XMLHttpRequest();
+				}else{
+					alert('创建ajax客户端失败，您的浏览器不支持该服务');
+				}
+				if(client){				//如果创建client成功以后
+					var method = document.getElementById("the_method").value;
+					var params = document.getElementById("params").value;
+					//这里的URL故意写一个错误的地址进行测试
+					//设置ajax打开以后，建立连接的方式和目标文件，以及是否为异步模式
+					if(method == 'POST'){
+						//用POST方法，参数可以通过send方法的参数写到请求的内容流中去
+						client.open(method,"test001_2.txt",true);
+						client.send(params);		//调用send函数，把参数写的请求内容中
+					}else if(method == 'GET'){
+						//用GET请求方法，参数就只能放在URL的后边，这种方式受到URL长度限制
+						client.open(method, "test001_2.txt?" + params,true);
+						client.send();
+					}
+					client.onreadystatechange = myCallBack;
+				}
+			}
+			//自定义回调函数
+			function myCallBack(){
+				alert(client.readyState)
+				//如果请求的response正常返回
+				if (client.readyState==4){
+					//在请求完成之后，隐藏请求进行中的提示
+					document.getElementById('loading').style.display = 'none';
+					if(client.status==200){//处理正常时的代码
+						alert('服务器端正常返回');
+					}else if(client.status==404){//处理URL不存在的情况
+						alert('网页不存在1');
+					}else if(client.status==500){//处理服务器内部错误的情况
+						alert('服务器内部错误');
+					}
+				}else{
+					//在请求完成之前，显示请求进行中的提示
+					document.getElementById('loading').style.display = 'block';
+				}
+			}
+	</script>
+	<style>
+			/*loading的样式*/
+			#loading{
+				border:1px solid black;
+				background-color:yellow;
+				display:none;
+				height:25px;
+				width:100px;
+				margin:5px auto;
+			}
+	</style>
+</head>
+<body style="text-align: center;">
+	<label>请求方法：</label>
+		<select id="the_method">
+			<option value="GET">GET</option>
+			<option value="POST">POST</option>
+		</select>
+		<br/>
+		<label>请求内容：</label>
+		<input type="text" id="params" name="params"/>
+		<br/>
+		<input type="button" value="Send" onclick="sendAjax();"/>
+		<br/>
+		<span id="loading">Loading....</span>
+	
+</body>
+</html>
+<!-- 
+实例描述
+Ajax的请求依赖于服务端的处理，服务端的处理可能存在各种情况，为了让用户知道发生了什么事情，程序需要根据不同的HTTP返回代码进行不同的逻辑处理。
+
+难点剖析
+本例故意把请求的URL携程一个错误的地址，这会引起著名的404错误。在自定义的回调函数中，如果捕捉到表示错误的返回代码，则需要使用alert语句给用户提示，这样用户才不会一直等待。
+
+ -->

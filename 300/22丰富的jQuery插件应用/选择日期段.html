@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选择日期段</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.datepicker.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				//设置start为开始日期输入框
+				$( "#start" ).datepicker({
+					dateFormat: "yy-mm-dd",//定义格式
+					changeMonth: true,	//是否定位到当前月份
+					numberOfMonths: 2,	//可见的月份数
+					onClose: function( selectedDate ) {
+						//设置结束日期的最小日期
+						$( "#end" ).datepicker( "option", "minDate", selectedDate );
+					}
+				});
+				//设置end为开始日期输入框
+				$( "#end" ).datepicker({
+					dateFormat: "yy-mm-dd",//定义格式
+					changeMonth: true,	//是否定位到当前月份
+					numberOfMonths: 2,	//可见的月份数
+					onClose: function( selectedDate ) {
+						//设置开始日期的最大日期
+						$( "#start" ).datepicker( "option", "maxDate", selectedDate );
+					}
+				});				
+			});
+		</script>
+    </head>
+    <body>
+		<label>选择日期段：</label><br>
+		<label for="start">从</label>
+		<input type="text" id="start" name="start"/>
+		<label for="end">到</label>
+		<input type="text" id="end" name="end"/>
+    </body>
+</html>

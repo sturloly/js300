@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019根据标签名获取多个元素</title>
+	<script type="text/javascript">
+		//获取多个DOM
+		function getDomsByTag() {
+			//获取的DOMs
+			var doms = document.getElementsByTagName("span");
+			var str = '';              //定义拼接字符变量
+			for (var i = 0; i < doms.length; i++) {
+				str += doms[i].innerHTML;   //拼接文本
+				str += "-";					//分隔符
+			}
+			alert("两个DOM的文本是：" + str);   //提示
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义元素 -->
+		<span>文字一</span>
+		<span>文字二</span>
+		<br/>
+		<input type="button" value="获取" onClick="getDomsByTag();"/>
+	</p>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+另一个常见的获取多个DOM的方式是获取相同标签的DOM。例如获取网页里所有的图片、所有的链接等。
+
+
+难点剖析
+同一类元素的获取，需要使用document对象的getElementsByTagName()函数，其参数为标签的名字。对于HTML来说，变迁的大小写是不敏感的，所以该函数的参数对大小写也是不敏感的。
+ -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>18通过id获取一个特定的DOM元素</title>
+	<script type="text/javascript">
+		//获取DOM的文字内容
+		function getDomText() {
+			//获取DOM的文字内容
+			var myLink = document.getElementById('myLink');
+			//获取SPAN的DOM
+			var mySpan = document.getElementById('mySpan');
+			var str = '';   //定义拼接字符变量
+			str += myLink.innerHTML;    //加入链接的文本
+			str += mySpan.innerHTML;    //加入SPAN的文本
+			alert("两个DOM的内容是：" + str);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义有ID属性的元素 -->
+		<a href="#" id="myLink">链接123</a>
+		<span id="mySpan">456文字</span>
+		<br/>
+		<input type="button" value="获取" onclick="getDomText();">
+	</p>
+	
+</body>
+</html>
+
+<!-- 
+第二章 DOM 操作
+文档对象模型（Document Object Model, DOM) 是W3C 标准组织推荐使用的，用来处理可扩展标记语言（如HTML、XML)的标准编程接口。DOM以一种标准的方式来进行文档对象的处理，不以平台和语言为差异，因此各种浏览器的文档操作方式都需要遵循该标准。javascript作为浏览器中应用最广泛的脚本语言，用它来访问和修改一个文档的内容和结构是最佳选择。本章介绍了如果用javascript访问、创建、删除文档元素，以及如果用jacsscript修改文档自身的结构。
+
+
+实例描述
+在一个网页里，id属性是一个元素的表示符，所有的网页元素都可以拥有这个id属性。一般来说，id是不允许重复的。因此，通过ID来获取网页中一个原色的DOM是最常见的定位元素的方法。
+
+
+难点剖析
+本例是一个非常简单的实例，它演示如何使用getElementById()函数获取一个元素的DOM对象。
+
+ -->

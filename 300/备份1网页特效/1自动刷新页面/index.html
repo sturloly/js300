@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1自动刷新页面</title>
+	<script> 
+		function refresh() {
+			window.location.reload(); //调用location 的 reload 函数
+		}
+		setTimeout('refresh()', 1000); //设置timeout, 10秒钟刷新一次
+	</script>					
+</head>
+<body>
+	正在刷新页面...
+</body>
+</html>
+
+<!-- 
+实例描述
+有一些具有时效特点的网页，譬如股票价格、外汇牌价等，有这样的用户需求：定时的自动刷新网页，把最新的数据展示给用户。那么这样的效果如何实现呢？javascript里有一个reload()函数可以实现这样的效果。
+
+难点剖析
+首先，读者需要知道reload()函数的作用是让浏览器刷新当前网页。其次，网页的自动刷新离不开一个定时器，也就是setTimeout()函数，这个函数属于window对象，它也是顶层对象，所以直接写函数名称就能被调用（不需要写成window.setTimeout())。setTimeout()函数包含了2个参数：第1个是执行的代码：第2个事间隔的时间，单位为毫秒，本例的间隔为10秒。
+
+
+其他说明
+本例演示了用过javascript来实现自动刷新网页的功能，其实在网页的头部标签中加入这样的代码，也可以实现相同的功能。
+
+<meta heep-equiv="refresh" content="20">
+其中20指的是没每隔20秒刷新一次页面。
+
+ -->

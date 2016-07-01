@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>159使用动态的函数参数</title>
+	<script>
+		//测试函数
+		function fun() {
+			//根据arguments变量的长度得到参数个数
+			var len = arguments.length;
+			//展示结果
+			alert(len + '个参数');
+			alert(caller)
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<input value="传入一个参数" type="button" onclick="fun(1)"/><br><br>
+	<input value="传入二个参数" type="button" onclick="fun(1,2)"/><br><br>
+	<input value="传入三个参数" type="button" onclick="fun(1,2,3)"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+javaScript函数参数列表是可变的，但是如果需要根据不同的参数个数做出不同的逻辑处理，应该如何得到实际传入参数的个数呢？
+
+难点剖析
+arguments变量是每一个函数的与生俱来的数组变量，当一个函数被调用时，javaScript解析器会根据实际传入的参数列表来填充这个数组变量argument。因此，可以通过隐藏的arguments变量来判断实际参数的个数。
+ -->

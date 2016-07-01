@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031删除所有的子元素</title>
+	<script type="text/javascript">
+		//删除元素的函数
+		function deleteChilds() {
+			//获取父DOM
+			var ul = document.getElementsByTagName('ul')[0];
+			if(ul.hasChildNodes()) { //判断是否包含子元素
+				//子元素的个数
+				var len = ul.childNodes.length;
+				for(var i=0; i<len; i++){//遍历
+					//从第一个元素开始删除
+					ul.removeChild(ul.childNodes[0]);
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<ul>
+		<li>item1</li>
+		<li>item2</li>
+		<li>item3</li>
+		<li>item4</li>
+	</ul>
+	<br>
+	<input type="button" value="删除所有子元素" onclick="deleteChilds()">
+</body>
+</html>
+
+<!-- 
+实例描述
+HTML的内容元素总是以嵌套的关系存在于网页中，因此，可以通过遍历树的方式访问网页里的每一个元素，让然也可以删除那些不必要的子元素。
+
+
+难点剖析
+删除子元素，可以通过javascript提供的removeChild()函数来实现。另外，需要意识到的另一点是，在遍历删除节点的过程中，每删除一个子元素，子元素的个数就会少一个，因此，实例代码始终删除的是第一个元素，知道没有任何子元素为止。
+
+
+
+ -->

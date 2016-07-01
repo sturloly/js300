@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用浏览器的Cookie保存用户名</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//监听按钮事件，负责登录的表单提交处理
+			function login(){ 
+				//获取输入框的DOM元素，用户名，密码和记住密码
+				var username = document.getElementById("username");
+				var pwd = document.getElementById("pwd");
+				var rem_user = document.getElementById("rem_user");
+				//如果用户需要记住密码
+				if(rem_user.checked){
+					//把用户名保存进cookie里
+					document.cookie = 'username=' + username.value;
+					var date = new Date();		//当前的时间
+					var ms = 10*24*3600*1000;	//10天以后失效
+					date.setTime(date.getTime() + ms);
+					//设置为新的值
+					document.cookie += "; expires=" + date.toGMTString();
+					alert(document.cookie);
+				}
+			}
+			//当页面加载完成以后，自动填充在cookie里保存的用户名
+			function initUsername(){
+				//获取username的DOM
+				var username = document.getElementById("username");
+				var c = document.cookie;	//提权当前的cookie
+				alert(c);
+				//提取key为username的cookie的值
+				if(c != '' && c.indexOf('username') > -1){
+					var arr = c.split(';');	//以分号为界分拆
+					for(var i=0;i<arr.length;i++){
+						var key_val = arr[i].split('=');//获取key和value
+						//设置cookie里的值到输入框
+						if(key_val[0] == 'username')
+							username.value = key_val[1];
+					}
+				}
+			}
+		</script>
+	</head>
+	<body style="text-align:center" onload="initUsername();">
+		<!-- 定义登录表单，及其包含的UI元素 -->
+		<form action="#" method="post">
+			<h2>请输入用户名和密码：</h2>
+			<p>
+				<!-- 用户名的输入框 -->
+				用户名：<input type="text" name="username" value="" id="username"/>
+			</p>
+			<p>
+				<!-- 密码的输入框 -->
+				密码：<input type="passowrd" name="password" value="" id="pwd"/>
+			</p>
+			<p>
+				<!-- 是否记住用户名的勾选框 -->
+				<input type="checkbox" name="rem_user" id="rem_user"/>记住用户名10天
+			</p>
+			<p>
+				<!-- 登录按钮，由login函数来做处理 -->
+				<input type="button" value="登录" onclick="login();"/>
+			</p>
+		</form>
+	</body>
+</html>

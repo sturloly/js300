@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>097成为焦点时清除文本框内容</title>
+	<script type="text/javascript">
+		//清除内容
+		function clearContent(myText) {
+			myText.value = '1';  //把文本内容的值设为空字符
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义文本框,监听onfocus事件 -->
+	请输入: <input type="text" value="" onfocus="clearContent(this)"/> <br><br>
+	<!-- 定义按钮 -->
+	<input type="button" value="无效按钮" id="myBtn" onclick=""/>
+</body>
+</html>
+
+<!--
+实例描述
+当一个文本输入框获得焦点时,需要用户在文本框中输入内容,这时如果可以把已有的旧内容清空,会是一种很好的用户体验.本例将演示如何实现这样的效果
+
+难点剖析
+焦点,指的是网页中的卡控件呗选择以后的状态,此时这个控件可以监听鼠标和键盘的事件.文本框获得焦点的事件是通过onfocus事件来监听的,本例在监听到该事件以后就把当前文本框的值设置为空字符串.
+
+-->
+
+

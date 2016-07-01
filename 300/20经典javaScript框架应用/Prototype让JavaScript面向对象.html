@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Prototype让JS面向对象</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="prototype.js"></script>
+		<script type="text/javascript">
+			var Dog = Class.create();
+			Dog.prototype = {
+			  initialize: function(myname) {
+				this.myname = myname;
+			  },
+			  cry: function(msg) {
+				alert(this.myname + ': ' + msg);
+			  }
+			};
+				
+			var duoduo = new Dog('多多');
+			duoduo.cry('hi');
+		</script>	
+	</head>
+	<body style="text-align:center">
+	</body>
+</html>

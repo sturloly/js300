@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023删除元素</title>
+	<script type="text/javascript">
+		//删除元素
+		function deleteElement() {
+			//获取准备删除DOM
+			var del = document.getElementById('del');
+			//调用删除函数彻底删除
+			del.parentNode.removeChild(del);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="删除元素" onClick="deleteElement()">
+	</p>
+	<!-- 定义被删除的元素 -->	
+	<span id="del">即将被删除的DOM</span>
+</body>
+</html>
+
+<!-- 
+实例描述
+删除元素，指的是把这个DOM元素彻底删除，而不是隐藏。一般来说,使用remoceChild()函数是最常见的方法。
+
+难点剖析
+由于removeChild()函数是对子元素的操作，而不是自身的删除。所以们需要先获取到删除元素的父元素，然后再调用该函数。在本例代码中，是先使用parentNode属性获得待删除元素的父元素，再删除目标元素。
+
+ -->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10页面载入等待界面</title>
+	<script type="text/javascript">
+		//提交表单的动作
+		function submitForm() {
+			var doing = document.getElementById('doing'); //获取界面的dom
+			doing.style.display = ''; //取消隐藏
+			self.location.reload(); //这里，重新加载页面来模拟表单的提交
+		}
+
+	</script>
+</head>
+<body style="text-align:center">
+	<div id="doing" style="Z-INDEX:99;left:0px; top:0px; display: none; WIDTH:100%; POSITION:absolute; HEIGHT:100%; background:gray" >
+		<br/><br/><br/>载入中，请等待 。。。
+	</div>
+	<p>
+		<input type="button" value="提交表单" onClick="submitForm()"/>
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+有一些页面的载入速度会比较缓慢，为了提高用户的界面友好性，可以在页面跳转之前，展示一个提醒界面给用户。本例提供一个页面载入的等待界面。
+
+难点剖析
+本例用过一个绝对定位的div层来覆盖所有的页面元素，以友好地提示用户数据正在加载中。本程序主要需要注意两点。
+（1）把这个完全覆盖的层显示出来；
+（2）需要保证层的展示代码在表单提交或页面跳转之前，搜则无法实现该效果。
+
+其他说明
+本例只演示了文字的提示界面，读者如果有兴趣，还可以把文字换成图片，其效果会更形象直接。
+ -->

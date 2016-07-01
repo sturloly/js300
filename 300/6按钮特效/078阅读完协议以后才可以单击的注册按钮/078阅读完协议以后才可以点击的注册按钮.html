@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>078阅读完协议以后才可以点击的注册按钮</title>
+	<script type="text/javascript">
+		//div的滚动条滚动事件
+		function doScroll() {
+			//获取协议和按钮的DOM
+			var d = document.getElementById('xieyi');
+			var btn = document.getElementById('btn');
+			console.log(d.scrollTop);
+			console.log(d.offsetHeight);
+			if (d.scrollTop + d.offsetHeight >200) {
+				btn.disabled = false; //恢复按钮可用
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<div style="width: 200px;height: 150px;overflow-y:scroll; margin: 5px auto;border: 1px solid black" onscroll="doScroll()" id="xieyi">
+		请认真阅读本协议。。。<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		协议 end 
+	</div>
+	<input type="button" value="注册" id="btn" disabled="disabled"/>
+</body>
+</html>
+<!-- 
+实例描述
+与上一个实例一样，为了防止用户不阅读协议就直接注册，还可以通过一个小小的技巧，让用户不得不读完协议以后才可以单击"注册" 按钮。 本例将讲解如何实现该特效。
+
+难点剖析
+本例的实现难点在于如何判断协议内容是否全部展示在电脑屏幕上了。本例采用了一个技巧，就是把协议的内同故意放在意个带滚动条的区域里，然后监听这个区域的滚动事件，当滚动条距离顶部的距离和区域的实际高度之和超过内容本应展示的高度时，就可以认为内容已经被全部阅读了。此时，就可以把注册按钮的可用状态恢复回来。
+
+ -->

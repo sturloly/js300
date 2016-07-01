@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>079会变色的按钮</title>
+	<script type="text/javascript">
+		//初始化函数
+		function  init() {
+			//获取按钮的DOM
+			var btn = document.getElementById('btn');
+			//监听鼠标移入事件
+			btn.onmouseover = function () {
+				//修改背景色为红色
+				this.style.backgroundColor = 'blue';
+			}
+			//监听鼠标移出事件
+			btn.onmouseout = function () {
+				//恢复背景颜色
+				this.style.backgroundColor = '';
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<input type="button" value="按钮" id="btn">	
+</body>
+</html>
+<!-- 
+实例描述
+有时，为了凸显阿牛的可单击性，可以通过让按钮变色的方式来引起用户的注意。
+
+难点剖析
+本例的实现主要涉及按钮的两个事件：鼠标移入和鼠标移出。当鼠标移入时，就把按钮的背景色变红；当鼠标移出时，则恢复原有背景色。
+ -->

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>142月底和月初的网页标题各不相同</title>
+	<script type="text/javascript">
+		//修改标题的函数
+		function start() {
+			var date = new Date(); //当天的日期和事件
+				var str = '';   //拼接字符
+				var m = date.getMonth();   //月份
+				if(m < 15)  //小于15表示月初
+					str = '月初, 要做好这个月的计划和安排偶偶偶偶';
+				if(m >=15)   //大于15表示月末
+					str = '这个月已经过去超过一半了,请珍惜事件';
+				document.title = str;  //修改标题
+			}
+	</script>
+</head>
+<body style="text-align: center;" onload="start()">
+	<p>
+		请注意看网页标题啊啊
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+对于一些银行或者电信运营商的网站,月底和月初非常重要,因为对它们的客户来说,网站必须具备提醒功能,比如提醒用户记得充值\还款等信息.本例讲解了如何判断当天是否为月末或月初,以及指定网页标题的特效.
+
+难点剖析每个系统对于月末和月初的理解是不一样的,本例就认为小于15号表示月初,否则都表示月末.读者可以对本例代码进行适当修改,以适应具体开发要求的逻辑.
+ -->

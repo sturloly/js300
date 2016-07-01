@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>084用链接替代表单提交按钮</title>
+	<script type="text/javascript">
+		//自定义按钮的样式
+		function submitForm() {
+			var form = document.forms[0];   //得到表单的DOM
+			form.submit();   //提交表单
+		}
+	</script>
+	<style>
+		form{width: 300px; border: 1px solid black; margin: 5px auto}
+	</style>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form action="" method="get">
+		<br><input type="text" name=""/><br>
+		<a href="#" id="myLink" onclick="submitForm()">提交表单</a>
+	</form>
+</body>
+</html>
+
+<!-- 
+实例描述
+既然链接可以替代按钮,那么链接是否可以用于提交表单呢?当然是可以的,本例讲演示该效果.
+
+难点剖析
+提交表单的关键方法还是表单的submit()函数,本例通过连接的onclick事件主动调用表单的 submit()函数来实现该效果.
+
+ -->

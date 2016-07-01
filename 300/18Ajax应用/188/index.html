@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>188为Ajax请求添加参数</title>
+	<script>
+		var client;  //定义XMLHttpRequest对象，也可以叫ajax客户端
+		//buton的click事件回调函数
+		function sendAjax(){
+			//判断是否支持ActiveX控件，老版本的IE浏览器就需要使用ActiveXObject来创建
+			if(window.ActiveXObject){
+				//通过实例化ActiveXObject的一个新实例来创建XMLRequest对象
+				client = new ActiveXObejct("Microsoft.XMLHTTP");
+			}
+			//其他的大多数浏览器都支持本地javascript对象
+			else if(window.XMLHttpRequest){
+				//创建XMLHTTPRequest的一个实例（本地javascrupt对象）
+				client = new XMLHttpRequest();
+			}else{
+				alert('创建ajax客户端失败，您的浏览器不支持该服务');
+			}
+			if(client){ //如果创建client成功以后
+				var method = document.getElementById('the_method').value;
+				var params = document.getElementById('params').value;
+				//设置ajax打开以后，建立连接的方式和目标文件，以及是否为异步模式
+				if(method == 'POST') {
+					//用post方法，参数可以通过send方法的参数写到请求的内容流中去
+					client.open(method,"test001.txt",true);
+					client.send(params);  //调用send函数，把参数写道请求内容中
+				}else if(method == "GET") {
+					//用GET请求方法，参数就只能放在URL的后边，这种方式守到URL长度限制
+					client.open(method,"test001.txt?" + params,true);
+					client.send();
+				}
+				client.onreadystatechange = mtCallBack;
+			}
+		}
+		//自定义回调函数
+		function myCallBack(){
+			alert(client.readyState);
+			//如果请求的response正常返回，并且http状态为200正常的
+			if(client.readyState==4 && client.status==200){
+				alert("ajax请求的结果是11：" + client.responseText);
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<label>请求方法：</label>
+	<select id="the_method">
+		<option value="GET"></option>
+		<option value="POST"></option>	
+	</select>
+	<br>
+	<label>请求内容：</label>
+	<input type="text" id="params" name="params">
+	<br>
+	<input type="button" value="Send" onclick="sendAjax();">
+</body>
+</html>
+<!-- 
+实例描述
+Ajax的请求是一次完整的HTTP请求，所以发送请求的参数也是必须的。对于不同请求方法的传递参数，是否会有不用？本例将演示两种不同的发送参数的方式。
+
+难点剖析
+选择不同的请求方法，Ajax发送参数的方式则不同。如果是GET方法，那么参数就只能放在URL地址中作为一种请求参数发送到服务器端，但是这种方式受到URL最大长度的显示：如果是POST请求，则通过send()函数吧请求参数的主妇数据发送到服务器端。两种方式各有其优缺点，读者要根据自己的实际情况来选择。
+ -->

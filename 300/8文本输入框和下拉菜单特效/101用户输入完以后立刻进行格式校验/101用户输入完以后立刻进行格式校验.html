@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>101用户输入完以后立刻进行格式校验</title>
+	<script type="text/javascript">
+		function validateTel() {  //格式校验
+			//获得文本框的DOM
+			var myTel = document.getElementById('myTel');
+			var val = myTel.value;   //获取用户输入的值
+			if(!/\b[0-9]+\b/.test(val)) {  //使用正则校验 不是数字
+				alert('只能输入数字');  //提示错误信息
+				//修改样式,引起注意
+				myTel.style.border = '1px solid red';
+			} else if (val.length != 11) { //长度必须是11位
+				alert('手机号码是11位');  //提示错误信息
+				//修改样式,引起注意
+				myTel.style.border = '1px solid red';
+			} else{
+				//修改样式,表示通过了
+				myTel.style.border = '1px solid green';
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义文本框 -->
+	请输入手机号码: <input type="text" value="" id="myTel" onblur="validateTel()"/>
+	<br> <br>
+	<!-- 定义按钮 -->
+	<input type="button" value="提交" id="myBtn">
+</body>
+</html>
+
+<!--
+实例描述
+对于网页表单来说,如果用户每次都要等到单击"提交"按钮以后才进行校验的话,会显得不太友好,如果能在用户每输入完一项就立刻检查,那就比较人性化了.本例将演示如何实现该功能.
+
+难点剖析
+要想让用户一离开输入框马上进行校验,就需要监听文本框的onblur事件,它表示当这个输入框失去焦点时立刻出发校验.在本例代码中,当监听到onblur事件以后,取出用户输入的文本值,进行数字校验和长度校验,如果不符合规则则把输入框的边框编程红色,引起用户的注意,如果用过校验则边框编程绿色,则代表用过校验.
+
+ -->

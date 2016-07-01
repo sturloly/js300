@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034修改控件的值</title>
+	<script type="text/javascript">
+		//修改控件的值
+		function modifyValues() {
+			var f = document.forms[0]; //获取表单DOM
+			var elements = f.elements; //获取所有的控件数组
+			//循环遍历
+			for(var i=0; i<elements.length; i++) {
+				var e = elements[i];  //当前的控件
+				if(e.tagName=='INPUT' && e.type=='button'){}
+				else
+				e.value ='1' ;  //同意把只修改成2
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form>
+		文本框：<input type="text" name="myText" id="">
+		<br>
+		下拉列表：
+		<select name="mySelect">
+			<option value="">==请选择==</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<br>
+		<input type="button" value="修改控件的值" onclick="modifyValues()">
+	</form>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+控件的值是最有价值的数据，它是去获取用户真实意图的途径，它允许用户手动输入或者选择，同时也可以使用javascript来修改这个值。
+
+难点剖析
+本例代码中，统一把所有控件的值都修改为2.细心的读者会发现，按钮上的文本也改成了2，但这往往不是我们所希望得到的结果。所以，在批量操作控件时，可以对按钮之类的控件进行排他处理。例如
+
+for(var i=0; i<elements.length;i++) {
+	var e =elements[i]; // 当前的控件
+	//判断是否是按钮
+	if(e.tagName=='INPUT' && e.type=='button')
+	else
+	e.value = 2;
+}
+
+ -->

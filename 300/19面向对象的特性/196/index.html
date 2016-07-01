@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>为string类型的变量扩展一个replaceAll方法</title>
+	<script>
+		//按钮的click时间监听函数
+		function startReplace() {  
+			var mytxt = document.getElementById('mytxt').value; 
+			var s1 = document.getElementById('s1').value;
+			var s2 = document.getElementById('s2').value;
+			var str = mytxt.replaceAll(s1,s2);
+			alert('替换以后的字符为：' + str);
+		}
+		String.prototype.replaceAll = function(src,tgt) {
+			//利用正则表达式，进行批量的字符替换
+			return this.replace(new RegExp(src,'ig'),tgt);//replace(旧内容，新内容)，"ig":i表示大小写不敏感。g表示global
+		};
+	</script>
+</head>
+<body style="text-align: center;">
+	源字符：<input type="text" name="mytxt" id="mytxt"/><br><br>
+	被替换换字符： <input type="text" name="s1" id="s1"><br><br>
+	新字符：<input type="text" name="s2" id="s2">
+	<br><br>
+	<input type="button" value="替换" onclick="startReplace()">
+</body>
+</html>
+
+<!-- 
+实例描述
+JavaScript的字符类型string有一个replace()函数，它只提供了替换一个字符的功能。如果需要进行多次匹配和替换的话，就需要在单独编写代码。是否可以提供一个replaceAll()函数呢？就像Java和C#中的replaceAll()函数一样。
+
+本例的实现并不难，主要还是要理解prototype的作用。它是扩展对象属性和功能的一个接口。JavaScript所有的字符数据的变量都是string类型，因此当为string添加了replaceAll()函数以后，所有的字符就都有这个函数了。
+
+
+ -->

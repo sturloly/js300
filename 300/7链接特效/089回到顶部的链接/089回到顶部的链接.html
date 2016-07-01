@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>回到顶部的链接</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">		
+			//回到顶部的函数
+			function returnTop(){
+				//通过修改document的滚动top的值来回到顶部
+
+				//ie如下
+				//document.documentElement.scrollTop = 0;
+
+				//chrome如下
+				document.body.scrollTop = 0;
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br>
+		<br><br><br><br>
+		<br><br>
+		<a href="javascript:returnTop();">回到顶部</a>
+	</body>
+</html>
+<!-- 
+实例描述
+当网页很长时,为了方便用户回到顶部,可以在页面最底部提供一个回到顶部的链接,用户通过单击该链接可以迅速回到顶部.
+
+本例的实现需要注意一点:网页浏览会动啊顶部时,其实就是滚动条距离顶部为0时.本例的代码证是通过控制该距离来实现回到顶部的特效.
+
+ -->

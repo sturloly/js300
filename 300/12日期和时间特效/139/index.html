@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>139使用定时器</title>
+	<script type="text/javascript">
+		//开始定时的函数
+		function start() {
+			//使用serInterval函数进行定时
+			window.setInterval(function(){
+				//得到当前的时间对象
+				var date = new Date();
+				var str = '';   //定义拼接的字符变量
+				//得到小时数
+				str += date.getHours();
+				str += ':';  //拼接冒号
+				//得到分钟数
+				str += date.getMinutes();
+				str += ':'; //拼接冒号
+				//得到描述
+				str += date.getSeconds();
+				//把结果显示出来
+				document.getElementById('this_sec').innerHTML = str;
+			},1000); //间隔为1秒
+		}
+
+	</script>
+</head>
+<body style="text-align: center">
+	<p>
+		<input type="button" value="开始定时" onclick="start();"/>
+	</p>
+	<h2 id="the_sec"></h2>
+</body>
+</html>
+
+<!-- 
+难点剖析
+本例简单地演示了如何在网页中显示当前时间,因为使用了定时器,所以就好像一个石英表一样显示时间,每次刷新的间隔为1秒.
+
+难点剖析
+本例简单地演示了如何在网页中显示当前时间,因为使用了定时器,所以就好像一个石英表一样显示时间,每次刷新的间隔为1秒.
+ -->

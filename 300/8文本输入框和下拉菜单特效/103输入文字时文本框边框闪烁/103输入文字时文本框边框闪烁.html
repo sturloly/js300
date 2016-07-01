@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>103输入文字时文本框边框闪烁</title>
+	<script type="text/javascript">
+		//初始化函数
+		function init() {
+			//获取所有的文本DOM
+			var texts = document.getElementsByTagName('input');
+			//遍历所有的文本框
+			for(var i =0; i<texts.length; i++) {
+				var t =texts[i];  //当前文本框
+				//监听聚焦事件
+				t.onfocus = function() {
+					var e = this; //保留当前DOM的引用
+					//开始闪烁的定时器
+					timer = setInterval(function() {
+						//获取当前的边框颜色变量
+						var c = e.style.borderColor;
+						if(c == 'red') {  //如果是黄色
+							e.style.borderColor = 'yellow' //恢复原色
+						} else if( c == 'yellow'){
+							e.style.borderColor = '';
+						}
+						else { //否则,边框变成黄色
+							e.style.borderColor = 'red';
+						} 
+					},500);//每1秒闪烁一次
+				};
+				t.onblur = function(){  //监听离开事件
+					//恢复边框颜色
+					this.style.borderColor = '';
+					clearInterval(timer);  //消除定时器
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<!-- 定义文本框 -->
+	<input type="text">
+	<input type="text">
+</body>
+</html>
+
+<!-- 
+实例描述
+当网页需要填写一些信息时,可以在用户输入文字时让其文本框边框闪烁起来,让用户能更明确地看到正在填写的文本框.本例将演示如何实现该特效.
+
+
+难点剖析
+当文本框获得聚焦以后,程序就认为用户正在输入该文本框.然后,程序可以在onfocus事件的回调函数里,用过一个定时器来间隔改变边框的颜色,这样就实现了边框的闪烁特效.                       
+
+ -->

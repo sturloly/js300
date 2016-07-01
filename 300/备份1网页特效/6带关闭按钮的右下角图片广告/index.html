@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>6带关闭按钮的右下角图片广告</title>
+	<script type="text/javascript">
+		//定位层的函数
+		function posRightCorner() {
+			//top放到 高度-120 的位置， 120大概就是div 的高度
+			ad.style.top = document.body.scrollTop + document.body.clientHeight-120;
+			//left 放到宽度-200 的位置， 200大概就是div的宽度
+			ad.style.left = document.body.scrollLeft + document.body.clientWidth-200;
+			setTimeout("posRightCorner;", 100);
+		}
+		//关闭函数
+		function closeAD(){
+			ad.style.display= "none";  //隐藏div
+		}
+		//窗口加载完成以后定位
+		window.onload = function(){	
+			//得到div的dom对象
+			var ad = document.getElementById('ad');
+			posRightCorner(); //调用定位函数
+		}
+	</script>
+</head>
+<BODY style="margin 0px; text-align: center">
+	<!-- 定义右下角广告框的DIV -->
+	<div style="border: 1px solid black; z-index: 99999; width: 180px; position: absolute; height: 116px; background-color: rgb(201, 211, 243);" id="ad">
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#cfdef4">
+			<tbody>
+				<tr>
+					<td width="90%" valign="middle" height="24"></td>
+					<td width="" valign="middle" align="right">
+						<!-- 定义关闭链接按钮 -->
+						<a title="关闭" onclick="closeAD()" style="cursor: pointer;">X</a>
+					</td>
+				</tr>
+				<tr>
+					<td height="90" colspan="3">
+						<!-- 广告内容，这里用一句话简单替代-->
+						Hello My AD!
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</BODY>
+</html>
+<!-- 
+实例描述
+在一些新闻网站里，会有一种广告存在于网页的右下角，这种广告有一个特点，它总是可以随着窗口的大小变化而始终至于右下角。同时，它为了便于用户关闭广告，还提供了关闭按钮。本例将演示如何实现该广告效果。
+
+
+难点剖析
+本例的实现由3大难点值得注意，分别如下。
+（1）如何把一个层进行绝对的动态定位，也就是随着窗口尺寸的变化可以改变层的定位位置。
+（2）为了实时动态，必须依赖于定时器才行。
+（3）关闭广告的形式
+首先，用过body的scrollTop和 scrollLeft 属性获取层的坐标没然后再算上body的clientHeight 和 clientWidth, 以得到当前层的实时坐标没然后把它们的值减去层本身的宽度和高度，就可以得到层应该放在哪个位置了。其次，为了保证动态性，使用setTimeout()来让浏览器每隔100毫秒就检查和重新定位层的位置。最后，用过把style的display 属性设置为"none"的形式隐藏层，当然，这里可以通过彻底删除这个dom对象的方法来达到更好的效果。
+
+ -->

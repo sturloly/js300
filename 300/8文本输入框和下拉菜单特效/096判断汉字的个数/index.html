@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>096判断汉字的个数</title>
+	<script type="text/javascript">
+		//进行格式校验
+		function sumInput() {
+			// 获得文本框的DOM
+			var myText = document.getElementById("myText");
+			var val = myText.value;  //获取用户输入的值
+			var sum = 0;  //定义汉字的个数
+			for(var i=0; i<val.length; i++) { //遍历
+				var c = val.charAt(i);  //得到当前的字符
+				if(isChineseChar(c)) {  //汉字判断
+					sum++;  //个数自加
+				}
+			}
+			alert('包含汉字个数lala: ' +sum);  //用提示框展示结果
+		}
+		//汉字校验函数
+		function isChineseChar(c) {
+			var reg = /[\u4E00-\u9FA5]/;  //定义正则表达式
+			return reg.test(c);
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义文本框 -->
+	请输入: <input type="text" value="" id="myText" /> <br> <br>
+	<!-- 定义按钮 -->
+	<input type="button" value="判断汉字的个数" id="myBen" onclick="sumInput();" />
+	
+</body>
+</html>
+<!-- 
+实例描述
+javaScript中字符串对象有一个length()函数,它返回字符的个数,不论字符是英文字母\标点符号,还是汉字.
+这就带来一个不方便之处:汉字占两个字节,而英文字母和标点符号只占一个字节,只有判断出汉字的个数,才可以计算出这个字符在网页中实际占的长度是多少.
+
+难点剖析
+在实例代码中,首先取得用户输入的字符串,然后吧字符砖进行字符遍历,判断每个字符时候为中文字符.这里使用正则表达式来进行字符的判断,如果是中文字符,则累加一.中文字符在计算机里,本质上仅是一种编码,javaScript的字符采用的是Unicode,所以只需要知道字符在Unicode占据多少字节,就可得知该字符是否为中文字符.
+
+
+其它说明
+本例对中文字符的判断,给我们指明了另外一个应用,即如何判断字符串里哪些是非ASCII码,其实只要字符的ASCII码大于256,则都是非ASCII码.
+
+
+ -->

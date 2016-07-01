@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>138日期输入框</title>
+	<script type="text/javascript">
+		function init() {                          //初始化函数
+			var y = document.getElementById('y');  //年份的DOM
+			var m = document.getElementById('m'); //月份的DOM
+			var str = '';    //拼接字符
+			for(var i=2000; i<2030; i++) {  //为年份的下拉菜单置顶可选项
+				str += '<option value="' +i+ '">' + i + '</option>';
+			}
+			y.innerHTML = str;    //动态指定下拉菜单指定可选项
+			str = '';   //恢复空白字符
+			for(var i=1; i<=12; i++) {  //12个月,填充月份
+				str += '<option value="' + i +'">' + i +'</option>';
+			}
+			m.innerHTML = str;  //填充月份的DOM
+		}
+
+/*		function init(){
+			var y = document.getElementById('y');
+			var m = document.getElementById('m');
+			var str = '';
+			for(var i=2000;i<2030;i++) {
+				str += '<option value="'+i+'">'+i+'</option>';
+			}
+			y.innerHTML = str;
+			str = '';
+			for(var i=1;i<=12;i++){
+				str += '<option value="'+i+'">'+i+'</option>';
+			}
+			m.innerHTML = str;
+		}
+*/
+		function showDetail() {   //展示细节的输入框
+			var year = document.getElementById('y').value;  //选择的年
+			year = parseInt(year);  //解析为数字变量
+			var month = parseInt(document.getElementById('m').value);
+			var days = 30;  //默认为30天
+			if(isRunNian(year) && month == 2) {  //如果是闰年的2月
+				days = 29;   //一共是29天
+			} else if(!isRunNian(year)&&month==2) {  //如果不是闰年的2月,一共是28天
+				days = 28;
+			} else if(month ==1    //其他月为31天
+				||month ==3
+				||month ==5
+				||month ==7
+				||month ==8
+				||month ==10
+				||month ==12) {
+				days = 31;
+			}
+			var str = '<tr>';  //开始拼接日子的表头,为星期
+			for(var i =0; i<=6; i++) {   //从星期一到星期日
+				j="";
+				if(i == 0){
+					j="日"
+				} else if (i==1) {j="一"}   //笔记,个人改良
+				  else if (i==2) {j="二"}
+				  else if (i==3) {j="三"}
+				  else if (i==4) {j="四"}
+				  else if (i==5) {j="五"}
+				  else if (i==6) {j="六"}
+				str += '<td>星期' + j + '</td>'; //显示星期几
+			}
+			str += '</tr>';
+
+			var date = new Date(year, month-1, 1);  //创建指定年月日的日期,设为本月1号(0)
+			var week = date.getDay();   //它对应的是星期几,返回星期几0-6
+			var j = 1;  //定义 j变量
+
+
+			while(true) {    //永真循环
+				str += '<tr>';   //字符变量,拼接tr
+				for(var i =0; i<=6; i++) {   
+				//循环7次,笔记:千万从6开始,从1开始的话,week是0的话就进入死循环.
+					//如果星期对上了,则开始打印1号
+					if(j == 1 && i==week) {   
+						str += '<td onclick="fillDay(' + j + ');">1</td>';
+						j++;
+						//如果对上以后,则打印1号以后的
+					}else if (j >1 && j <= days) {
+						str +='<td onclick="fillDay(' + j + ');">' + j + '</td>';
+						j++;
+					} else  //否则就打印一个单元格
+						str += '<td>&nbsp;</td>';
+				}
+				str += '</tr>';
+				if(j >= days)  //如果j超过了当月的最大天数,则退出
+					break;
+			}
+
+
+
+			document.getElementById('tbl').innerHTML = str;  //填充输入区域
+		}
+
+		function isRunNian(y) {  //判断是否为闰年
+			return y % 4 == 0;
+		}
+
+		function fillDay(d) {  //填充日期的值
+			var y = document.getElementById('y').value;  //得到年
+			var m = document.getElementById('m').value;  //得到月
+			//为当前的输入框指定值
+			window.currDateInput.value = y+'年'+m+'月'+d+'日';
+		}
+
+		function inputDate(input) {    //日期输入框的onfocus事件
+			window.currDateInput = input;   //设置为当前的日期输入框
+			var d = document.getElementById('d_div');  //得到其他的DOM
+			var y = document.getElementById('y');
+			var m = document.getElementById('m');
+			var now = new Date();   //当前的日期
+			y.value = now.getFullYear(); //年份
+			m.value = now.getMonth() + 1;   //月份
+			d.style.display = 'block';
+			showDetail();
+		}
+	</script>
+
+
+
+</head>
+<body style="text-align: center;" onload="init();">
+	<p>
+		<input type="text" onfocus="inputDate(this)"/>
+	</p>
+	<div id="d_div" style="border: 1px solid red;display: none;width: 400px;margin: 0 auto;padding: 5px;">
+		<p>
+			<select id="y"></select>年
+			<select id="m" onchange="showDetail()"></select>月
+		</p>
+		<table id="tbl" border="1" align="center"></table>
+	</div>
+</body>
+</html>
+
+<!-- 
+实例描述
+在一些成熟的商业控件中,有一种日期输入框可以用过可视化的方式让用户去选择一个日期,二这个现实日期的形式就好像一个非常直观的日历.本例将演示如何实现该特效.
+
+
+难点剖析
+本例的难点主要在于如何控制这个输入区域是否显示,以及单击某个日历单元格时日期的自动填充.首先,当日期输入框获取焦点以后,就需要显示这个隐藏的日历区域,然后为每个单元格指定click事件:当触发该事件时,把日期拼接好,并赋值给当前的日期输入框.
+
+
+其他说明
+至于日历特效的实现,请参见本章实例141的日历特效实例
+ -->

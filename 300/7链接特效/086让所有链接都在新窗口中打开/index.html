@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>086让所有链接都在新窗口打开</title>
+	<script type="text/javascript">
+		//动态修改链接的打开类型
+		function modifyOpenType() {
+			//获取到所有链接的DOM
+			var linkDOMS = document.getElementsByTagName('a');
+			for(var i=0; i<linkDOMS.length; i++) { //遍历
+				var link = linkDOMS[i];  //当前的链接DOM
+				link.target = "_blank";  //在新窗口中打开
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义链接 -->
+	<a href="#">链接一</a><br>
+	<a href="#">链接二</a><br><br>
+	<!-- 定义按钮 -->
+	<input type="button" value="修改打开方式" id="myBtn" onclick="modifyOpenType()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+众所周知,链接的target属性控制了链接打开的方式,可以在新窗口中打开,也可以在当前窗口中打开.如果要求网页里的所有链接都必须在新窗口中打开,那么就需要使用javaScript来实现该效果
+
+难点剖析
+链接的target可以设置如表7.1所示的值
+
+
+_blank : 在新窗口中打开
+_self  : 在本窗口中打开
+_parent: 在父窗口/框架中打开
+_top   : 在顶级窗口中打开
+XX框架名称:  在指定框架中打开
+ -->

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用prototype为类创建静态成员</title>
+	<script type="text/javascript">
+		//用fucntion模拟一个类出来，同时也作为构造函数
+		function MyClass(){
+			this.name;     //类成员变量name
+			this.fun = function(){  //类的成员函数fun
+				//在成员函数里调用变量
+				alert('my function name:' + this.name);
+			};
+		}
+		//为MyClass的prototype定义一个变量
+		MyClass.prototype.myStatic = 123;
+		//为MyClass的prototype定义一个函数，它的所有实例对象都有了
+		MyClass.prototype.myStaticFun = function(){
+			alert("this is a static fun");
+		};
+		var obj = new MyClass(); //使用new实例化一个类
+		obj.myStaticFun(); //调用静态函数
+	</script>
+</head>
+<body style="text-align: center;">
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+为类创建静态成员，是面向对象语言的特点之一，javaScript也可以通过它特有的prototype来实现这一点。
+
+难点剖析
+prtotype是JavaScript为每一个对象内置的隐藏属性，它会随着这个对象一直存在，因此本例利用它定义了一个静态函数、尽管它是定义在MyClass上的，但通过new语句实例化以后，对象也就有了prototype的所有属性。
+
+难点剖析
+prototype是javaScript为每一个对象内置的隐藏属性，它会随着这个对象一直存在，因此本例利用它定义了一个静态变量和一个静态函数。尽管它是定义在MyClass上的，但通过new语句实例化以后，对象也就有了prototype的所有属性。
+
+
+ -->

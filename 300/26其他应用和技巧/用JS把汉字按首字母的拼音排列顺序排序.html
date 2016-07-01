@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用JS把汉字按首字母的拼音排列顺序排序</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" src="./pinyin.js"></script>
+		<script type="text/javascript">		
+			//获取拼音首字母
+			function getPinyin(){ 
+				//获取输入框的DOM元素
+				var chinese = document.getElementById("chinese").value;
+				var rst = document.getElementById("rst");
+				var arr = [];						//定义存储字符的数组变量
+				for(var i=0;i<chinese.length;i++){	//循环取出字符
+					//得到一个字符对应的拼音
+					var pinyin = Pinyin.get(chinese.charAt(i));
+					var p = pinyin.charAt(0);		//首个拼音字符
+					//为数组填充字符对象数据
+					arr[arr.length] = {pinyin:p, ch:chinese.charAt(i)};
+				}
+				arr.sort(function(a,b){				//定义排序函数进行排序
+					var p1 = a['pinyin'];			//第一个字符的拼音字母
+					var p2 = b['pinyin'];			//第二个字符的拼音字母
+					return p1.localeCompare(p2);	//字母进行比较
+				});			
+				var str = '';						//定义变量，存储结果的展示
+				for(var i=0;i<arr.length;i++){
+					str += arr[i]['ch'];			//串联排好序的结果字符
+				}
+				rst.value = str;					//把结果展示到输入框里
+			}	
+		</script>
+	</head>
+	<body style="text-align:center">
+		<h2>请输入汉字：</h2>
+		<p>
+			<!-- 汉字的输入框 -->
+			汉字：<input type="text" name="chinese" value="" id="chinese"/>
+		</p>
+		<p>
+			<!-- 执行结果的输入框 -->
+			排序以后的结果：<input type="text" name="rst" value="" id="rst"/>
+		</p>
+		<p>
+			<!-- 执行代码的按钮 -->
+			<input type="button" value="执行" onclick="getPinyin();"/>
+		</p>
+	</body>
+</html>

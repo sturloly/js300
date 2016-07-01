@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>080带下划线的链接</title>
+	<script type="text/javascript">
+	//为链接加上下划线
+	function addLine() {
+		//获取到所有的链接的DOM
+		var linkDOMS = document.getElementsByTagName('a');
+		for (var i = 0; i<linkDOMS.length; i++) { //遍历
+			var link = linkDOMS[i];  //当前的链接DOM
+			link.style.textDecoration = 'underline';  //设置下划线样式
+		}
+	}
+	</script>
+	<style>
+		a{text-decoration: none;}
+
+	</style>
+</head>
+<body style="text-align: center;">
+	<!-- 定义链接 -->
+	<a href="#">链接一</a><br>
+	<a href="#">链接二</a><br>
+	<!-- 定义按钮 -->
+	<input type="button" value="为链接加上下划线" id="myBtn" onclick="addLine()"/>
+</body>
+</html>
+
+<!-- 
+第 7 章 链接特效
+链接，又称为超级链接，它是一个网页与另外一个网页或者其他网络资源的连接点。这个链接可以是一段文字，也可以是一个图片，当用户单击连接时，可以把链接所连接的网页打开。本章介绍了积累应用的比较多的javaScript链接特效。                 
+
+实例描述
+通过CSS，可以为链接设置一些样式，比如让链接带上下画线，让用户一看便知这是可以单击的链接。本例通过javascript来动态地为网页里的所有链接加上下画线的样式。
+
+难点剖析
+链接的下划线样式由样式表里的textdocoration控制，因此javaScript可以通过修改这个样式的值来趟链接包含下划线。
+ -->

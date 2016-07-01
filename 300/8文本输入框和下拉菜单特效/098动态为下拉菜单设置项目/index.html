@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>098动态为下拉菜单设置项目</title>
+	<script type="text/javascript">
+		//动态设置下拉项目
+		function fillOptions() {
+			//获取下拉菜单的DOM
+			var mySel = document.getElementById("mySelect");
+			mySel.innerHTML = '';  //先把原有内容置空
+			var str = '';   //内容的字符拼接
+			for(var i=1; i<=12; i++) {  //循环从1到12
+				//拼接内容,以月份为内容
+				str += "<option value=" + i + ">" + "飞机" +i +"月</option>";
+			}
+			mySel.innerHTML = str;   //挂接内容选项
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义下拉菜单 -->
+	请选择: <select name="" id="mySelect"><option value="12312">我会被清除</option></select>
+	<br> <br>
+	<!-- 定义按钮 -->
+	<input type="button" value="填充下拉项目" id="myBtn" onclick="fillOptions()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+下拉菜单的项目是通过<option>标签来定义的.但是,这样定义的数据是前期就设计好,而后期不能改变的.如果需要动态地加载这些内容,就只能借助javaScript了.
+
+难点剖析
+本例是通过修改下拉菜单中HTML内功的方式来填充选项的,这种方式相对比较简单,但是效率较低.如果使用动态创建option对象的函数,再使用appendChild()来挂接,效率要高一些,同时也会麻烦一些.
+ -->

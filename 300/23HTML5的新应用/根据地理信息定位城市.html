@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>根据地理信息定位城市</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" language="javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			//初始化函数
+			function init(){
+				//判断google的城市是否可用
+				if( google.loader.ClientLocation.address.city) {
+					//通过google的api获取城市信息
+					var city = google.loader.ClientLocation.address.city;
+					alert(city);//展示城市的信息结果
+				}
+			}
+		</script>
+    </head>
+    <body onload="init();">
+    </body>
+</html>

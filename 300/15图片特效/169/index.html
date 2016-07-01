@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>169动态加载图片</title>
+	<script>
+		function loadImg() {
+			var pics = document.getElementsByTagName('IMG');
+			for(var i=0; i<pics.length;i++){
+				pics[i].src = pics[i].attributes['lazy_src'].value;
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="加载" onclick="loadImg();">
+	</p>
+	<img lazy_src="1.jpg" src="" alt="">
+</body>
+</html>
+
+<!-- 
+实例描述
+图片是网页显示中最耗费流量的元素之一。为了节省网络的流浪和加快网页加载速度，网站可以用过动态加载图片的方式来提高用户的友好度。本例将讲解如何实现图片的延迟加载。
+
+难点剖析
+虽然在网页的HTML代码中定义了一个图片标签，但这个图片并没有任何显示。这样是因为没有指定该标签的src值，而是指定了lazy_src值，该值并不是HTML规范包含的值，而是程序自定义的值。单击“加载”按钮后，成语再讲lazy_src的值赋值为src，这样图片就显示出来了。
+用过重新指定src的方式，浏览器就可以动态加载图片地址，也就达到了节约网络流量和提高访问速度的目的。
+
+
+ -->

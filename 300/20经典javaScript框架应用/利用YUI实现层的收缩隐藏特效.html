@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用YUI实现层的收缩隐藏特效</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" href="anim.css">
+		<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
+		<script type="text/javascript">
+			//开始定义一个YUI的沙盒
+			YUI().use('anim', function(Y) {
+				//创建一个新的动画对象
+				var anim = new Y.Anim({
+					node: '#demo .yui3-bd',//应用动画的节点
+					to: { height: 0 },	//移动到的高度为0
+					easing: 'backIn'	//擦除效果隐退
+				});
+				//监听隐藏按钮的点击事件
+				Y.one('#demo .yui3-toggle').on('click', function(e) {
+					e.preventDefault();	//避免默认事情行为
+					anim.run();			//开始运行动画效果
+				});
+			});
+		</script>	
+	</head>
+	<body>
+		<div id="demo" class="yui3-module">
+			<div class="yui3-hd">
+				<h3>伸缩隐藏效果</h3>
+				<a title="collapse element" class="yui3-toggle"><em>-</em></a>
+			</div>
+			<div class="yui3-bd">
+				<p>这里是层的内容<br><br></p>
+			</div>
+		</div>
+	</body>
+</html>

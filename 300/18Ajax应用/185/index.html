@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>185创建动态的XMLHttpRequest对象</title>
+	<script>
+		var client;  //定义XMLHttpRequest对象，也可以叫ajax客户端
+		//button的click事件回调函数
+		function sendAjax(){
+			//判断是否支持AciveX控件，老版本的IE浏览器就需要使用ActiveXObject来创建
+			if(window.ActiveXObject) {
+				//通过实例化ActiveXObject的一个新实例来创建XMLHTTPRequest对象
+				client = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			//其他大多数浏览器都支持本地javascript对象
+			else if(window.XMLHttpRequest) {
+				//创建XMLHTTPRequest的一个实例（本地javascript对象）
+				client = new XMLHttpRequest();
+			}else{
+				alert('创建ajax客户端失败，您的浏览器不支持该服务');
+			}
+			if(client){	//如果创建client成功以后
+				//设置ajax打开以后，建立连接的方式和目标文件，以及是否为异步模式
+				client.open("GET","test001.txt",true);
+				client.send();
+				alert('ajax请求，已经发出11。');
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="Send" onclick="sendAjax();">	
+</body>
+</html>
+
+<!-- 
+第18章 Ajax应用
+可以说Ajax是一项比较新的技术，因为它是近几年才流行起来的：也可以说Ajax是一项比较老的技术，因为Ajax其实就是XMLHttpRequest\Javascript\XML\CSS和HTML技术的组合，而这些技术其实很早就已经开始被广泛使用。Ajax的使用可以给用户带来良好的体验，它可以在不刷新页面的情况下雨服务器进行交互。基于这样的特点，开发人员可以设计出很多优秀的网页特效。本章将为读者介绍积累比较常见的Ajax应用。
+
+实例描述
+XMLHttpRequest是 Ajx的基础和核心，正因为有了它，浏览器客户端才可以与服务器端有这种隐蔽式的通信。本例学习如何动态创建XMLHttpRequest对象。
+
+难点剖析
+按照W3C标准，所有浏览器都应该提供XMLHttpRequest对象的借口。但是很可惜，一些老版本的IE浏览器并不提供此接口，这需要用到IE浏览器的扩展对象ActiveXObject。根据微软的相关文档，创建的ActiveXObject独享类型为Microsoft.XMLHTTP.
+ -->

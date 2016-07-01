@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>使用Web Worker为学生考试记时</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//初始化函数
+			function init(){
+				//判断是否支持后台运行的worker
+				if(typeof(Worker)!="undefined"){
+					//创建一个新的Worker对象，指定后台运行的js代码文件
+					var w = new Worker("worker.js");
+					w.onmessage = function(e){//当收到信息返回的回调
+						var min = e.data;//得到数据
+						//展示结果
+						alert('您的考试已经过去'+min+'分钟');
+					};
+				}
+			}
+		</script>
+    </head>
+    <body onload="init()">
+		<div id="container">
+			你正在考试中。。。
+		</div> 
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>淡入效果</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function slide(){
+				$('p').fadeIn('slow');
+			}
+		</script>	
+		<style>
+			p{display:none;}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<form>
+			<p>asdfghjkl</p>
+			<br>
+			<input type="button" value="淡入" onclick="slide();"/>
+		</form>		
+	</body>
+</html>

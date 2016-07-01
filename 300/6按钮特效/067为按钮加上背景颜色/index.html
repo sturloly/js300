@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>067为按钮加上背景颜色</title>
+	<script type="text/javascript">
+		function defineBtnBack() {  //为按钮加上背景颜色
+			var myBtn = document.getElementById("myBtn"); //获得图片的DOM
+			myBtn.style.background = 'red'; //把背景色改成红色
+		}
+	</script>
+</head>
+<body onload="defineBtnBack();" style="text-align: center;"> 
+	<input type="button" value="一个按钮" id="myBtn"></input>
+</body>
+</html>
+
+<!-- 
+第 6 章
+按钮，是非常常见的一种与用户交互的控件。它与现实中的按钮很类似，通过单击可以出发一个click事件，且这种事件是单一的，特别符合一个按钮一个事件的人们的习惯思维。本章介绍了几类应用比较多的javaScript按钮特效。
+
+实例描述
+默认情况下，按钮的颜色是灰色的。有事需要为了配合网页的主题而动态地修改按钮的背景颜色。本例讲演示如果实现该效果。
+
+难点剖析
+HTML标签没有定义按钮背景颜色这样的属性，因此，只能通过CSS的背景颜色样式来修改按钮的背景颜色。
+ -->

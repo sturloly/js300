@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020遍历打印一个元素的所有属性</title>
+	<script type="text/javascript">
+		//获取DOM的所有属性
+		function getDomValues() {
+			//获取链接的DOM
+			var myLink = document.getElementById('myLink');
+			var str = '';   //结果拼接
+			for (var prop in myLink) {   //循环遍历myLink的所有属性key
+				//拼接到str, key和value用冒号隔开
+				str += prop + ":" + myLink[prop] + "<br>";
+			}
+			//打印到网页里
+			document.getElementById("valuesP").innerHTML = str;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!-- 定义链接和按钮 -->
+		<a href="#" id="myLink">链接</a>
+		<br>
+		<input type="button" value="获取链接DOM的属性" onClick="getDomValues()">
+	</p>
+	<!-- 用于放置结果的p标签 -->
+	<p id="valuesP" style="text-align: left;"></p>
+</body>
+</html>
+
+
+<!-- 
+实例描述
+在开发测试中，有时需要得知一些DOM的属性，然后再根据属性具体的值来执行一些操作。此时，我们可以遍历属性值并打印出来，这是一种重要的测试手段。
+
+难点剖析
+在javascript里，有一种比较特殊的for循环，它的用法正如本例所示，在for循环的条件括号里加入一个"in"，表示是通过循环得到DOM属性的key。另外，由于实例阿迪吗里的key是动态变化的，所以使用了中括号'[]' 来动态获取属性的值。
+
+ -->

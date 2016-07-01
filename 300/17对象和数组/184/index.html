@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>184数组的本质其实也就是对象</title>
+	<script>
+		var arr = new Array();	//创建一个数组
+		var obj = new Object();	//创建一个对象
+		arr[0] = 1.66;  //为数组赋值1,2,3
+		arr[1] = 2.66;
+		arr[2] = 3.66;
+		for(var i=0; i<arr.length; i++){
+			alert(i+':'+arr[i]);
+		}
+		obj['0'] = 1.66;  //为数组赋值1,2,3 下标与数组相同
+		obj['1'] = 2.66;
+		obj['2'] = 3.66;
+		for(var prop in obj){
+			alert(prop+':'+obj[prop]);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+<!-- 
+实例描述
+细心的读者会发现，javasciript的数组和对象其实又很多相同或相似的地方，它们的写法和操作也多多少少有些重叠。其实，对于javascript解释器来说，数组和对象的本质都是一样的。下面通过实例来说明这个问题。
+
+难点剖析
+代码中的数组arr和对象obj有着惊人的相似之处，虽然它们的数据类型不同，但操作形式几乎想用。对于javaScript中的数组来说，它就是省略了key的对象，并且它的key可以认为是从0开始有规律地递增（每次加1），其实它的key就是数组的下标。
+ -->

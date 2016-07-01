@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>082关闭窗口的那个“X”链接</title>
+	<script type="text/javascript">
+		//自定义click事件
+		function defineLinkClick() {
+			var myLink = document.getElementById("myLink");
+			myLink.onclick = function(){  //定义click事件
+				window.close();  //关闭窗口
+				return false;   //返回
+ 			}
+		}
+	</script>
+</head>
+<body onload="defineLinkClick();" style="text-align: center;">
+	 <!-- 定义x链接 -->
+	 点击&nbsp;<a href="javascript:window.close()" id="11">关关闭</a>&nbsp;关闭窗口
+</body>
+</html>
+
+<!-- 
+实例描述
+很多弹出式广告的界面中可以看见一个"x"字符的链接,它的功能是关闭当前的网页.本例就是掩饰"x"链接的效果.
+
+难点剖析
+本例也是为"X"链接定义onclick事件,然后调用window的close()函数来关闭窗口.另外,如果不使用动态定义,为href属性定义如下的值,也可以实现同样的效果.
+<a href="javascript:window.close();" id="myLink"></a>
+
+ -->

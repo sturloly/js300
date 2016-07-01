@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>116动态加入一个新的表格行</title>
+	<script type="text/javascript">		
+			//为表格加一行的函数
+			function addRow(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				//使用innerHTML加一个表格行
+				tbl.innerHTML += '<tr><td>col1</td><td>col2</td></tr>';
+			}			
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<p>
+			<input type="button" value="加一行" onclick="addRow();"/>
+		</p>
+		<table id="tbl" align="center" border="1">
+			<tr>
+				<td>col1</td>
+				<td>col2</td>
+			</tr>
+		</table>
+	</body>
+	</html>
+
+<!-- 
+实例描述
+在一些表单里,需要录入多少行数据是不确定的.那么可以提供这样一种功能:通过单击"添加"按钮,来动态增加一行,让用户可以动态地录入数据.本例将展示如何实现该特效.
+
+难点剖析
+本例的实现,并没有采用专门的javascript提供的关于表格的API,而是通过巧妙地使用innerHTML 来实现表格行的增加,因为这样的实现方式比较容易理解.但这样的实现也有一个弊端,就是如果要增加的行数过多,可能会产生性能上的瓶颈.
+
+ -->

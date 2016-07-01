@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>126二级导航菜单</title>
+	<script src="jquery.js"></script>
+	<script type="text/javascript">
+		//使用jquery的加载回调函数开始定义菜单的功能
+		$(function(){
+			//使用jquery的加载回调函数开始定义菜单的功能
+			$(function(){
+
+				var menus = $('.menu a');		//得到菜单下所有的链接
+				for(var i=0;i<menus.length;i++){//遍历这些链接
+					var m = menus[i];			//得到当前的链接
+					$(m).mouseover(function(){	//为菜单链接定义onmouover事件
+						//得到当前鼠标移入的菜单项的下标
+						var index = $('.menu a').index(this);
+						$('.sub_menu').hide();	//把所有的二级菜单隐藏
+						$('.sub_menu').eq(index).show();//显示当前下标的菜单项
+						//并且计算出这个菜单项应该处于的定位位置
+						$('.sub_menu').eq(index).css('margin-left',(100*index)+'px');
+					});
+				}	
+			});
+		</script>	
+
+		<style>
+			.menu{
+				list-style: none;
+				width: 400px;
+				margin: 10px auto 0;
+				padding:0;
+			}
+			.menu li{
+				float:left;
+				width:98px;
+				border:1px solid black;
+			}
+			.menu a{
+				color:black;
+				width:100%;
+			}
+			.menu a:hover{
+				background-color:pink;
+			}
+			.clearfix:after {
+				visibility: hidden;
+				display: block;
+				font-size: 0;
+				content: " ";
+				clear: both;
+				height: 0;
+			}
+			.sub_menu{
+				border:1px solid black;
+				width: 100px;
+				padding:0;
+				display: none;
+				margin:0;
+			}
+			.sub_div{
+				width: 400px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<ul class="menu clearfix">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+		</ul>
+		<div class="sub_div">
+			<ul class="sub_menu">
+				<li><a href="#">菜单</a></li>
+			</ul>
+			<ul class="sub_menu">
+				<li><a href="#">菜单</a></li>
+				<li><a href="#">菜单</a></li>
+			</ul>
+			<ul class="sub_menu">
+				<li><a href="#">菜单</a></li>
+			</ul>
+			<ul class="sub_menu">
+				<li><a href="#">菜单</a></li>
+				<li><a href="#">菜单</a></li>
+				<li><a href="#">菜单</a></li>
+			</ul>
+		</div>
+	</body>
+	</html>
+
+<!-- 
+实例描述
+网页导航菜单所在区域的尺寸比较有限,如果想放更多的菜单项,那马二级菜单就是一种常见的扩展导航菜单的形式.本例将讲解如何实现该效果.
+
+难点剖析
+首先,二级菜单项全部放在一个层里边,每一个以及菜单对应一个class属性为sub_menu的li.接下来,就可以设计菜单逻辑的控制.其中,最主要的逻辑是菜单项的onmouseover事件.当鼠标移入该菜单项时,就记录下它的下标值,然后根据这个下标值找到对应的子菜单,并显示它,与此同时,把其他的子菜单全部隐藏起来.
+
+
+
+
+ -->

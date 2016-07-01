@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用YUI来动态监听点击事件</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
+		<script type="text/javascript">
+			//开始定义一个YUI的沙盒
+			YUI().use('node', function (Y) {
+				var node = Y.one("#demo");//通过id获取到目标的DOM
+				//监听DOM的点击事件
+				node.on("click", function(e) {
+					Y.one('#demo').addClass('hello');//通过修改类名来改背景色
+				});
+			});
+		</script>	
+		<style>
+			#demo{
+				width: 300px;
+				height: 100px;
+				border: 1px solid black;
+			}
+			.hello{
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<div id="demo">
+			请点击我
+		</div>
+	</body>
+</html>

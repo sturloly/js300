@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>071Enter键自动提交表单</title>
+	<script type="text/javascript">
+		//当用户按下键时
+		function formKeyPress(e) {
+			if(event.keyCode == 13) {  //判断是否按的是 Enter键
+				e.preventDefault();  //禁止Enter键的默认出发submit按钮行为
+				alert("我是enter应该被禁止了");  
+			} else if (event.keyCode == 50 ) {  //判断键盘"2"被按到了
+				alert("按到2了，只有按我才能提交，确认提交");
+				document.forms[0].submit();  提交
+			};
+		}
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单，按钮 -->
+	<form action="url3.html" method="post" style="display: block; width: 250px;height: 100px;border: 1px solid black">
+		<br>
+		用户名：<input type="text" name="username"/><br>
+		密码：<input type="password" onkeypress="formKeyPress(event);"><br>
+		<input type="submit" value="提交"><br>
+	</form>
+</body>
+</html>
+<!-- 
+实例描述
+一些表单（比如登录界面）可以为用户提供这样的一个便捷功能：当输入完所有的文本框以后，按Enter键就立刻移交表单，而无需另外使用鼠标单击"提交"按钮。
+
+个人总结
+当页面只有一个submit按钮时，进入网页时，会自动聚焦submit按钮，所以按enter键会提交。可使用e.preventdefault 在enter键（13）或任意其它键被出发时进行禁止。
+
+
+难点剖析
+本例监听了最后一个文本框的onkeypress事件，它的含义是当用户从键盘按下任何一个键时都会出发该事件。因此，在回调函数里，首先判断是否按下的键时enter键（编码为13），如果是则提交表单，否则直接返回false。
+ -->

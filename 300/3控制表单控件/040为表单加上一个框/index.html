@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040为表单加上一个框</title>
+	<script type="text/javascript">
+		//为表单加上一个框
+		function rangeIt() {
+			var f = document.forms[0];  //获取表单DOM
+			//动态的为表单指定边框样式
+			f.style.width = '300px';  //宽度
+			f.style.border= '1px solid black'; //边框
+			f.style.margin="auto"
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form>
+		文本框: <input type="text" name="myText" id="">
+		<br>
+		单选框：<input type="radio" name="myRadio" value="1" id="">
+		<input type="radio" name="myRadio" value="2" id="">
+		<br>
+		下拉列表：
+		<select name="mySelect" id="">
+			<option value="">==请选择==</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<br>
+		<input type="button" value="加上边框" onclick="rangeIt()">
+	</form>
+	
+</body>
+</html>
+
+<!-- 
+实例描述
+表单可以算作一个区域，它往往具有不太一样的样式，让用户一眼就可以看出是可以进行互动的一块区域。本例将展示如何动态地为表单加上一个框的样式。
+
+难点剖析
+表单在网页里也属于一个块区域，和普通的段落或者DIV类似。本例通过form的样式（也就是style属性）为表单加上了一个框。本例非常简单，用户如果感兴趣，还可以进一步修改form的其他样式，来满足具体的开发需求。
+ -->

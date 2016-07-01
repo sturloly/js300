@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>155应用不同场景的变量类型s</title>
+	<script>
+		var a; //定义变量a,此时的值是undefined
+		a = null;//a的值是null
+		a = true; //a的类型为boolean
+		a = 12.2;  //a的类型为数字
+		a = 'abc';  //a的类型为字符型
+		a = {msg : 'hello'}; //a的类型为object
+		a = [1,2,3];  //a的类型为数组
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+
+<!-- 
+实例描述
+javaScript是一种典型的弱类型无言，这意味着它的变量类型是可以随时发生变化的。在javaScript中，同样一个遍历按钮，它的类型可以根据赋值的不同而发生变化。
+
+难点剖析
+本例代码定义了一个变量 a, 它的数据类型始终都在发生变化，它可以在任何时候、任何情况下发生变化。在javaScript中，常用的数据类型有7中：undefined\null\布尔、数字、字符、ovbject和数组。当变量声明以后，还没有任何赋值前，它的类型为undefined，而null则是一种空值的状态，与undefined有区别。布尔型变量的值只能是true或false:字符型变量则包括单字符和多字符，统一为字符类型。字符型变量可以使用单引号或双引号表示; object是javaScript特有的一种对象类型，它实质上是一种键值对;而数组则是一种比较特殊的object类型，它的写法也比较有特点，采用方括号表示。
+
+其他说明
+某些时候，也把函数function成为一种数据类型，但因为函数比较特别，故读者可以把它当做object类型中的一种。另外，javaScript提供了一个函数typeof(),专门用于返回指定变量的数据类型。
+
+ -->

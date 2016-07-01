@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>123用背景色重点突出表格行</title>
+	<script type="text/javascript">		
+			//为表格改变样式的函数
+			function chCell(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				var rows = tbl.rows;			//得到当前的表格的row数组
+				var len = tbl.rows.length;		//当前的行数
+				for(var i=1;i<len;i++){			//遍历所有行
+					var r = rows[i];			//当前行
+					r.onclick = function(){		//定义鼠标click事件
+						//如果已经是粉红色，则变回白色
+						if(this.style.backgroundColor == 'pink'){
+							this.style.backgroundColor = 'white';
+						}else{
+							//否则就让背景色变成粉红色
+							this.style.backgroundColor = 'pink'
+						}
+					};
+				}
+			}
+		</script>	
+	</head>
+	<body style="text-align:center" onload="chCell();">
+		<table id="tbl" align="center" border="1">
+			<tr>
+				<th>名字</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td>A</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td>15</td>
+			</tr>
+		</table>
+	</body>
+	</html>
+
+<!-- 
+实例描述
+当浏览器表格数据的时间,有时需要把刚刚浏览过的某一行标记下来,那么可以用过单机操作来把这行的背景色变深,以突出该表格行,这样就可以知道哪些表格行事用户记录下来的了.
+
+
+难点剖析
+本例效果的实现,首先是遍历所有表格行,然后为每个表格行指定onclick事件,当触发该事件时,就把这一行的背景色调深,同时吧其他表格行的背景恢复为原由颜色.
+
+ -->

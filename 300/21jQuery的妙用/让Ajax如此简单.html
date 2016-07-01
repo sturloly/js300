@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>让ajax如此简单</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function ajax(){
+				$.ajax({
+				   type: "GET",
+				   url: "./ajax.txt",
+				   data: "",
+				   success: function(msg){
+					 alert( "返回值是: " + msg );
+				   }
+				}); 
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<form>
+			<input type="button" value="获取ajax信息" onclick="ajax();"/>
+		</form>		
+	</body>
+</html>

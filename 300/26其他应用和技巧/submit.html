@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>不用Ajax也可以达到不刷新页面的效果_submit</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//当页面加载成功，就认为登录成功了
+			function showLogInfo(){
+				parent.showSucc();	//调用父页面的函数
+			}
+		</script>
+	</head>
+	<body style="text-align:center" onload="showLogInfo();"></body>
+</html>

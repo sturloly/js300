@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>隐藏音频播放器的控制按钮</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//隐藏控制按钮的方法
+			function hideBtns(){
+				//得到音频DOM对象
+				var myAudio = document.getElementById("myAudio"); 
+				//把控制属性controls置空
+				myAudio.controls = null;
+			}
+		</script>
+	</head>
+	<body style="text-align:center">
+		<!-- audio标签是HTML5新增的标签，用于表示一个音频播放器 -->
+		<audio controls="controls" id="myAudio">
+			<!-- 提供了两种格式的音频文件，以适应不同浏览器对audio的支持 -->
+			<source src="song.ogg" type="audio/ogg" />
+			<source src="song.mp3" type="audio/mpeg" />
+		    对不起，您的浏览器暂不支持audio音频标签!
+		</audio>
+		<br/>
+		<input type="button" value="隐藏控制按钮" onclick="hideBtns();"/>
+	</body>
+</html>

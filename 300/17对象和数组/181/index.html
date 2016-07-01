@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>181在数组的任意位置加入和移除元素</title>
+	<script>
+		//创建一个长度为5的数组
+		var arr = new Array(5);
+		//循环为数组的元素赋值
+		for(var i=0; i<arr.length; i++) {
+			arr[i] = i+1;  //元素的值依次为1-5
+		}
+		//添加一个元素的函数
+		function addOne(){
+			//获取新元素值和下标的dom
+			var e = document.getElementById('elm').value;
+			var n = document.getElementById('num').value;
+			n = parseInt(n);  //类型转换
+			arr[n] = e;  //为新元素赋值
+		}
+		//函数一个元素的函数
+		function deleteOne(){
+			//获取下标的dom
+			var n = document.getElementById('num').value;
+			n = parseInt(n);  //类型转换
+			//遍历
+			for(var i=n; i<arr.length;i++){
+				arr[i]= arr[i+1];  //把元素往前移动一个位置
+			}
+			arr.pop();  //最后把最后一个元素删除掉
+		}
+		//打印数组的值的函数
+		function printArr() {
+			var str = ' ';  //创建变量，拼凑打印的字符
+			//遍历数组，凑出打印的字符串
+			for(var i=0; i<arr.length; i++) {
+				str += arr[i]+ ','
+			}
+			alert('呵呵arr=' + str);  //打印数组的值
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	添加的值：<input type="text" name="elm" id="elm">
+	下标：<input type="text" name="num" id="num">
+	<br>
+	<input type="button" value="添加" onclick="addOne()">
+	<input type="button" value="删除" onclick="deleteOne();">
+	<br>
+	<input type="button" value="打印arr的值" onclick="printArr()">
+</body>
+</html>
+<!-- 
+实例描述
+通常，javaScript数组的未知一旦确定以后，就不能轻易更改，因为它不想普通的链表结构那么灵活。但如果用户有特殊需求，需要再数组的任意位置加入或移除元素，那么该怎样操作呢？此时可以以来一些自定义的函数来满足这些特殊要求，如下代码所示。
+
+难点剖析
+本例设计并安排了数组下标所对应的值，尤其是移出一个元素时。因为当一个元素被移出时，后边的元素就需要自动填补上来，勇士数组的长度也会缩减，所以，下标从n开始，把后边一个元素（下标为n+1)的值赋给前一个元素，再把最后一个元素使用pop()函数移出，这样就达到了目的。
+
+ -->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032遍历表单的所有控件</title>
+	<script type="text/javascript">
+		//遍历表单的所有控件
+		function getValues() {
+			var f = document.forms[0]; //获取表单DOM
+			var elements = f.elements; //获取所有的控件数组
+			var str = '';  //拼接字符串
+			//循环遍历
+			for(var i=0; i<elements.length; i++) {
+				var e = elements[i];  //当前的控件
+				str += e.value //拼接控件的值
+				str += '\n';  //拼接分隔符
+			}
+			alert(str); //用提示框展示结果
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form>
+		文本框：<input type="text" name="myText" id="">
+		<br>
+		单选框：<input type="radio" name="myRadio" value="1v" id="">
+		<input type="radio" name="myRadio" value="2v" id="">
+		<br>
+		下拉列表：
+		<select name="mySelect">
+			<option value="">==请选择==</option>
+			<option value="value1">内容1</option>
+			<option value="value2">内容2</option>
+		</select>
+		<br>
+		<input type="button" value="得到所有控件的值" onclick="getValues()">
+	</form>
+</body>
+</html>
+
+<!-- 
+第3章  控制表单控件
+表单在HTML里用<form>标签定义，它内部包含可以交互的控件元素，比如，文本域、下拉列表、单选框、复选框等。由于控件可以与用户进行互动，而javscript 又在控制控件方面有很好的表现，所以javaScript可以很直接地改善用户体验。本章介绍了积累应用表较多的 javascript控制表单及控件的实例。
+
+实例描述
+表单中的控件用来与用户进行交互。为了获取用户的输入,开发人员必须知道如何获取这些控件，并知道怎么操作它们，例如批量修改控件的样式或说明等。本例讲展示如何遍历表单下的控件。
+
+难点剖析
+在document下内置了一个数组变量forms，它表示的是当前网页下的所有表单。本例代码首先通过该数组的第一个元素即获得了网页唯一的一个表单元素。然后通过表单form下的elements变量获得所有的控件。最后通过所有控件的value属性获得它们的值，并进行拼接和展示。
+
+
+
+ -->

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>168显示图片的局部</title>
+	<script>
+		var arr = [[0,0],[-400,0],[-400,-300],[0,-300]];  //定义偏移位置数组
+		var index = 0;  //当前显示的下标
+		function showImg(){
+			var mydiv = document.getElementById('mydiv');
+			index++;
+			if(index == 4)
+				index = 0;
+			var x = arr[index][0]+ "px";
+			var y = arr[index][1]+ "px";
+			console.log(x)
+			console.log(y)
+			mydiv.style.backgroundPosition = x + " " + y;
+		}
+	</script>
+	<style>
+		div {
+			background: url('3.png') 0 0 no-repeat;
+			width: 400px;
+			height: 300px;
+			margin: 10px auto;
+		}
+	</style>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="显示切换" onclick="showImg();">
+	</p>
+	<div id="mydiv"></div>
+</body>
+</html>
+
+<!-- 
+实例描述
+有时为了提高网页的浏览速度，会把所有的小图标放在一个图片文件里，然后把这些图片设置为某原色的背景，并让背景通过一定的偏移量来提示，这样就可以让图片局部显示，而不是全部显示。
+
+笔记@@@@
+字符拼接中的各部分"",'' 单双引号必须一致，不然不报错失效。
+
+难点剖析
+本例假设图片有4个区域可以作为单独的图片原色来显示，用过数组变量arr把图片所有可能的偏移量记录下来，然后在用户单击“显示切换”按钮时，挨个设置目标div的背景未知，这样就可以看到4幅不同的图片了，而其实这些图片都来自于同一个文件。
+
+
+ -->

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用Prototype轻松获取DOM的实际尺寸</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="prototype.js"></script>
+		<script type="text/javascript">
+			//按钮click事件回调函数
+			function showSize(){
+				var w = $('myul').offsetWidth;	//宽度
+				var h = $('myul').offsetHeight;	//高度
+				alert('宽度：'+w+',高度：'+h);	//展示结果
+			}
+		</script>	
+	</head>
+	<body style="text-align:center" onload="init();">
+		<ul id="myul">
+			<li>条目</li>
+			<li>条目</li>
+			<li>条目</li>
+			<li>条目</li>
+			<li>条目</li>
+			<li>条目</li>
+			<li>条目</li>
+		</ul>
+		<input id="demo" type="button" value="获取div的高度和宽度" onclick="showSize();"/>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>146访问外部定义的CSS样式</title>
+	<!-- 定义一个外部样式，和引入外部css文件效果一样 -->
+	<style>
+		.myclass{
+			color:blue;
+		}
+	</style>
+	<script type="text/javascript">
+			//按钮的click事件监听函数
+			function showStyle(){
+				//通过js得到文本所使用的样式表，
+				//因为只有一个，所以这里只需要访问第一个样式表
+				var rs = document.styleSheets[0].cssRules;
+				if(!rs)//有的浏览器不支持cssRules，需要用rules来得到
+					document.styleSheets[0].rules;
+				//访问第一条规则的颜色样式，样式存在多个
+				alert(rs[0].style.color);
+			}
+		</script>
+
+	</head>
+	<body style="text-align:center">	
+		<span id="mytxt" class="myclass">测试文本</span>
+		<br/>
+		<input type="button" onclick="showStyle();" value="查看文本的颜色"/>
+	</body>
+</html>
+
+<!-- 
+实例描述
+javaScript对CSS的控制力非常强,甚至可以控制外部定义的CSS样式,本例将演示如何访问和控制外部定义的CSS演示属性.
+
+难点剖析
+上述代码引入了一个外部的CSS文件,首先通过styleSheets数组得到这个样式表,然后使用其cssRules或者rules属性可以得到样式数组,因为CSS文件里只定义了一个样式,因此直接通过下标就可以访问到需要的color属性.
+
+
+
+ -->

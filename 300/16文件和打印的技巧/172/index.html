@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>172判断文件上传的类型</title>
+	<script>
+		function chkform(){
+			var str = document.forms[0].mypic.value;
+			var name = str.substring(str.lastIndexOf(".")+1).toUpperCase();
+			if(name!="JPG"&&name!="GIF"&&name!="PNG"&&name!="BMP") {
+				alert("格式不正确11");
+				return false;
+			} else {
+				document.forms[0].submit();
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+		<form action="" method="post" enctype="mutipart/form-data" name="myform" onsubmit="chkform();return false;">
+			<label>
+				<input type="file" name="mypic">
+			</label>
+			<label>
+				<input type="submit" name="Submit" value="提交">
+			</label>
+		</form>
+</body>
+</html>
+
+<!-- 
+第16章 文件和打印的技巧
+文件上传，是一项比较基础的网站功能，javaScript对已该功能提供了相关API的支持。打印，是指用户可以把浏览器的内容通过打印机打印到纸上，javaScript永祥提供了相关API的支持。本章讲解了积累比较常见的文件和打印实例。
+
+实例描述
+文件在上传时，如果每次都用过服务器端来判别文件类型是否正确的话，就会给服务器带来不小的压力。那么，能否通过客户端预先判断一下文件类型呢？本例给出了答案。
+
+难点剖析
+代码首先监听了表单的提交事件，在提交之前，获取提交文件的路径值，然后通过截取字符串的方式得到文件的扩展名，如果不属于网站需要的文件格式，则直接提示用户格式错误。
+
+其他说明
+在进行文件类型的判断时，只提供客户端的验证并不算严谨的程序。如此，客户端的判断只是在一定程度上减轻了服务端的眼里，在实际开发中，任然要提供完善的服务端文件类型来进行判断。
+
+
+ -->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>137每秒刷新的时间展示效果</title>
+	<script type="text/javascript">
+		function start() {
+			setInterval(function() {
+				var now = new Date();
+				var str = '';
+				str += now.getYear() + 1900 + '年';
+				str += now.getMonth() + 1 + '月';
+				str += now.getDate() + '日';
+				str += now.getHours() + '时';
+				str += now.getMinutes() + '分';
+				str += now.getSeconds() + '秒';
+				document.getElementById('left').innerHTML = str;
+			},1000);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="当前时间" onclick="start();"/>
+	</p>
+	<h2 id="left"></h2>
+</body>
+</html>
+
+<!-- 
+实例描述
+在网页中显示当前时间,时间一般都是固定的,不会随着手表的秒针转动二转动,必须刷新网页后,这个时间才会变动.要在网页中显示一个变化的时钟,必须每隔一秒就刷新一次网页.
+
+难点剖析
+本例代码主要依赖于一个定时器,该定时器的时间间隔只能为1秒,只有这样才能模拟出时钟的效果.
+
+ -->

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>176在打印内容里隐藏打印按钮</title>
+	<link rel="stylesheet" href="print.css" media="print">
+	<script>
+		function doPrint(){ //鉴定打印按钮click事件的函数
+			window.print();  //调用系统的打印功能
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<ul>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+		<li>目录条22</li>
+	</ul>
+	<p>
+		<input type="button" value="打印" onclick="doPrint()" class="prtBtn"> 
+	</p>
+</body>
+</html>
+
+<!-- 
+实例描述
+在需要打印的网页内容里，往往会提供一个直观的打印按钮来引导用户进行打印操作，但是，这个按钮肯定是不希望出现在真正的打印你同里的，应该再打印你同里把它隐藏起来。本实例将介绍如何通过单独定义打印样式来隐藏该打印按钮。
+
+难点剖析
+外部CSS样式表的引用语法中的参数media，在默认情况下其值是"screen",但是如果把该参数的值改为"print",它的含义则是该样式表仅应用于打印内容。本例代码通过定义外部打印样式，将打印按钮隐藏。
+ -->

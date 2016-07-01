@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>eval函数大行其道</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//动态执行js代码的函数
+			function exejs(){ 
+				//获取输入框的DOM元素
+				var jscode = document.getElementById("jscode");
+				var rst = document.getElementById("rst");
+				//直接利用eval函数把代码的执行结果打印到rst文本框里
+				rst.value = eval(jscode.value);
+			}
+		</script>
+	</head>
+	<body style="text-align:center">
+		<h2>请输入你要执行的js代码：</h2>
+		<p>
+			<!-- js代码的输入框 -->
+			代码：<input type="text" name="jscode" value="" id="jscode"/>
+		</p>
+		<p>
+			<!-- 执行结果的输入框 -->
+			结果：<input type="text" name="rst" value="" id="rst"/>
+		</p>
+		<p>
+			<!-- 执行代码的按钮 -->
+			<input type="button" value="执行" onclick="exejs();"/>
+		</p>
+	</body>
+</html>

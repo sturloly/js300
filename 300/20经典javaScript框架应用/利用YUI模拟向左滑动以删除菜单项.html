@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>利用YUI模拟向左滑动以删除菜单项</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" href="./examples.css" type="text/css" charset="utf-8">
+		<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
+		<script type="text/javascript">
+			//开始定义一个YUI的沙盒
+			YUI().use('node-base','node-event-delegate', 'transition', 'event-move', function (Y) {
+				//开始监听鼠标滑动的事件
+				Y.one("#swipe").delegate("gesturemovestart", function(e) {
+					var item = e.currentTarget,	//事件发生的主体
+						target = e.target,		//事件发生的目标
+						container = e.container,//事件所在容器
+						//是否为删除的按钮
+						isDeleteButton = target.hasClass("myapp-delete");
+					if (!isDeleteButton) {//如果不是点击删除按钮
+						//把所有的删除按钮都隐藏起来
+						container.all(".myapp-delete").addClass("myapp-hidden");
+						//监听鼠标滑动结束事件
+						item.once("gesturemoveend", function(e) {
+							//显示当前行的按钮
+							item.one(".myapp-delete").removeClass("myapp-hidden"); 
+						});
+					} else {//如果是点击了删除按钮
+						item = target.get("parentNode");//父节点
+						item.remove();//删除菜单行
+					}
+				}, "li", {
+					preventDefault:true	//避免li的默认事件影响我们的逻辑
+				});
+			});
+		</script>	
+		<style>
+			.yui3-js-enabled .myexample-hidden {
+				display: none;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<div id="groceryheader">
+			<h1>以下的菜单项可以通过向左滑动来删除</h1>
+		</div>
+		<ul id="swipe">
+			<li><span>菜单001</span><button class="myapp-delete myapp-hidden">Delete</button></li>
+			<li><span>菜单002</span><button class="myapp-delete myapp-hidden">Delete</button></li>
+			<li><span>菜单003</span><button class="myapp-delete myapp-hidden">Delete</button></li>
+			<li><span>菜单004</span><button class="myapp-delete myapp-hidden">Delete</button></li>
+			<li><span>菜单005</span><button class="myapp-delete myapp-hidden">Delete</button></li>
+		</ul>
+	</body>
+</html>

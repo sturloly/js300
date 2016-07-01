@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>快速修改样式规则</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function chStyle(){
+				$('p').css('color','blue');
+			}
+		</script>	
+		<style>
+			p{
+				font-size:14px;
+				color:red;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<form>
+			<p>asdfghjkl</p>
+			<br>
+			<input type="button" value="改变样式" onclick="chStyle();"/>
+		</form>		
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>拖动页面上的元素</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//当图片放下以后的事件回调
+			function allowDrop(ev){
+				ev.preventDefault();	//屏蔽掉事件默认的行为
+			}
+			//图片被拖动时的事件回调
+			function drag(ev){
+				//把图片的id通过事件传递
+				ev.dataTransfer.setData("IMG_ID",ev.target.id);
+			}
+			//当图片放下时的事件回调
+			function drop(ev){
+				ev.preventDefault();	//屏蔽掉事件默认的行为
+				//获取被拖动的图片的id值
+				var data = ev.dataTransfer.getData("IMG_ID");
+				//得到图片的DOM对象
+				var pic = document.getElementById(data);
+				//在目标DIV里挂接图片DOM
+				ev.target.appendChild(pic);
+			}
+		</script>
+		<style>
+			div{width: 300px; height: 80px; border: 1px solid black; margin: 0 auto; padding: 5px;}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<p>把图片拖动到矩形框里:</p>
+		<!-- 目标容器的ondrop和ondragover事件的设置 -->
+		<div id="myDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<br />
+		<!-- 图片的属性和事件设置 -->
+		<img id="myDrag" src="drag_img.jpg" draggable="true" ondragstart="drag(event)" />
+	</body>
+</html>

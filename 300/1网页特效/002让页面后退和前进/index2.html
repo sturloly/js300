@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002让页面后退和前进</title>
+	<style>
+		.div1 {
+			    width: 50%;
+			    line-height: 30px;
+			    text-align: justify;
+			    margin: auto;
+			    min-width: 320px;
+		}
+
+	</style>
+
+</head>
+<body style="text-align: center">
+<div class="div1">
+<a href="index.html" style="color: blue" target="__blank">查看实例</a>
+	<p style="text-align: center;">002让页面后退和前进</p>
+	<b>实例描述</b><br>
+在浏览一些文档形式的网页时（如html格式的技术说明书、html格式的小说等），往往需要给用户提供这样两个功能：前进和后退。用户通过单击按钮达到访问之前网页和之后网页的功能。<br>
+
+<b>难点剖析</b><br>
+要搞清楚页面为什么可以前进和后退，就必须要知道浏览器的浏览历史（history)概念，浏览器在访问网页时会把访问的记录按照时间顺序进行排列。而forward() back()函数就负责在浏览历史中找到前一个网页和后一个网页。<br>
+
+<b></b>其他说明<br>
+在history对象里，还有一个go()函数，其有一个整型参数，当参数为正数时表示前进N页：当为负数时则表示后退N页。例如，go(-1)的效果与back()函数的效果一样。
+
+</div>
+
+</body>
+</html>

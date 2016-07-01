@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>088为链接地址多加一个参数</title>
+	<script type="text/javascript">
+		//修改链接的地址的函数
+		function showNewUrl() {
+			//得到链接的DOM
+			var links = document.getElementsByTagName('a');
+			//遍历所有的链接
+			for (var i=0; i<links.length; i++) {
+				var href = links[i]['href'];   //得到当前的地址
+				//如果包含了问号的地址,证明已经有参数了
+				if(href.indexOf('?') > 0) {
+					links[i]['href'] = href + '+bbbbb';
+					console.log(href)
+				} else {
+					//使用? 来加第一个参数
+					links[i]['href'] = href + '+aaaaaa';
+					console.log(href)
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<a href="index.php">链接一</a>&nbsp;
+	<a href="index.php?page=1">链接二</a>&nbsp;
+	<br><br>
+	<input type="button" value="为链接新添加一个参数" onclick="showNewUrl()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+在动态网页里,链接的地址会随着程序的动态需要而发生变化,其中改变地址的参数是一种比较常见的修改超级链接地址的方法.本例将演示如何为链接的地址多加一个参数.
+
+难点剖析
+在一些具备分页功能的网站里,当前的页码或下一页的页码需要动态地加入到分页按钮地址里,本例的应用汇很好地解决这个问题.在加地址参数时,需要注意的是,如果地址字符里已经包含了'?'字符,则说明地址已经包含了一至少一个参数,因此只能使用"&"符号串联更多的参数;反之,用"?"串联即可.
+
+
+ -->

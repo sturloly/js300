@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>圆角边框</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script type="text/javascript">	
+			//改变边框角度的函数
+			function chRadius(r){
+				//获取层的DOM
+				var d = document.getElementById('demo');
+				d.style.borderRadius = r+'px';//改变样式的边框半径
+			}
+		</script>
+		<style>
+			#demo{
+				border: 1px solid red;
+				width: 200px;
+				margin: 10px auto;
+				border-radius: 20px;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<div id="demo">我是一个层</div>
+		<br>
+		<input type="button" value="圆角边框" onclick="chRadius(20);"/>
+		<input type="button" value="方角边框" onclick="chRadius(0);"/>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>获取用户所在的城市</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" language="javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			function init(){
+				if( google.loader.ClientLocation.address.city) {
+					var locationCity = google.loader.ClientLocation.address.city;
+					alert(locationCity);
+				}
+			}
+		</script>
+    </head>
+    <body onload="init();">
+    </body>
+</html>

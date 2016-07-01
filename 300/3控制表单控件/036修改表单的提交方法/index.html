@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036修改表单的提交方法</title>
+	<script type="text/javascript">
+		//修改表单的提交方法
+		function modifyMethod() {
+			var f = document.forms[0];  //获取表单DOM
+			var method = f.myMethod.value; //选择的方法
+			f.method = method;  //修改选择的提交方法
+			//用提示框展示结果
+			alert('表单当前的提交方法：' + method);
+		}
+
+
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单 -->
+	<form method="post">
+		请选择提交方法：
+		<select name="myMethod">
+			<option value="">==请选择==</option>
+			<option value="get">get</option>
+			<option value="post">post</option>
+		</select>
+		<br>
+		<input type="button" value="修改提交方法" onclick="modifyMethod()">
+	</form>
+
+	<script type="text/javascript">
+		var f = document.forms[0]; 
+			alert(f.method);
+	</script>
+</body>
+</html>
+
+<!-- 
+实例描述
+HTTP的提交方法有很多种，常用的表单提交方法有两种：post 和get。 它们的主要区别在于参数提交的方式不同，post是把参数放在提交的请求体内：而get则是把参数拼接在提交的URL里。
+
+难点剖析
+表单的提交方法，是通过form标签的method属性来定义的。当用javascript操作form时，method也仅仅是表单DOM的一个属性而已，因此只需要直接修改该属性的值即可。
+
+ -->

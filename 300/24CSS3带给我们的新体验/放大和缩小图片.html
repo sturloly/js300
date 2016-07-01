@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>放大和缩小图片</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script>
+			var x = 1;			//当前的x
+			var y = 1			//当前的y
+			function goRoate(r){//改变尺寸的函数
+				//获取DOM
+				var d = document.getElementById('demo');
+				if(r>0){	//向右
+					x+=0.1;	//x坐标自加0.1	
+					y+=0.1;	//y坐标自加0.1	
+				}else{		//向左
+					x-=0.1;	//x坐标自减0.1	
+					y-=0.1;	//y坐标自减0.1	
+				}
+				//改变现状的移动位置
+				d.style.transform = 'scale('+x+','+y+')';
+			}
+		</script>
+		<style>
+			#demo{
+				margin: 50px;
+				transform: scale(1,1);
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<img src="1.jpg" id="demo"/><br>
+		<input type="button" value="缩小" onclick="goRoate(-1)"/>
+		<input type="button" value="放大" onclick="goRoate(1)"/>
+	</body>
+</html>

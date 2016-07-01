@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>136查看今天是否为节假日</title>
+	<script type="text/javascript">
+		function start() {
+			setInterval(function(){
+				var now = new Date();
+				var m = now.getMonth() + 1;
+				var d = now.getDate();
+				var str = '';
+				str += now.getYear() + 1900 + '年';
+				str += now.getMonth() + 1 + '月';
+				str += now.getDate() + '日';
+				str += now.getHours() + '分';
+				str += now.getSeconds() + '秒';
+				if(now.getDay() >= 5) {
+					str += ',今天是周末'
+				} else if (m==1 && d==1)
+					str += ',今天是周末';
+				else if (m==5 && d==1)
+					str += ',今天是劳动节'
+				else if (m==10 && d==1)
+					str += ',今天是国庆节'
+				else
+					str += ',今天不是节假日';
+				document.getElementById('left').innerHTML = str;
+			},1000)
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="查看今天是否节假日" onclick="start();"/>
+	</p>
+	<h2 id="left"></h2>
+</body>
+</html>
+
+<!-- 
+实例描述
+既然javaScript 有一套完整的日期和事件函数,那么事否能在打开网页时就知道今天是否为周末或节假日?本例将演示该效果.
+
+难点剖析
+首先,本例通过Date对象的一系列属性,得到了今天所在月份\日\周\小时\分钟和秒,然后通过这些数据就可以判断.本例只判断了周末\元旦\劳动节\国庆节,读者可以把节假日涵盖的更多一些,这样就更全面了.
+ -->

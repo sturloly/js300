@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010在网页里动态加载javascript</title>
+	<script type="text/javascript">	
+	//动态加载javascript, myjs.js
+	function loadJs () {
+		//得到html的头部dom
+		var theHead = document.getElementsByTagName('head').item(0);
+		//创建脚本的dom对象实例
+		var myScript = document.createElement('script');
+		myScript.src='myjs.js'; //制定脚本路径
+		myScript.type='text/javascript'; //制定脚本类型
+		myScript.defer=true; //程序下载完成后在进行解析和执行
+		theHead.appendChild(myScript);//把dom挂在到头部
+	}
+	
+	</script>
+</head>
+<body>
+	<p>
+		<!-- 定义按钮 -->
+		<input type="button" value="动态加载js" onclick="loadJs()"> 
+	</p>
+</body>
+</html>
+<!-- 
+实例描述
+把一些逻辑独立的javascript脚本文件单独加载，是一种常见的javascript 动态加载技术。这样做的好处有很多，比如可以减少不西药的javascript脚本文件的加载，以提高网页浏览速度。
+
+本例采用动态创建<javascript>的方式来动态记载javascript，这而是比较合理的一种方法。首先，创建一个javascript 的DOM对象，然后为它配置好脚本的地址和类型，最后把它挂载到网页的头部，也就是head部分。只有当用户点击"OK"阿牛以后，"myjs.js"这个脚本文件才被加载进网页执行。
+
+
+难点剖析
+
+ -->
+

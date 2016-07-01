@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053得到是谁打开了子窗口</title>
+	<script type="text/javascript">
+		//得到是谁打开了子窗口
+		function getParentWin() {
+			//使用提示框展示父窗口的body内容
+			alert(window.opener.ducument.body.innerHTML);
+		}
+	</script>
+
+</head>
+<body style="text-align: center;">
+	<input type="button" value="父窗口的文档内容啦啦啦在真实环境有效" onclick="getParentWin()">
+</body>
+</html>
+
+<!-- 
+实例描述
+使用window.open()函数打开新的窗口以后，两个窗口形成父子的互相引用关系。在子窗口里，可以使用window.opener 来获取打开了当前窗口的父窗口，然后可以调用父窗口里的javascript函数或修改父窗口的一些属性。
+
+难点剖析
+window.opener属性仅仅对子窗口有效，因为该属性是引用window.open()函数的调用者，也就是父窗口。如果不是通过open()函数打开的窗口，则opener属性是null。
+ -->

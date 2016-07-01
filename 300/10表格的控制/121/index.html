@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>121删除表格中的任意一行</title>
+	<script type="text/javascript">		
+			//为表格删除一行的函数
+			function delRow(){
+				//获取DOM
+				var tbl = document.getElementById('tbl');
+				var i = document.getElementById('rowIndex').value;
+				//索引要比行号小一
+				i--;
+				tbl.deleteRow(i);//调用table自带的deleteRow函数删除行
+			}			
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<p>
+			<lable>删除的行号：</label><input type="text" name="rowIndex" id="rowIndex" size="5"/>
+				<input type="button" value="删除" onclick="delRow();"/>
+			</p>
+			<table id="tbl" align="center" border="1">
+				<tr>
+					<td>col1</td>
+					<td>col1</td>
+				</tr>
+				<tr>
+					<td>col22</td>
+					<td>col22</td>
+				</tr>
+				<tr>
+					<td>col333</td>
+					<td>col333</td>
+				</tr>
+			</table>
+		</body>
+		</html>
+
+<!-- 
+实例描述
+与动态增加新的表格行对应,删除任意的表格行,也是一种数据不确定性的操作需要.本例将展示如何实现该效果.
+
+
+难点剖析
+删除表格行往往不会使用innerHTML属性,因为这样会造成巨大的性能瓶颈.因此,本例使用table对象的deleteRow()函数,其参数是行的下标(从0开始),所以在用户输入行号为2时,其代码需要用deleteRow(2)来删除表格第3行,笔记:所以上面有 '-1';
+ -->

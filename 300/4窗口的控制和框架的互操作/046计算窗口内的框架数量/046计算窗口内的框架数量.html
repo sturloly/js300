@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046计算窗口内的框架数量</title>
+	<script type="text/javascript">
+		function alertFrames() {  //得到框架的总数
+			var frames = window.frames; //得到框架数组
+			alert(frames.length);  //用提示框展示框架的总数，也就是数组大小
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义框架 -->
+	<iframe id="frame1"></iframe>
+	<iframe id="frame2"></iframe>
+	<iframe id="frame3"></iframe>
+	<br>
+	<input type="button" value="一共有多少个框架" onclick="alertFrames()">
+</body>
+</html>
+<!-- 
+第4章  窗口的空置和框架的互操作
+对于单文本网页来说，它只有窗口（window）的含义，而没有框架的概念。框架，用来在一个窗口里包含多个网页文档，它在javascript里用frame表示。在HTML中，框架可以使用<frame>和<iframe>来定义，而javascript把所有的框架房在winodw下的frames数组里。本章介绍了几类用得比较多的javascript空置窗口和框架互操作的实例。
+
+实例描述
+框架对于窗口来说，是一个数组子集，它类似于窗口，但是它却包含于窗口之内。窗口对框架的操作，通常可以借助frames数组变量。因此，可以通过该数组的长度得知窗口内的框架数量。
+
+难点剖析
+本例代码通过frames数组的长度得知窗口内包含多少个框架，展示的结果是2。在实际开发中，得到的框架个数往往不是开发需要，而用得比较多的则是引用某一个框架，因此实例代码里，可以使用这样的方式来引用第一个框架：
+	window.frames[0];
+
+ -->

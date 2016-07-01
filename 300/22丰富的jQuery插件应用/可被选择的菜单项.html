@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>可被选择的菜单项</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.selectable.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				$( "#my_selectable" ).selectable();	//使得列表的项可被选定
+			});
+		</script>
+		<style>
+			#feedback { font-size: 1.4em; }
+			#my_selectable .ui-selecting { background: #FECA40; }
+			#my_selectable .ui-selected { background: #F39814; color: white; }
+			#my_selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+			#my_selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+		</style>
+    </head>
+    <body>
+		<label>可选择的菜单项目（按住ctrl多选）：</label><br>
+		<ol id="my_selectable">
+			<li class="ui-widget-content">Item 1</li>
+			<li class="ui-widget-content">Item 2</li>
+			<li class="ui-widget-content">Item 3</li>
+			<li class="ui-widget-content">Item 4</li>
+			<li class="ui-widget-content">Item 5</li>
+			<li class="ui-widget-content">Item 6</li>
+			<li class="ui-widget-content">Item 7</li>
+		</ol>
+    </body>
+</html>

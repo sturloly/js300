@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>065用鼠标拖动图片</title>
+	<script type="text/javascript">
+		function dragPic(e) {
+			var e = e || window.event;  //获取真实的事件变量
+			var myElement = e.srcElement || e.target; //获取事件的源DOM
+			if(e.precentDefault)
+				e.preventDefault();  //避免默认的事件处理
+			else
+				//如果没有preventDefault则把返回值为false
+				e.returnvalue = false;
+			var mypic = document.getElementById("mypic");
+			mypic['draging'] = true; // 设置拖动属性为true
+			//计算得到拖动以前的图片距离左上角的left和top的值
+			var relLeft = e.clientX - parseInt(myElement.style.left);
+			var relTop = e.clientY - parseInt(myElement.style.top);
+			//当鼠标放开时，则停止拖动
+			myElement.onmouseup = function() {
+				mypic['draging'] = false;
+			}
+			//定义鼠标的移动事件，注意这里是document的，
+			//表示图片的整个网页里的鼠标移动
+			document.onmousemove = function(eMove) {
+				//获取真实的时间变量
+				var eMove = eMove || window.event;
+				if(mypic['draging'] == true ) { //如果处于正在拖动中
+					//设置新的left的值，减去鼠标点具左上角的距离
+					myElement.style.left = eMove.clientX - relLeft + "px";
+					//设置新的top的值，减去鼠标点距左上角的距离
+					myElement.style.top = eMove.clientY - relTop + "px";
+					return false;
+				}
+			}
+		}
+
+		//当王爷加载好以后就为图片拖动定义事件
+		window.onload = function() {
+			alert("loaded")
+			//获取图片的DOM 
+			var mypic = document.getElementById("mypic");
+			//定义一个属性用于存储是否正在拖动
+			mypic['dragging'] = false;
+			//更具浏览器的不同，调用不同的添加事件监听器
+			if (navigator.userAgent.indexOf("MSIE")>0) {  // IE
+					//为图片定义鼠标按下事件
+					myPic.attachEvent("onmousedown", dragPic);
+				} else {  // 非 IE
+					// 为图片定义鼠标按下事件
+					mypic.addEventListener("mousedown", dragPic , false);
+				}
+			}
+	</script>
+</head>
+<body>
+	<!-- 定义图片 -->	
+	<img id="mypic" src="1.jpg" style="left: 10px;top: 10px;position: absolute;" >
+</body>
+</html>
+
+<!-- 
+实例描述
+拖动图片到任意位置，是一种比较炫的javaScript特效，但是它所涉及的javaScript和DOM会比较复杂，需要开发人员理清整个拖动的过程和逻辑。本例讲演示如何实现该效果。
+
+难点剖析
+在聚义讲解之前，需要了解整个拖动的过程。概括来说，大致的步骤有：鼠标在图片上方按下左键，在不松开鼠标左键前提下开始移动鼠标，松开鼠标左键，图片定位在了新的未知。
+
+首先，监听图片被鼠标按下事件;其次，在回调函数里，计算出鼠标的单击点击距离左上角的像素值：最后，为document的onmousemove（鼠标移动）定义事件，如果鼠标的左键从未放下，那么就为图片设置新的坐标值，也就是把鼠标当前的位置值加上之前计算出来的距离值。在整个过程中，有一个draging变量，它表示了鼠标是否正在抓住图片。
+
+
+其他说明
+实例中的draging变量被定义为宜个图片DOM的属性变量，它表示了图片是否被拖动。这里也可以把draging定义成一个全局变量，效果是一样的，只是没有实例代码优雅。
+
+ -->

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>不用Ajax也可以达到不刷新页面的效果</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//登录成功以后，给登录回调的函数
+			function showSucc(){
+				var msg = document.getElementById('msg');
+				msg.innerHTML = '登录成功';	//显示登录成功的结果
+			}
+		</script>
+	</head>
+	<body style="text-align:center">
+		<!-- 定义提交的表单，及其包含的UI元素 -->
+		<form action="submit.html" method="post" target="myframe">
+			<h2>请输入用户名和密码：</h2>
+			<p>
+				<!-- 用户名的输入框 -->
+				用户名：<input type="text" name="username" value="" id="username"/>
+			</p>
+			<p>
+				<!-- 密码的输入框 -->
+				密码：<input type="passowrd" name="password" value="" id="pwd"/>
+			</p>
+			<p>
+				<!-- 登录按钮，由login函数来做处理 -->
+				<input type="submit" value="登录"/>
+			</p>
+			<p id="msg"></p>
+		</form>
+		<iframe src="" style="display:none;" name="myframe" id="myframe"></iframe>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>带有可见度的背景颜色</title>
+		<meta http-equiv="Content-Type" content="textml; charset=UTF-8"/>
+		<script type="text/javascript">	
+			var timer = null;	//定时器
+			var op = 1;			//默认可见度
+			//改变背景颜色的函数
+			function ch(t){				
+				if(t){//是否隐藏背景
+					timer = setInterval(function(){
+						//获取层的DOM
+						var d = document.getElementById('demo');
+						op -= 0.1;//可见度减少0.1
+						//设置当前可见度的背景颜色
+						d.style.background = 'rgba(200, 200, 200, '+op+')';
+						if(op <= 0)//如果减少到了0，则清除定时器
+							clearInterval(timer);
+					},100);//定时器
+				}					
+				else{
+					timer = setInterval(function(){
+						//获取层的DOM
+						var d = document.getElementById('demo');
+						op += 0.1;//可见度加0.1
+						//设置当前可见度的背景颜色
+						d.style.background = 'rgba(200, 200, 200, '+op+')';
+						if(op >= 1)//如果增加到了1，则清除定时器
+							clearInterval(timer);
+					},100);//定时器
+				}
+			}
+		</script>
+		<style>
+			#demo{
+				margin: 20px auto;
+				border: 1px solid red;
+				width: 200px;
+				height: 100px;				
+			　　background: rgba(200, 200, 200, 0);
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<div id="demo">这是一个层2</div>
+		<br>
+		<input type="button" value="渐隐背景" onclick="ch(true);"/>
+		<input type="button" value="渐现背景" onclick="ch(false);"/>
+	</body>
+</html>

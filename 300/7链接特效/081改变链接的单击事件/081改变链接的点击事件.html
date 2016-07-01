@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>081改变链接的点击事件</title>
+	<script type="text/javascript">
+		//自定义click事件
+		function defineLinkClick() {
+			//获得链接的DOM
+			var myLink = document.getElementById('myLink');
+			myLink.onclick= function() {  //定义click事件
+				alert('链接被点击了,没有跳转');  //事件的内容逻辑
+				return false; //返回
+			}
+		}
+	</script>
+</head>
+<body onload="defineLinkClick();" style="text-align: center;">
+	<!-- 定义链接 -->
+	<a href="#" id="myLink">一个链接</a>
+</body>
+</html>
+
+<!-- 
+实例描述
+默认情况下，链接的单击可以导致网页的跳转，当然也可以为链接的单击定义其它的逻辑处理。本例将演示如何为链接动态定义事件。
+
+
+难点剖析
+onclick 事件对于链接依然使用，但是如何组织链接摩尔恩情况下打开链接网页的动作呢？本例是把链接的href属性定义为 "#" ,这样就不会有任何动作,其实还可以使用void(0),也就是保证链接默认不做任何事情,代码如下.
+<a href="javascript:void(0)" id="myLink">一个链接</a>
+ -->

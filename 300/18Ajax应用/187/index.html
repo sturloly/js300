@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>187自定义Ajax请求方法</title>
+	<script>
+		var client;  //定义XMLHttpRequest对象，也可以叫ajax客户端
+		function sendAjax(){
+			//判断是否支持ActiveX控件，老版本的IE浏览器就需要使用ActiveObject来创建
+			if(window.ActiveXObject){
+				//用过实例化ActiveXObject的一个新实例来创建XMLHTTPRequest对象
+				client = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//其他大多数浏览器都支持本地javascript对象
+			else if (window.XMLHttpRequest) {
+				//创建XMLHTTPRequest的一个实例（本地javascript对象）
+				client = new XMLHttpRequest();
+			}else {
+				alert('创建ajax客户端失败，您的浏览器不支持该服务');
+			}
+			if(client){  //如果创建client成功以后
+				var method = document.getElementById("the_method").value;
+				//设置ajax打开以后，建立连接的方式和目标文件，提及是否为异步模式
+				client.open(method,"test001.txt",true);
+				client.send();  //调用send函数，发出ajax请求。
+				alert('ajax请求，已经发出。方法为：'+ method);
+				client.onreadystatechange = myCallBack;
+			}
+		}
+		//自定义回调函数
+		function myCallBack(){
+			alert(client.readyState);
+			//如果请求的response正常返回，并且http状态为200正常的
+			if(client.readyState==4 && client.status==200){
+				alert("alert请求的结果啊啊啊是：" + client.responseText);
+				alert("即将打印")
+				document.body.innerHTML = client.responseText + "<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />打印";
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<label>请求方法: </label>
+	<input type="text" name="the_method" id="the_method">
+	<input type="button" value="Send" onclick="sendAjax()">
+</body>
+</html>
+
+<!-- 
+HTTP的情切方法包括GET、POST等多种，那么Ajax所发出的HTTP请求是否也有这些方法呢？答案是肯定的，因为Ajax的亲故其实就是一个HTTP请求，它依然需要遵守HTTP协议的规定。
+
+难点剖析
+本例请求的是一个txt文件，无论是get方式还是post方式，对结果并没有任何影响。但在实际开发过程总，需要根据情况来做出选择。
+
+ -->

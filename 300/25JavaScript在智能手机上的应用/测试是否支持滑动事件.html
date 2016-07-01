@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>测试是否支持滑动事件</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+            //网页加载的回调
+            function init() {
+                try {
+                    document.createEvent("TouchEvent");
+                    alert("支持Touch事件！");
+                }
+                catch (e) {
+                    alert("不支持Touch事件！" + e.message);
+                }
+            }
+		</script>
+		<style>
+			div{
+				border:2px solid red; 
+				color:red;
+			}
+		</style>
+    </head>
+    <body onload="init();">
+        <h2>测试是否支持滑动事件</h2>
+        <div id="result">未触发事件！</div>
+        <ul>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+			<li>条目xxx</li>
+		</ul>
+    </body>
+</html>

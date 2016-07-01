@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>148切换样式表</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link type="text/css" rel="stylesheet" href="../css1.css" />
+		<link type="text/css" rel="stylesheet" href="../css2.css" />
+		<script type="text/javascript">
+			//按钮的click事件监听函数
+			function changeCss(){
+				//通过js得到文本所使用的样式表,使用的是css2
+				var rs = document.styleSheets[1];
+				rs.disabled = true;		//把当前的样式禁用掉
+			}
+		</script>
+	</head>
+	<body style="text-align:center">	
+		<span id="mytxt" class="myclass">测试文本</span>
+		<br/>
+		<input type="button" onclick="changeCss();" value="更换样式表"/>
+	</body>
+</html>
+
+<!-- 
+实例描述
+当网页引入多个CSS文件时,程序会根据具体的情况来进行CSS文件的切换或禁用.本例将介绍如何实现这种切换.
+
+难点剖析
+本例的网页引入了两个CSS文件,且它们都定义了文本的颜色.根据CSS的规则,文本的颜色默认是采用后定义的亚瑟.用过单击"更换样式表"按钮,程序禁用了第2个样式表,所以第1个样式表就顺理成章地发挥了作用.
+ -->

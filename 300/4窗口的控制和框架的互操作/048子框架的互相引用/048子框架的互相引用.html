@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048子框架的互相引用</title>
+	<script type="text/javascript">
+		function alertFrames(){   //子框架的互相引进
+			var frames = window.frames; //得到框架数组
+			var frame1 = frames[0];  //引用到第一个框架
+			//站在frame1的角度，只用parent属性得到父框架，这里就是window
+			var frame2 = frame1.parent.frames[1];
+			alert(frame2.document);   //用提示框展示框架2的document
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义框架 -->
+	<iframe id="frame1">11</iframe>
+	<iframe id="frame2"><a href="123"></a></iframe>
+	<br>
+	<input type="button" value="用frame1引用frame2" onclick="alertFrames();">
+</body>
+</html>
+
+<!--
+实例描述
+父框架对子框架的引用还比较好理解，那么子框架之间的互相引用又改如何操作呢？要达到这样的目的，需要借助 parent属性。
+
+难点剖析
+由此不难看出，parent指的是当前框架下的父框架。对于本例来说，这里的parent也就是顶层的window，也可以换成用top来替代。
+  -->
+

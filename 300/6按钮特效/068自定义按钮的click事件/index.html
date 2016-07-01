@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>068自定义按钮的click事件</title>
+	<script type="text/javascr"></script>
+	<script type="text/javascript">
+		//自定义按钮的click事件
+		function defineBtnClick() {
+			//获得按钮的DOM
+			var myBtn = document.getElementById("myBtn");
+			//定义click事件
+			myBtn.onclick = function() {
+				alert('按钮被点击了啊啊 。');  //事件的内容逻辑
+			}
+		}
+	</script>
+</head>
+<body onload="defineBtnClick();" style="text-align: center;">
+	<!-- 定义按钮 -->
+	<input type="button" value="一个按钮" id="myBtn"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+按钮的单击事件，是用过HTML中按钮标签的onclick属性来指定的，但是，如果想动态地修改这个事件的回调，则可以利用javaScript来实现。
+
+难点剖析
+通过实例的代码可以看出，按钮有一个属性 onclick,它本质与标签定义的onclick是一样的，只是本例演示了如何动态地修改这个事件逻辑。
+ -->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>自定义格式的日期输入框</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.datepicker.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				$( "#my_date" ).datepicker();//设置输入框问日期输入框
+				//重置日期的格式配置
+				$( "#my_date" ).datepicker("option", "dateFormat", "yy年mm月dd日");
+			});
+		</script>
+    </head>
+    <body>
+		<label>选择日期：</label>
+		<input type="text" id="my_date" size="20"/>
+    </body>
+</html>

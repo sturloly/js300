@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>可拖动的选择项</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.sortable.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				//对两个菜同同时应用可排序功能
+				$( "#sortable1, #sortable2" ).sortable({
+					//使用样式表来连接
+					connectWith: ".connectedSortable"
+				}).disableSelection();//不可选定
+			});
+		</script>
+		<style>
+			#sortable1, #sortable2 { list-style-type: none; margin: 0; padding: 0 0 2.5em; float: left; margin-right: 10px; }
+			#sortable1 li, #sortable2 li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; width: 120px; }
+		</style>
+    </head>
+    <body>
+		<label>请交叉排序：</label><br>
+		<ul id="sortable1" class="connectedSortable">
+			<li class="ui-state-default">菜单1</li>
+			<li class="ui-state-default">菜单2</li>
+			<li class="ui-state-default">菜单3</li>
+			<li class="ui-state-default">菜单4</li>
+			<li class="ui-state-default">菜单5</li>
+		</ul>
+
+		<ul id="sortable2" class="connectedSortable">
+			<li class="ui-state-highlight">菜单1</li>
+			<li class="ui-state-highlight">菜单2</li>
+			<li class="ui-state-highlight">菜单3</li>
+			<li class="ui-state-highlight">菜单4</li>
+			<li class="ui-state-highlight">菜单5</li>
+		</ul>
+    </body>
+</html>

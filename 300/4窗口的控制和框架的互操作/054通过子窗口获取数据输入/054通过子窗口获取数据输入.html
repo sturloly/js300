@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>054通过子窗口获取数据输入</title>
+	<script type="text/javascript">
+		function passValue() {   //传值
+			//获取用户输入的值
+			var val = document.getElementById("mytext").value;
+			window.opener.passValue(val);  //调用父窗口的函数传入值
+			self.close();  //关闭子窗口
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义输入框和按钮 -->
+	<input type="text" name="myText" id="mytext">
+	<input type="button" value="通过子窗口获取数据输入" onclick="passValue()">
+</body>
+</html>
+
+<!-- 
+实例描述
+子窗口的一个重要用途，就是用来提供一个用户输入的界面，完成以后则关闭子窗口。本例将演示如何实现这样的效果。
+
+难点剖析
+要想把子窗口的数据传递给父窗口，就只能用通过opener属性。本例是调用了一个函数passValu()来获取数据。感兴趣的用户可以尝试把传递过来的数据赋值到网页中其他DOM的文档内容里。
+ -->

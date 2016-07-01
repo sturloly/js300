@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>164让图片保持在层里的上下左右都居中</title>
+	<script type="text/javascript">
+		function init() {
+			var img = document.getElementById('the_img');
+			var width = img.width;
+			var height = img.height;
+			var div = img.parentNode;
+			var w = div.offsetWidth;
+			var h = div.offsetHeight;
+			img.style.margin = '0 auto';
+			var padding = (h - height) / 2;
+			div.style.paddingTop = (10 + padding) + 'px';
+		}
+	</script>
+	<style>
+		div{width: 500px;height: 300px;border: 1px solid black;margin: 10px auto;padding: 10px;}
+	</style>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div>
+		<img src="1.jpg" id="the_img" alt="">
+	</div>
+</body>
+</html>
+
+<!-- 
+实例描述
+经常浏览网络相册的读者肯定都知道，可以为照片指定相框，二这些照片使用显示在相框的中间，也就是上下左右都居中，这是怎么做到的呢？本例将进行详细介绍。
+
+难点剖析
+要想让图片左右居中，是相对比较容易的，可以通过text-align和margin的auto来设置。本例主要的难点在于如何让图片上下也居中，这就是需要通过相应的高度计算，才可以知道图片的顶部与相框顶部的距离。
+
+ -->

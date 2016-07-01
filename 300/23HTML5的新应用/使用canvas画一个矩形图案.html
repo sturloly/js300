@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>使用canvas画一个矩形图案</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">
+			//绘图方法
+			function draw(){
+				//获取canvas的DOM对象
+				var myCanvas = document.getElementById("myCanvas");
+				//得到绘图的上下文
+				var ctx = myCanvas.getContext("2d");
+				//设置绘图的颜色
+				ctx.fillStyle="#FF00FF";
+				//画出举行图案
+				ctx.fillRect(10,5,180,90);
+			}
+		</script>
+		<style>
+			canvas{border:1px solid black;};
+		</style>
+	</head>
+	<body style="text-align:center">
+		<p>使用canvas画一个矩形图案:</p>
+		<!-- canvas标签是HTML5新增的一个标签，它通常来说是一个容器 -->
+		<canvas id="myCanvas" width="200" height="100">
+		对不起，您的浏览器不支持Canvas图形绘画。
+		</canvas>
+		<br/>
+		<input type="button" value="画矩形" onclick="draw();"/>
+	</body>
+</html>

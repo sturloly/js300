@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>幻灯片浏览图片</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!--  引入必要的js和css文件 -->
+		<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+		<script src="jquery-1.9.1.js"></script>
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>		
+		<script src="ui/jquery.ui.position.js"></script>
+		<link rel="stylesheet" href="demos.css">
+		<script language="javascript">
+			//jquery的网页加载完成回调函数
+			$(function() {
+				//定义左部的函数
+				$.fn.left = function( using ) {
+					return this.position({//使用位置配置
+						my: "right middle",//右边和中间
+						at: "left+25 middle",//靠左+25像素
+						of: "#container",//位于容器以内
+						collision: "none",//无冲突
+						using: using	//正在引用当前的对象
+					});
+				};
+				//定义右部的函数
+				$.fn.right = function( using ) {
+					return this.position({//使用位置配置
+						my: "left middle",//左边和中间
+						at: "right-25 middle",//右边-25像素
+						of: "#container",//位于容器以内
+						collision: "none",//无冲突
+						using: using	//引用当前对象
+					});
+				};
+				//定义中部的函数
+				$.fn.center = function( using ) {
+					return this.position({//使用位置配置
+						my: "center middle",//居中
+						at: "center middle",//居中
+						of: "#container",	//位于容器以内
+						using: using	//引用当前的对象
+					});
+				};
+				//初始化三个图片的位置
+				$( "img:eq(0)" ).left();
+				$( "img:eq(1)" ).center();
+				$( "img:eq(2)" ).right();
+				//使用动画
+				function animate( to ) {
+					//转到下一张图片的动画
+					$( this ).stop( true, false ).animate( to );
+				}
+				function next( event ) {	//下一张图片的函数
+					event.preventDefault();	//避免默认的操作
+					$( "img:eq(2)" ).center( animate );//居中
+					$( "img:eq(1)" ).left( animate )//靠左
+					//靠右，并挂靠在容器里
+					$( "img:eq(0)" ).right().appendTo( "#container" );
+				}
+				function previous( event ) {//上一张图片的函数
+					event.preventDefault();	//避免默认的操作
+					$( "img:eq(0)" ).center( animate );//居中
+					$( "img:eq(1)" ).right( animate );//靠右
+					//靠左，并挂在容器里
+					$( "img:eq(2)" ).left().prependTo( "#container" );
+				}
+				$( "#previous" ).click( previous );//定义上一张按钮的事件
+				$( "#next" ).click( next );//定义下一张按钮的事件
+				//定义图片的点击事件
+				$( "img" ).click(function( event ) {
+					$( "img" ).index( this ) === 0 ? previous( event ) : next( event );
+				});
+			});
+		</script>
+		<style>
+			body {
+				margin: 0;
+			}
+			#container {
+				overflow: hidden;
+				position: relative;
+				height: 400px;
+			}
+			img {
+				position: absolute;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="container">
+			<img src="images/earth.jpg" width="458" height="308" alt="earth">
+			<img src="images/flight.jpg" width="512" height="307" alt="flight">
+			<img src="images/rocket.jpg" width="300" height="353" alt="rocket">
+			<a id="previous" href="#">上一张</a>
+			<a id="next" href="#">下一张</a>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>获取用户当前的地理坐标</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript">			
+			//初始化函数
+			function init(){
+				//判断浏览器是否支持地理共享
+				if(navigator.geolocation){
+					//获取地理信息，并指定成功的回调函数
+					navigator.geolocation.getCurrentPosition(function(pos){
+						var x = pos.coords.longitude;//得到经度
+						var y = pos.coords.latitude;//得到纬度
+						alert('经度：'+x+',纬度：'+y);//展示结果
+					});
+				}
+			}
+		</script>
+	</head>
+	<body style="text-align:center" onload="init();">
+	</body>
+</html>

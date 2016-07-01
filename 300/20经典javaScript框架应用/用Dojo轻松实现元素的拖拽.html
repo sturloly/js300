@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用Dojo轻松实现元素的拖拽</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.0/dojo/dojo.js"></script>
+		<script type="text/javascript">
+			dojo.require("dojo.dnd.move"); //引入Dojo的拖动功能模块
+			dojo.require("dojo.parser"); //引入解析Dojo标记的功能模块
+			//网页加载完成回调函数
+			dojo.addOnLoad(function(){ 
+				//创建一个可拖动的实体，id就是mydrag
+				new dojo.dnd.Moveable("mydrag",{});
+			});
+		</script>	
+		<style>
+			div{
+				border:1px solid red;
+				width: 200px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body style="text-align:center">
+		<div id="mydrag">这是一个拖拽目标</div>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>183把数组里的元素按照自然排序</title>
+	<script>
+		var arr = new Array();  //创建一个数组
+		for(var i=0; i<10; i++){ //遍历打印数组的值
+			//数组的值随机获得，100以下的正整数
+			arr[i] = Math.floor(Math.random() * 100);
+		}
+		//打印最初的顺序
+		alert('原始顺序：' + printArr(arr));
+		arr.sort();
+		alert('排序以后：' + printArr(arr));
+		function printArr(arr) {
+			var str = '';
+			for(var prop in arr){	//像对象的属性一样遍历数组
+				str += arr[prop] + ',';
+			}
+			return str;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+<!-- 
+实例描述
+为了让数据更直观，数组提供了排序功能，javaScript就提供了数组自然排序的函数sort(),本例演示如何运用这个函数。
+
+难点剖析
+javaScript中的 sort()函数是把数组中的元素按照自然顺序来排序，如果元素是数字型，则从小到大排列;如果是字符型，则以ASCII码大小来排列。
+
+ -->
+

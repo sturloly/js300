@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>131当网页超过一屏时候导航始终置顶</title>
+	<script type="text/javascript">
+			//初始化函数
+			function init(){
+				//获取顶部元素的DOM
+				var wrap = document.getElementById('wrap');
+				var scrollTop = 0;	//初始化为顶部
+				//监听页面滚动事件
+				window.onscroll=function(){
+					//获取当前的滚动距离
+					scrollTop =
+					document.body.scrollTop||document.documentElement.scrollTop;
+					//获取超过150像素的滚动，就把导航菜单DIV设置为固定的
+					if(scrollTop > 150){
+						wrap.className = 'the_top';//固定下来的样式
+					}else{
+						wrap.className = 'wrap';//恢复原有样式
+					}
+				}
+			}
+		</script>
+		<style type="text/css">
+			*{ margin: 0; padding: 0; }
+			.wrap{ width: 100%; }
+			.hd{ width: 980px; height: 150px; margin: 0 auto; background-color: red; }
+			.bd{ width: 980px; height: 40px; margin: 0 auto; background-color: blue; }
+			.the_top{ position: fixed; width: 100%; }
+			.the_top .hd{ display: none; }
+		</style>
+	</head>
+	<body style="text-align:center" onload="init()">
+		<div id="wrap" class="wrap">
+			<div class="hd"></div>
+			<div class="bd"></div>
+		</div>
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	</body>
+	</html>
+
+<!-- 
+实例描述
+在一些电子商务网站的商品详细介绍页面里,通常会有一个导航菜单始终跟随页面,无论页面滚动到中间还是底部,这是为了方便用户查看商品的各类信息或提交订单购物.本例将讲解如何实现该置顶特效.
+
+难点剖析
+首先,要想让一个层始终固定在屏幕的顶部或底部,就不得不使用CSS的position样式.其次,再来控制网页是不是需要把导航菜单置顶,因为当网页内容的浏览还没有滑出导航菜单的可见范围时,是没有必要把导航菜单置顶的.因此,到吗就需要监听网页的滚动条滑动事件,当超出一定范围以后,才有必要为导航菜单设置固定的position样式.
+
+ -->

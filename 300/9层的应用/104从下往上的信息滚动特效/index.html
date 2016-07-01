@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>104从下往上的信息滚动特效</title>
+	<script type="text/javascript">
+		var timer = null;  //定时器
+		//页面加载完成的事件回调
+		function init() {
+			var time = 5;   //定义滚动的时间间隔,毫秒
+			//获取容器的DOM
+			var container = document.getElementById('container');
+			var d1 = document.getElementById('con1');
+			var d2 = document.getElementById('con2');
+			d2.innerHTML = d1.innerHTML //把第二个容器的内容填充为第一个
+			function MyMarquee() {  //定义滚动的函数
+				//如果d2的高度已经超过最大的限制,就是已经滚动至上方屏幕看不到的距离.
+				if(d2.offsetHeight <= container.scrollTop)  
+				//这里就是 == 等于,  小于的功能未知.^
+				//把容器的滚动条恢复到最初的位置
+					container.scrollTop -= d1.offsetHeight;
+				else {
+					//滚动条的未知往top移动一个像素
+					container.scrollTop++;
+				}
+			}
+			timer = setInterval(MyMarquee,time);  //开始一个定时执行
+			container.onmouseover = function(){  //定义鼠标放上事件
+				clearInterval(timer);   //结束滚动
+			}
+			container.onmouseout=function() {  //定义鼠标移出事件
+				timer=setInterval(MyMarquee,time);  //再次开始
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div id="container" style="overflow:hidden;height: 100px;overflow: scroll;">
+		<table align="left" cellpadding="0" cellspace="0" border="0">
+			<tr>
+				<td id="con1" valign="top">
+				<img src="1.jpg" alt=""><img src="1.jpg" alt=""><img src="1.jpg" alt="">
+				</td>
+			</tr>	
+			<tr>
+				<td id="con2" valign="top"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+
+<!-- 
+第9章 层的应用
+在HTML标签里,有一个使用率非常高的标签"div",一般称它为"层",它表示的是一块内容区域,主要用来排版网页,同时利用它也可以完成一些网页特效.本章介绍了积累javaScript应用比较多的关于层的应用.
+
+
+实例描述
+网页在显示器中可以见的范围是有限的,把一块相同或相似内容的区域放在一个层里边,然后把内容从下往上的滚动显示,是一种常见的网页特效,一般用于网页的公告或新闻展示.
+
+难点剖析
+本例代码中,用一个表格中的两行来表示要显示的内容,这两行的内容是完全一样的.当网页加载完以后,就开始通过scrollTop属性来控制容器层内部的滚动条,当滚动到第二行的底部时,再把滚动条又恢复到最顶部.
+
+
+
+ -->

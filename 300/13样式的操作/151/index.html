@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>151隐藏和显示的切换效果</title>
+	<!-- 定义一个外部样式，和引入外部css文件效果是一样的 -->
+	<style>
+		.myclass {
+			color: white;
+			background-color: black;
+			padding: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		//按钮的click事件监听函数
+		function showHide() {
+			//获取目标DOM
+			var mytxt = document.getElementById('mytxt');
+			if(mytxt.style.display == 'none')
+				mytxt.style.display='inline';
+			else
+				mytxt.style.display = 'none';
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" class="myclass">测试文本</span>
+	<br>
+	<input type="button" onclick="showHide()" value="隐藏/显示">
+</body>
+</html>
+
+<!-- 
+实例描述
+网页原色的隐藏和显示是一对相反的操作，还在网页开发中是最常用的一种特效手段。本例将讲解如何实现这切换。
+
+难点剖析
+在CSS 阳还是理，display属性是否为none是控制网页元素显示与否的重要技巧。因此，从实例代码中可以看到，在文本显示时把该属性设置为none，在已经为none时又将其恢复为inline。
+
+其他说明
+display属性的值不只是本例所提到的这两个，还包括block，它与inline在显示时又本质的却别：inline指的是内联原色，它主要用于从左到右的显示，比如文字、链接等：而block指的是框元素，它主要用于从商到下排列显示，比如div\table这些比较大的元素。
+
+ -->

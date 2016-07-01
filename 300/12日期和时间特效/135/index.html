@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>135倒计时效果</title>
+	<script type="text/javascript">
+		//开始倒计时函数
+		function start() {
+			setInterval(function(){  //开始一个timer,间隔为1秒
+				var now = new Date();  //当前的时间
+				//得到下一个元旦的时间戳
+				//笔记:new Date() 返回当前时间,getYear配合newDate使用返回自1900来的年数,这里是116. new Date里(116+ 1 +1900 =2017,0月,1日).
+				var end = new Date(now.getYear() + 1 + 1900, 0, 1);
+				//得到距离元旦时间戳的毫秒数
+				var time = end.getTime() - now.getTime();
+				var str = getTimeTxt(time);  //拼接字符
+				//修改left内容区域的内容
+				document.getElementById('left').innerHTML = '距离明年元旦还剩:'+ str;
+			},1000);
+		}
+		//得到事件表示形式的函数
+		function getTimeTxt(time){
+			time /= 1000;  //除去毫秒的尾数
+			var days = time/(24*60*60);  //得到天数
+			var hour = time % (24*60*60) /(60*60);  //得到小时数
+			var min = time % (24*60*60) % (60*60) / 60;  //得到分钟数
+			var sec = time % (24*60*60) % (60*60) % 60;  //得到秒数
+			var str = '';  //定义拼接变量
+			if(days > 0)
+				str += Math.floor(days)+'天';  //向下取整
+			if(hour > 0)
+				str += Math.floor(hour)+'时';  //向下取整
+			if(min > 0)
+				str += Math.floor(min)+'分';   //向下取整
+			str += Math.floor(sec)+'秒';   //向下取整
+			return str;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="进入倒计时" onclick="start()"/>
+	</p>
+	<h2 id="left"></h2>
+</body>
+</html>
+
+<!-- 
+实例描述
+在一些重大节日或盛会到来之前,比如奥林匹克运动会\圣诞节\元旦等,人们都有倒计时的习惯.本例演示了如何在网页里实现倒计时特效.
+
+难点剖析
+本例主要有两个地方需要注意:
+(1) 得到距离时间的毫秒数,本例通过时间戳的相减获得.
+(2)剩余时间的表示形式,如何计算精确的天数\小时数\分钟数和描述,这些通过一系列的相除和取余来实现,如实例代码的getTime()函数.
+
+ -->

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026修改元素的属性值</title>
+	<script type="text/javascript">
+	//修改图片的宽度和高度属性
+	function modifyWidthAndHeight() {
+		//得到元素DOM
+		var myImg = document.getElementById('myImg');
+		myImg.width= 300;  //增加宽度到300
+		myImg.height= 150; //增加高度到150
+	}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="修改属性" onClick="modifyWidthAndHeight();">
+	</p>
+	<!-- 定义图片元素 -->
+	<img id="myImg" src="./1.jpg" width="200" height="100">
+</body>
+</html>
+
+<!-- 
+实例描述
+网页中元素属性的值并非一成不变，当然，也不是所有的属性都允许改变。本例将演示如何修改网页中图片的属性值。
+
+难点剖析
+宽度和高度，是两项经常会被修改的图片属性值，它们的单位为像素值，因此这里设置的值类型为数字型。其他属性（如字符型、函数等）就需要设置对应类型的数据，否则将不会有效。
+ -->

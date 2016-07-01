@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>一次选择多个不同类的元素</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			function selMore(){
+				alert('你选择的DOM个数为：' + $('select,span').length);
+			}
+		</script>	
+	</head>
+	<body style="text-align:center">
+		<form>
+			<select>
+				<option value="2011">2011</option>
+				<option value="2012">2012</option>
+				<option value="2013">2013</option>
+				<option value="2014">2014</option>
+			</select>
+			<span>我是一个span</span>
+			<br>
+			<input type="button" value="选择select和span" onclick="selMore();"/>
+		</form>		
+	</body>
+</html>

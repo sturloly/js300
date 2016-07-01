@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>070在网页上为用户定义一个打印按钮</title>
+	<script type="text/javascript">
+		function printDoc(btn) {  //打印功能
+			window.print();  //调用window的打印函数
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!-- 定义表单，按钮 -->
+	<form action="" method="post" style="display: block;width: 200px;height: 100px;border: 1px solid black">
+		<br>
+		<input type="button" value="打印" id="myPrintBtn" onclick="printDoc()"/>
+	</form>	
+</body>
+</html>
+
+<!-- 
+实例描述
+打印是网页比较常见的功能，如网页显示的是一些报表数据，或是一些电子优惠券时，就会用到打印功能。本例为用户提供了一个显眼的具有打印功能的按钮。
+
+难点剖析
+网页的打印功能通过调用window的 print()函数可以事先，它的作用与窗口自带的打印功能完全一样。
+ -->

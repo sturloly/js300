@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022动态创建网页新元素</title>
+	<script type="text/javascript">
+
+	var counter =0;
+		//创建新元素
+		function createNewElements() {
+			//只用innerHTML创建新元素
+			var p1 = document.getElementById('p1');
+			//设置innerHTML内容
+			p1.innerHTML = "<span>我的dom文本</span>" + counter;
+			//使用createElement来创建新元素
+			var span = document.createElement('span');
+			var br = document.createElement('br')
+			//为新元素内容创建一个文本节点
+			span.appendChild(document.createTextNode("我的dom文本2"));
+			var p2 = document.getElementById('p2');
+			// 挂接
+			p2.appendChild(span);
+			p2.appendChild(br);
+			counter++
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="创建新元素" onClick="createNewElements();">
+	</p>
+	<!-- 定义为新元素挂接的容器元素 -->
+	<p id="p1"></p>
+	<p id="p2"></p>
+</body>
+</html>
+
+<!-- 
+实例描述
+动态创建新的DOM元素，是javascript操作网页对象模型的重要手段之一。本例将演示如何创建新的DOM元素。
+
+难点剖析
+创建新元素，一般来说有两种办法：第一种是直接修改父元素的innerHTML 元素：第二种是使用createElement()函数创建，再用appendChild()函数进行DOM元素的挂接。第一种方法使用起来比较简单，也很好理解，但是需要修改整个父元素所包含的HTML内容，如果父元素原先就包含了一些HTML内容，再进行DOM挂接的话，执行效率会比较低。第二种方法相对比较灵活，效率也相对较高，只是使用起来复杂一些。
+
+ -->

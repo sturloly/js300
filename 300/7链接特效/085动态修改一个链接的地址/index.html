@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085动态修改一个链接的地址</title>
+	<script type="text/javascript">
+		function modifyURL() {    //动态修改链接的地址
+			var myLink = document.getElementById("myLink"); //获取链接的DOM
+			myLink.href="http://www.baidu.com"; //修改链接的地址
+		}
+	</script>
+	<style>
+		a{text-decoration: none;}
+	</style>
+</head>
+<body style="text-align: center;">
+		<!-- 定义链接 -->
+		<a href="#" id="myLink">一个链接</a><br><br>
+		<!-- 定义按钮 -->
+		<input type="button" value="修改链接地址" id="myBtn" onclick="modifyURL()"/>
+</body>
+</html>
+
+<!-- 
+实例描述
+链接的地址是目标网址,这个地址可能是内部的一个相对地址,也有可能是外部的一个绝对地址.本例将演示如何动态修改这个地址,以适应具体的逻辑需要.
+
+难点剖析
+链接的地址由href属性控制,因此只需要修改链接DOM的href属性,它的地址就可以发生或动态的改变.
+ -->

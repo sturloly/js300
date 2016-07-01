@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>191Ajax传输JSON数据实例</title>
+	<script>
+		var client;  //定义XMLHttpRequest对象，也可以叫ajx客户端
+		//button的click事件回调函数
+		function sendAjax(){
+			//判断是否支持ActiveX控件，老版本的IE浏览器就需要使用ActiveXOBject来创建
+			if(window.ActiveXObject){
+				//用过实例化ActiveXObject的一个新实例来创建XMLHTTPRequest对象
+				client = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			// 其他的大多数浏览器都支持本地javascrtipt独享
+			else if(window.XMLHttpRequest) {
+				//创建XMLHTTPRequest的一个实例 （本地Javascirpt对象）
+				client = new XMLHttpRequest();
+			}else {
+				alert("创建ajax客户端失败，您的浏览器不支持该服务");
+			} 
+			if(client) {  //囚创建client成功以后
+				var method = document.getElementById("the_method").value;
+				var params = document.getElementById("params").value;
+				//这里的URL故意写一个错误的地址进行测试
+				//设置ajax打开以后，建议连接的方式和目标文件，以及是否为异步模式
+				if(method == 'POST') {
+					//用POST方法，参数可以用过send方法的参数写道请求的内容流中去
+					client.open(method,"test002.txt",true);
+					client.send(params);  //调用send函数，把参数写到请求内容中
+				} else if (method == "GET") {
+					//用GET请求方法，参数就只能放在URL的后边，这种方式受到URL长度限制
+					client.open(method,"test002.txt?" + params, true);
+					client.send();
+				}
+				client.onreadystatechange = myCallBack;
+			}
+		}
+		//自定义回调函数
+		function myCallBack(){
+			//如果请求的response正常返回
+			if(client.readyState ==4){
+				//在请求完成之后，隐藏请求进行中的提示
+				document.getElementById('loading').style.display= "none";
+				if(client.status ==200) { //处理正常时的代码
+					var resp = client.responseText; //返回的值的字符形式
+					var arr = eval('('+resp+')');  //使用eval得到的json格式
+					var str = '学生信息：<br/>姓名，年龄';//拼接字符
+					for(var i =0; i<arr.length; i++) {  //遍历返回的学生数据数组
+						//把一个学生的姓名和年龄拼接起来
+						str += '<br>' + arr[i]['name'] + "," +arr[i]['age'];
+					}
+					//把拼接好的信息放到content内容中，以显示在网页上
+					document.getElementById('content').innerHTML = str;
+				} else if (client.status==404) { //处理URL 不存在的情况
+					alert('网页不存在a a a ');
+				} else if (client.status==500) {  //处理服务器内部错误的情况
+					alert('服务器内部错误');
+				}
+			} else {
+				//在请求完成之前，显示请求进行中的提示
+				document.getElementById('loading').style.display = 'block';
+			}
+		}
+
+	</script>
+
+<style>
+	#loading {
+		border: 1px solid black;
+		background-color:yellow;
+		display: none;
+		height: 25px;
+		width: 100px;
+		margin: 5px auto;
+	}
+</style>
+</head>
+<body style="text-align: center;">
+	<label> 请求方法：</label>
+	<select id="the_method" >
+		<option value="GET">GET</option>
+		<option value="POST">POST</option>
+	</select>
+	<br>
+	<label>请求内容：</label>
+	<input type="text" id="params" name="params">
+	<br>
+	<input type="button" value="Send" onclick="sendAjax();" >
+	<br>
+	<span id="loading">loading</span>
+	<br>
+	<p id="content"></p>
+</body>
+</html>
+<!-- 
+实例描述
+众所周知，JSON是一种非常简单方便的数据存储格式，用这种格式在Ajax的客户端和服务端之间进行数据传输，可以起到事半功倍的作用。
+
+难点剖析
+从本例代码可以看出，Ajax使用JSON格式来传输数据，非常好用，因为它的原型就是JavaScript的对象和数组形式。另外，JSON与XML相比还有很多优点，例如数据量小，数据更具可读性等。本例只是在服务器端返回值时使用了JSON数据，其实还可以把参数的传递也携程JSON格式。
+
+ -->

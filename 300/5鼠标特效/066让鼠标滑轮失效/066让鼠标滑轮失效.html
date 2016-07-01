@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>066让鼠标滑轮失效</title>
+	<script type="text/javascript">
+		function init() {
+			//重新定义document的滑轮滑动的事件回调函数
+			document.onmousewheel = function () {
+				alert('禁止使用滑轮')
+			}
+		}
+
+
+	</script>
+</head>
+<body style="text-align: center" onload="init();">
+	<p style="width: 5px;">你滑动滑轮试试看是是是 </p>
+</body>
+</html>
+
+<!-- 
+实例描述
+有时如果不想用户通过滚动鼠标的滑轮来浏览一些不希望他们看见的内容，那么就应该将网页的高度和宽度恒定。本例将演示如何实现该特效。
+
+
+ -->
