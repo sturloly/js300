@@ -11,8 +11,7 @@
  -说明		
  --审查元素中script里带有注释。body里带有知识点的说明与分析。		
  -		
- -持续完善中...		
- -		
+
  -JavaScript Use Cases of 300		
  -		
  -source		
