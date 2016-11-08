@@ -12,7 +12,7 @@
  --审查元素中script里带有注释。body里带有知识点的说明与分析。		
  -		
 
- -JavaScript Use Cases of 300		
+JavaScript Use Cases of 300		
  -		
  -source		
  --the book -《JavaScript网页特效经典300例》Author:杨磊 张志美 Publisher:电子工业出版社		
