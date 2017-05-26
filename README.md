@@ -21,7 +21,7 @@
  
  the book -《JavaScript网页特效经典300例》Author:杨磊 张志美 Publisher:电子工业出版社		
  	
- ### Usage	
+ ### usage	
  
  made for personal use as a quick checking tool		
  	
